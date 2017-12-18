@@ -1,0 +1,25 @@
+site_name: SmartSDK Guided Tour
+# repo_url: 
+edit_uri: edit/master/docs
+site_description: A short guide to use SmartSDK platform
+docs_dir: 'docs'
+theme: readthedocs
+pages:
+    - Home: 'index.md'
+    - Introduction: 'introduction.md'
+    - Setting-up your platform:
+        - 'Creating the Swarm Cluster': 'platform/swarmcluster.md'
+        - 'Deploy your platform services': 'platform/deployservices.md'
+    - Deploying and Connecting Sensors:
+        - 'Your Cloudino Air Quality Sensor': 'sensors/cloudino.md'
+        - 'Your Smart Spot': 'sensors/smartspot.md'
+    - Use your platform:
+        - 'Query Air Quality data in the Context Broker': 'services/contextbroker.md'
+        - 'Store historical data, query them and use them to create dashboards': 'services/quantumleap.md'
+    - 'Planned future evolutions': 'future.md'
+    - 'Additional Documentation': 'references.md'
+    - 'F.A.Q.': 'faq.md'
+    - 'ToDos': 'todos.md'
+
+markdown_extensions: [toc,fenced_code]
+extra_css: ["https://fiware.org/style/fiware_readthedocs.css"]
