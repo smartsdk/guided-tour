@@ -1,6 +1,6 @@
 site_name: SmartSDK Guided Tour
 repo_url: https://github.com/smartsdk/guided-tour
-edit_uri: edit/master/docs
+#edit_uri: edit/master/docs
 site_description: A short guide to use SmartSDK platform
 docs_dir: 'docs'
 theme: readthedocs
