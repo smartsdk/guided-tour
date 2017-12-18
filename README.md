@@ -1,5 +1,7 @@
 # SmartSDK Guided Tour
 
+[![Documentation Status](https://readthedocs.org/projects/guided-tour-smartsdk/badge/?version=latest)](http://guided-tour-smartsdk.readthedocs.io/en/latest/?badge=latest)
+
 Welcome to the guided tour on SmartSDK platform. This guided tour, by means of a
 small application example, provides a simple introduction to different services
 developed in the context of SmartSDK project for the FIWARE ecosystem.
