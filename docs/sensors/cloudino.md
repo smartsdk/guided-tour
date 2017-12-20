@@ -1,6 +1,6 @@
 # Creating your air quality sensor with Cloudino
 
-## What you need to order on
+## What you need to order
 
 ## How to install and configure it
 

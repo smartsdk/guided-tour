@@ -16,7 +16,6 @@ pages:
     - Use your platform:
         - 'Query Air Quality data in the Context Broker': 'services/contextbroker.md'
         - 'Store historical data, query them and use them to create dashboards': 'services/quantumleap.md'
-    - 'Planned future evolutions': 'future.md'
     - 'Additional Documentation': 'references.md'
     - 'F.A.Q.': 'faq.md'
     - 'ToDos': 'todos.md'
