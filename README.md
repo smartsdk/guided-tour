@@ -22,12 +22,4 @@ a pull request to the repository, you will be able to observe the results of
 the compliancy verification in your PR. Merge will be only possible if CI
 process is passed successfully.
 
-You can check the compliance with the linting rules by yourself with:
-
-``` shell
-gem install --user-install mdl
-MDL_BIN="$(find "${HOME}/.gem" -iname mdl -type f | head -n1)"
-find -iname '*md' | xargs ${MDL_BIN}
-```
-
 Should you have a solution yourself, feel free to make a pull request!
