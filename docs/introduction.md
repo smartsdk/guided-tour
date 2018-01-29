@@ -16,7 +16,7 @@ through the features offered by SmartSDK in a simple way.
 N.B. Not all features described in the scenario below may be yet available in
 the guided tour, but they will be released in further steps.
 
-## Application Scenario
+## Application Scenario
 
 Smog City is affected by heavy polluted air. Smokie, the major of Smog City,
 asked to MJ, the head of the IT department, to deploy in no time a solution to:
@@ -45,5 +45,3 @@ What is also very nice, is that SmartSDK provides many recipes to deploy a basic
 platform offering all the above features!
 
 [Architecture Diagram]
-
-### 
