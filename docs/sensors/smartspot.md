@@ -166,7 +166,6 @@ You can easily share the connection with your iOS or Android.
 
 ![Connection](./images/connection.png)
 
-## **Monitor and Manage your sensors**
-
-## **Broadcast a URLs via Physical Web**
+## **Fiware integrations**
+Pagina 19 documento PDF
 
