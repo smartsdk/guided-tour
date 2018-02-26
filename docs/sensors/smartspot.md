@@ -19,7 +19,7 @@ Optionally, this system provides information about crowds in specific areas, det
 
 1. ESP32 DevKitC.
 
- INSERTAR IMAGEN
+![ESP32 DevKitc](./images/ESP32-DevKitC.png)
 
 2. Starter Kit firmware
 
@@ -40,16 +40,16 @@ Optionally, this system provides information about crowds in specific areas, det
 4. Micro USB Cable
 5. Smart Spot Air Quality Expansion Board
 6. I2C Cable
-
-INSERTAR IMAGEN
  
+![I2C Cable](./images/I2C.png)
+
 7. 4 x Gas Sensors:
  	* Sulfur Dioxide (Red).
  	* Ozone + Nitrogen Dioxide (Yellow).
  	* Carbon Monoxide (Green).
  	* Nitrogen Dioxide (Orange).
 
-INSERTAR IMAGEN
+![Gas Sensor](./images/sensor.png)
 
 You will need a PC loaded with Windows, Linux or Mac OS with internet connection in order to download the Starter Kit firmware and the ESP32 toolchain and ESP-IDF.
 
@@ -96,11 +96,11 @@ $ git clone –-https://github.com/HOP-Ubiquitous/SmartSpot\_SmartSDK\_Firmware.
  
 4) Once you downloaded everything, open the ESP32 toolchain in order to flash the firmware. Go to the directory where you placed the toolchain and execute the file mingw32.
 
-INSERTAR IMAGEN
+![Directory](./images/directory.png)
 
 5) Plug your ESP32 into your PC. Then go to Device Manager and look for its port number (i.e.: COM3).
 
-INSERTAR IMAGEN
+![Device Manager](./images/device-manager.png)
 
 You may have to download its driver in case you are not able to flash. Download it here.
 
@@ -116,7 +116,7 @@ $ python /c/Users/HOPU/GitHub/espidf/components/esptool\_py/esptool/esptool.py -
 
 ~~~
 
-INSERTAR IMAGEN
+![Commands](./images/python.png)
 
 A message like the one above should appear if you flashed the firmware successfully.
 
@@ -139,8 +139,7 @@ This is a detailed list of the expansion board components:
 
 The expansion board is completely plug and play. If you previously flashed the ESP32 correctly you will only have to plug it in its mark.
 
-INSERTAR IMAGEN
-
+![Expansion board](./images/board.png)
 
 # **Gas Sensor Integration**
 
@@ -151,7 +150,7 @@ The idea is to connect the Smart Spot Starter Kit with the gas sensors. Between 
 * O3: Ozone
 * CO: Carbon monoxide
 
-INSERTAR IMAGEN
+![Sensors](./images/sensors.png)
 
 In order to carry out the connection between the expansion board and the Smart Spot Air Quality Expansion Board you only have to plug the i2c cable in both sides. You can use any i2c port you want since they all have the same behavior. Finally, plug the gas sensors in the i2c board.
 
@@ -165,7 +164,7 @@ Password: **defaultSSAP1234**
 
 You can easily share the connection with your iOS or Android.
 
-INSERTAR IMAGEN
+![Connection](./images/connection.png)
 
 ## **Monitor and Manage your sensors**
 
