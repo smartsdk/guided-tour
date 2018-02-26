@@ -167,5 +167,33 @@ You can easily share the connection with your iOS or Android.
 ![Connection](./images/connection.png)
 
 ## **Fiware integrations**
-Pagina 19 documento PDF
+FIWARE ([www.fiware.org](www.fiware.org)) is an open platform promoted by the European Commision and maintained by the FIWARE Foundation, where HOP Ubiquitous is Gold Member.
 
+FIWARE offers an Open Ecosystem that join different technology enablers for scalable data mangement and make feasible to integrate 
+different services and Internet of Things devices into a common and interoperable framework based on Open Standards. In particular,
+FIWARE is based on Open Standards such as OMA NGSI for the Services Interface and ETSI ISG CIM for the data models. HOP Ubiquitous 
+is an active member and contributor in ETSI ISG CIM and also an active contributor in OMA; being one of pioneer and main companies
+working around OMA LwM2M protocol.
+
+In details, FIWARE has a strong role in the Smart Cities market, since the is key to the growth and functionality of Smart Cities, for 
+this reason we are committed to initiatives such as Open and Agile Smart Cities (OASC) association with over 100 cities enrolled and 
+FIWARE technology as the basis for making it feasible.
+
+Smart Spot is a FIWARE-ready device, it means that Smart Spot has been validated, passed a set of tests, participated in plugfests and 
+the most important is supporting the APIs, FIWARE data models based on ETSI ISG CIM and it is fully interoperable and integrated with
+key components from FIWARE such as Orion Context Broker.
+
+In details, Orion Context Broker is the core of FIWARE platform; since it enables the common integration of heterogenous data sources 
+into a common component, which enables the capacity to carry out advanced queries, cross data among heterogenous domains (e.g., noise
+with crowd, weather and mobility, etc.), and finally it can exports data to several data analytics components such as Hadoop / COSMOS 
+(Big Data), SHT (Time Series), CKAN (Open Data), MongoDB (Non-structured data), etc.
+
+FIWARE and the solutions from HOP Ubiquitous are contributing to the creation of adapted and standardized solutions to satisfy the 
+described process from the cocreation and citizens engagement to the deployment of solutions based on IoT to reach the digitalization 
+and enhancement of different areas in the city.
+
+Thanks to the LwM2M Bootstrap Server deployed and integrated in the Homard platform, it is really easy to setup the server configuration 
+for a the device. In this way, anyone can deploy its own LwM2M IOTAgent with a public server IP and configure the device to integrate it 
+in FIWARE.
+
+A tutorial about Orion Context Broker has been developed by FIWARE and HOP Ubiquitous, which can be downloaded in: [tutorial](http://goo.gl/o1KXcT)
