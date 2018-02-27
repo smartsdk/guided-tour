@@ -18,6 +18,7 @@ In this section we discuss how to create a cluster on your own laptop.
 ### Prerequisites
 
 To create a swarm cluster on your laptop you need to:
+
 1. Install [VirtualBox](http://virtualbox.org) or any other virtualisation
   solution supported by [Docker Machine](https://docs.docker.com/machine/).
 
@@ -26,8 +27,8 @@ To create a swarm cluster on your laptop you need to:
 1. Install [Docker Machine](https://docs.docker.com/machine/install-machine/).
 
 1. Install 
-[PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/setup/installing-windows-powershell?view=powershell-6)
-(only on Windows).
+  [PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/setup/installing-windows-powershell?view=powershell-6)
+  (only on Windows).
 
 ### Cluster creation
 
