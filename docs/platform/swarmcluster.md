@@ -1,35 +1,41 @@
-# Create your Docker Swarm Cluster in FIWARE Lab
+# Create your Docker Swarm Cluster
 
-## Register in FIWARE Lab
+## Create your Docker Swarm Cluster in FIWARE Lab
 
-## Configure your cluster
+### Register in FIWARE Lab
 
-## Deploy your cluster
+### Configure your cluster
 
-## Export configuration for Docker CLI
+### Deploy your cluster
+
+### Export configuration for Docker CLI
 
 
-# Create your Docker Swarm Cluster on your laptop
+## Create your Docker Swarm Cluster on your laptop
 
 In this section we discuss how to create a cluster on your own laptop.
 
-## Prerequisites
+### Prerequisites
 
 To create a swarm cluster on your laptop you need to:
 1. Install [VirtualBox](http://virtualbox.org) or any other virtualisation
   solution supported by [Docker Machine](https://docs.docker.com/machine/).
-1. Install [Docker](https://docs.docker.com/install/)
-1. Install [Docker Machine](https://docs.docker.com/machine/install-machine/)
+
+1. Install [Docker](https://docs.docker.com/install/).
+
+1. Install [Docker Machine](https://docs.docker.com/machine/install-machine/).
+
 1. Install 
 [PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/setup/installing-windows-powershell?view=powershell-6)
 (only on Windows).
 
-## Cluster creation
+### Cluster creation
 
-### Create your cluster on MacOS X or Linux using miniswarm
+#### Create your cluster on MacOS X or Linux using miniswarm
 
 Once you completed the installation of the above tools, on Linux and MacOS you
-can create your cluster using [miniswarm](https://github.com/aelsabbahy/miniswarm):
+can create your cluster using 
+[miniswarm](https://github.com/aelsabbahy/miniswarm):
 
 1. Download miniswarm:
 
@@ -56,7 +62,7 @@ If you are interested to explore miniswarm usage:
 $ miniswarm -h
 ```
 
-### Create step-by-step your cluster on Windows / Mac / Linux
+#### Create step-by-step your cluster on Windows / Mac / Linux
 
 1. Create 3 docker virtual machines:
 
@@ -78,7 +84,7 @@ $ miniswarm -h
   ```
 
 
-1. Initialise the Swarm Cluster
+1. Initialise the swarm cluster:
 
   ```
   $ docker-machine ssh ms-manager0 "docker swarm init --advertise-addr <ms-manager0-ip>"
@@ -111,7 +117,7 @@ $ miniswarm -h
   $ eval $(docker-machine env ms-manager0)
   ```
 
-## Test your cluster
+### Test your cluster
 
 1. List nodes in your cluster:
 
