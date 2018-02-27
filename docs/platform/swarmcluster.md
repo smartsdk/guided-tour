@@ -8,6 +8,7 @@
 
 ## Export configuration for Docker CLI
 
+
 # Create your Docker Swarm Cluster on your laptop
 
 In this section we discuss how to create a cluster on your own laptop.

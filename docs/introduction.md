@@ -45,5 +45,3 @@ What is also very nice, is that SmartSDK provides many recipes to deploy a basic
 platform offering all the above features!
 
 [Architecture Diagram]
-
-### 

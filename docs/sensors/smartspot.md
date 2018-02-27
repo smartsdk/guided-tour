@@ -1,8 +1,8 @@
 # Creating your own SmartSpot for Air quality
 
-## What you need to order
+## What you need to order
 
-## How to install and configure it
+## How to install and configure it
 
 ## How to add Air Quality sensors
 
