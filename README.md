@@ -23,7 +23,9 @@ the compliancy verification in your PR. Merge will be only possible if CI
 process is passed successfully.
 
 You can check and build the docs by yourself on your machine using a
-[custom dockerimage](https://hub.docker.com/r/dancn/guided-tour-builder/):
+[custom
+dockerimage](https://hub.docker.com/r/dancn/guided-tour-builder/) by
+running the following command in the root directory of the project:
 
 ``` shell
 docker run -it --rm -v "$(pwd):/docs" dancn/guided-tour-builder
