@@ -31,52 +31,50 @@ detecting people with smartphone WiFi switched-on.
 
 ## What is included with The Smart Spot Starter Kit:
 
-1. ESP32 DevKitC.
+   1. ESP32 DevKitC.
+   
+      ![ESP32 DevKitc ](./images/ESP32-DevKitC.png)
+   
+   2. Starter Kit firmware
+      * Physical Web
+      * Crowd Monitoring
+      * LwM2M server
+      * Integration with I2C sensor
+      * GPIO driver
+   
+   3. Expansion Board:
+      * Temperature, Humidity and Pressure Sensor.
+      * Accelerometer and Gyroscope.
+      * Luminosity Sensor
+      * RGB led
+      * GPIO Led
+     
+   4. Micro USB Cable
+   5. Smart Spot Air Quality Expansion Board
+   6. I2C Cable
+   
+      ![I2C Cable](./images/I2C.png)
 
-![ESP32 DevKitc](./images/ESP32-DevKitC.png)
+   7. 4 x Gas Sensors:
+     * Sulfur Dioxide (Red).
+     * Ozone + Nitrogen Dioxide (Yellow).
+     * Carbon Monoxide (Green).
+     * Nitrogen Dioxide (Orange).
 
-2. Starter Kit firmware
-
- 	* Physical Web
- 	* Crowd Monitoring
- 	* LwM2M server
- 	* Integration with I2C sensor
- 	* GPIO driver
-
-3. Expansion Board:
- 	
- 	* Temperature, Humidity and Pressure Sensor.
-	* Accelerometer and Gyroscope.
-	* Luminosity Sensor
-	* RGB led
-	* GPIO Led
-
-4. Micro USB Cable
-5. Smart Spot Air Quality Expansion Board
-6. I2C Cable
- 
-![I2C Cable](./images/I2C.png)
-
-7. 4 x Gas Sensors:
- 	* Sulfur Dioxide (Red).
- 	* Ozone + Nitrogen Dioxide (Yellow).
- 	* Carbon Monoxide (Green).
- 	* Nitrogen Dioxide (Orange).
-
-![Gas Sensor](./images/sensor.png)
+       ![Gas Sensor](./images/sensor.png)
 
 You will need a PC loaded with Windows, Linux or Mac OS with internet connection in order to download the Starter Kit firmware and the ESP32 toolchain and ESP-IDF.
 
-## **Getting Started**
+## Getting Started
 
 This chapter is a guide for Windows users. In case you use another OS, you can find further information in the following link
 
 [http://esp-idf.readthedocs.io/en/latest/get-started/index.html](http://esp-idf.readthedocs.io/en/latest/get-started/index.html)
 
 
-1) First, you need to download the ESP32 toolchain by clicking in this link: [https://dl.espressif.com/dl/esp32\_win32\_msys2\_environment\_and\_toolchain-20180110.zip](https://dl.espressif.com/dl/esp32_win32_msys2_environment_and_toolchain-20180110.zip). Unzip it and place somewhere safe. This guide assumes the environment is placed in _C:\ _ .
+1. First, you need to download the ESP32 toolchain by clicking in this link: [https://dl.espressif.com/dl/esp32\_win32\_msys2\_environment\_and\_toolchain-20180110.zip](https://dl.espressif.com/dl/esp32_win32_msys2_environment_and_toolchain-20180110.zip). Unzip it and place somewhere safe. This guide assumes the environment is placed in _C:\ _ .
 
-2) You will also need the ESP32 API. In order to download it, open a terminal, navigate to a directory where you want to place the IDF and use these commands:
+2. You will also need the ESP32 API. In order to download it, open a terminal, navigate to a directory where you want to place the IDF and use these commands:
 
 ~~~
 
@@ -100,7 +98,7 @@ In case you want to set the path permanently, check out this link:
 
 [http://esp-idf.readthedocs.io/en/latest/get-started/add-idf\_path-to-profile.html#add-idf-path-to-profile-windows](http://esp-idf.readthedocs.io/en/latest/get-started/add-idf_path-to-profile.html#add-idf-path-to-profile-windows)
 
-3) Now is time to download the Smart Sport Firmware. You should open a terminal in another directory and clone our firmware by using the following command:
+3. Now is time to download the Smart Sport Firmware. You should open a terminal in another directory and clone our firmware by using the following command:
 
 ~~~
 
@@ -108,11 +106,11 @@ $ git clone –-https://github.com/HOP-Ubiquitous/SmartSpot\_SmartSDK\_Firmware.
 
 ~~~
  
-4) Once you downloaded everything, open the ESP32 toolchain in order to flash the firmware. Go to the directory where you placed the toolchain and execute the file mingw32.
+4. Once you downloaded everything, open the ESP32 toolchain in order to flash the firmware. Go to the directory where you placed the toolchain and execute the file mingw32.
 
 ![Directory](./images/directory.png)
 
-5) Plug your ESP32 into your PC. Then go to Device Manager and look for its port number (i.e.: COM3).
+5. Plug your ESP32 into your PC. Then go to Device Manager and look for its port number (i.e.: COM3).
 
 ![Device Manager](./images/device-manager.png)
 
@@ -120,7 +118,7 @@ You may have to download its driver in case you are not able to flash. Download 
 
 [https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers](https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers)
 
-6) Copy the port and the directory of bootloader.bin, smartspot-esp32.bin, and partitions\_singleapp.bin. Replace it by the bolded words of the following command. Use it to flash the esp32.
+6. Copy the port and the directory of bootloader.bin, smartspot-esp32.bin, and partitions\_singleapp.bin. Replace it by the bolded words of the following command. Use it to flash the esp32.
 
 ~~~
 
@@ -134,7 +132,7 @@ $ python /c/Users/HOPU/GitHub/espidf/components/esptool\_py/esptool/esptool.py -
 
 A message like the one above should appear if you flashed the firmware successfully.
 
-## **Expansion board integration**
+## Expansion board integration
 
 This is a detailed list of the expansion board components:
 
@@ -155,7 +153,7 @@ The expansion board is completely plug and play. If you previously flashed the E
 
 ![Expansion board](./images/board.png)
 
-# **Gas Sensor Integration**
+# Gas Sensor Integration
 
 The idea is to connect the Smart Spot Starter Kit with the gas sensors. Between the available gases, we selected the most important to quantify the air quality (gases required by the OMS), the most interesting depending of the use cases but also interesting gases to carry out corrections in measures:
 
@@ -168,7 +166,7 @@ The idea is to connect the Smart Spot Starter Kit with the gas sensors. Between 
 
 In order to carry out the connection between the expansion board and the Smart Spot Air Quality Expansion Board you only have to plug the i2c cable in both sides. You can use any i2c port you want since they all have the same behavior. Finally, plug the gas sensors in the i2c board.
 
-## **Register your Smart Spot in the IoT Agent**
+## Register your Smart Spot in the IoT Agent
 
 First, you need to create a WiFi AP with your smartphone for the first connection of the SmartSpot. Once you register in the IoT Agent, you can change the WiFi parameters. This are the default SSID and password:
 
