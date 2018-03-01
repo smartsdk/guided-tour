@@ -1,21 +1,35 @@
 # User&#39;s guide for Smart Spot Starter Kit
 
-## **Introduction**
+## Introduction
 
-In order to offer a simple and intuitive way to get started with our Smart Spot we have developed an Open Source solution called Smart Spot Starter Kit, which has an obvious educational purpose.  Just by simply obtaining this kit and follow this guide you will be able to manage the device and to acquire data from its board sensors, apart from the ones you connect, with your smartphone.
+In order to offer a simple and intuitive way to get started with our Smart Spot
+we have developed an Open Source solution called Smart Spot Starter Kit, which
+has an obvious educational purpose. Just by simply obtaining this kit and follow
+this guide you will be able to manage the device and to acquire data from its
+board sensors, apart from the ones you connect with your smartphone.
 
-To achieve this, we take advantage from technologies like Physical Web. Users interact via their smartphones thanks to our device that sends &quot;push&quot; notifications with digital content through Bluetooth without the need to install native Apps.
+To achieve this, we take advantage from technologies like Physical Web. Users
+interact via their smartphones thanks to our device that sends &quot;push&quot;
+notifications with digital content through Bluetooth without the need to install native 
+Apps.
 
-In order to monitorize the air pollution, Smart Spot measures the NO2, CO, SO2 and O3 at specific points in real time. We have a sophisticated high precision lab, with a Mass Flow Controller and a Zero Air Generator, where through Machine Learning algorithms we improve the precision of our sensor measures reducing the effect of cross sensitivity.
+In order to monitorize the air pollution, Smart Spot measures the NO2, CO, SO2
+and O3 at specific points in real time. We have a sophisticated high precision
+lab, with a Mass Flow Controller and a Zero Air Generator, where through Machine
+Learning algorithms we improve the precision of our sensor measures reducing
+the effect of cross sensitivity.
 
-For the care and management of data collected by the Smart Spot a maintenance platform is needed, our device can be managed remotely by platforms which use OMA LWM2M as FIWARE. We deploy FIWARE to manage Smart Spot data and also, we integrate our solution in already existing FIWARE ecosystems.
+For the care and management of data collected by the Smart Spot a maintenance
+platform is  needed, our device can be managed remotely by platforms which use
+OMA LWM2M as FIWARE. We deploy FIWARE to manage Smart Spot data and also, we
+integrate our solution in already existing FIWARE ecosystems.
 
-Optionally, this system provides information about crowds in specific areas, detecting people with smartphone WiFi switched-on.
+Optionally, this system provides information about crowds in specific areas,
+detecting people with smartphone WiFi switched-on.
 
+## What do you need?
 
-## **What do you need?**
-
-### What is included with The Smart Spot Starter Kit:
+## What is included with The Smart Spot Starter Kit:
 
 1. ESP32 DevKitC.
 
@@ -23,11 +37,11 @@ Optionally, this system provides information about crowds in specific areas, det
 
 2. Starter Kit firmware
 
- 	*  Physical Web
-	* Crowd Monitoring
-	* LwM2M server
-	* Integration with I2C sensors
-	* GPIO driver
+ 	* Physical Web
+ 	* Crowd Monitoring
+ 	* LwM2M server
+ 	* Integration with I2C sensor
+ 	* GPIO driver
 
 3. Expansion Board:
  	
