@@ -29,39 +29,32 @@ detecting people with smartphone WiFi switched-on.
 
 ## What do you need?
 
-## What is included with The Smart Spot Starter Kit:
+## What is included with The Smart Spot Starter Kit
 
-   1. ESP32 DevKitC.
-   
-      ![ESP32 DevKitc ](./images/ESP32-DevKitC.png)
-   
+   1. ESP32 DevKitC
+         ![ESP32 DevKitc ](./images/ESP32-DevKitC.png)
    2. Starter Kit firmware
       * Physical Web
       * Crowd Monitoring
       * LwM2M server
       * Integration with I2C sensor
       * GPIO driver
-   
    3. Expansion Board:
       * Temperature, Humidity and Pressure Sensor.
       * Accelerometer and Gyroscope.
       * Luminosity Sensor
       * RGB led
-      * GPIO Led
-     
+      * GPIO Led   
    4. Micro USB Cable
    5. Smart Spot Air Quality Expansion Board
-   6. I2C Cable
-   
-      ![I2C Cable](./images/I2C.png)
-
+   6. I2C Cabl
+         ![I2C Cable](./images/I2C.png)
    7. 4 x Gas Sensors:
-     * Sulfur Dioxide (Red).
-     * Ozone + Nitrogen Dioxide (Yellow).
-     * Carbon Monoxide (Green).
-     * Nitrogen Dioxide (Orange).
-
-       ![Gas Sensor](./images/sensor.png)
+      * Sulfur Dioxide (Red).
+      * Ozone + Nitrogen Dioxide (Yellow).
+      * Carbon Monoxide (Green).
+      * Nitrogen Dioxide (Orange).
+         ![Gas Sensor](./images/sensor.png)
 
 You will need a PC loaded with Windows, Linux or Mac OS with internet connection in order to download the Starter Kit firmware and the ESP32 toolchain and ESP-IDF.
 
@@ -72,65 +65,72 @@ This chapter is a guide for Windows users. In case you use another OS, you can f
 [http://esp-idf.readthedocs.io/en/latest/get-started/index.html](http://esp-idf.readthedocs.io/en/latest/get-started/index.html)
 
 
-1. First, you need to download the ESP32 toolchain by clicking in this link: [https://dl.espressif.com/dl/esp32\_win32\_msys2\_environment\_and\_toolchain-20180110.zip](https://dl.espressif.com/dl/esp32_win32_msys2_environment_and_toolchain-20180110.zip). Unzip it and place somewhere safe. This guide assumes the environment is placed in _C:\ _ .
+   1. First, you need to download the ESP32 toolchain by clicking in this link: 
+      [https://dl.espressif.com/dl/esp32\_win32\_msys2\_environment\_and\_toolchain-20180110.zip](https://dl.espressif.com/dl/esp32_win32_msys2_environment_and_toolchain-20180110.zip). 
+      Unzip it and place somewhere safe. This guide assumes the environment is placed in 
+      _C:\ _ .
 
-2. You will also need the ESP32 API. In order to download it, open a terminal, navigate to a directory where you want to place the IDF and use these commands:
+   2. You will also need the ESP32 API. In order to download it, open a terminal,
+      navigate to a directory where you want to place the IDF and use these commands: _ .
+      
+      ~~~
 
-~~~
+      $ git clone --recursive https://github.com/espressif/esp-idf.git
 
-$ git clone --recursive https://github.com/espressif/esp-idf.git
+      $ git checkout tags/v3.0-rc1
 
-$ git checkout tags/v3.0-rc1
+      $ git submodule update –init
 
-$ git submodule update –init
+      ~~~
+     
+      Every time you restart your PC you will need to define the IDF\ _PATH by using this command:
+      
+      ~~~
 
-~~~
+      $ export IDF\_PATH=&quot;C:/msys32/home/user-name/esp/esp-idf&quot;
 
-Every time you restart your PC you will need to define the IDF\ _PATH by using this command:
+      ~~~
 
-~~~
+      In case you want to set the path permanently, check out this link:
 
-$ export IDF\_PATH=&quot;C:/msys32/home/user-name/esp/esp-idf&quot;
+      [http://esp-idf.readthedocs.io/en/latest/get-started/add-idf\_path-to-profile.html#add-idf-path-to-profile-windows](http://esp-idf.readthedocs.io/en/latest/get-started/add-idf_path-to-profile.html#add-idf-path-to-profile-windows)
 
-~~~
+   3. Now is time to download the Smart Sport Firmware. You should open a terminal in 
+      another directory and clone our firmware by using the following command:
+   
+      ~~~
 
-In case you want to set the path permanently, check out this link:
+      $ git clone –-https://github.com/HOP-Ubiquitous/SmartSpot\_SmartSDK\_Firmware.git
 
-[http://esp-idf.readthedocs.io/en/latest/get-started/add-idf\_path-to-profile.html#add-idf-path-to-profile-windows](http://esp-idf.readthedocs.io/en/latest/get-started/add-idf_path-to-profile.html#add-idf-path-to-profile-windows)
-
-3. Now is time to download the Smart Sport Firmware. You should open a terminal in another directory and clone our firmware by using the following command:
-
-~~~
-
-$ git clone –-https://github.com/HOP-Ubiquitous/SmartSpot\_SmartSDK\_Firmware.git
-
-~~~
+      ~~~
  
-4. Once you downloaded everything, open the ESP32 toolchain in order to flash the firmware. Go to the directory where you placed the toolchain and execute the file mingw32.
+   4. Once you downloaded everything, open the ESP32 toolchain in order to flash the 
+      firmware. Go to the directory where you placed the toolchain and execute the 
+      file mingw32.
+         ![Directory](./images/directory.png)
 
-![Directory](./images/directory.png)
+   5. Plug your ESP32 into your PC. Then go to Device Manager and look for its port number (i.e.: COM3).
+         ![Device Manager](./images/device-manager.png)
 
-5. Plug your ESP32 into your PC. Then go to Device Manager and look for its port number (i.e.: COM3).
+      You may have to download its driver in case you are not able to flash. 
+      Download it here.
 
-![Device Manager](./images/device-manager.png)
+      [https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers](https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers)
 
-You may have to download its driver in case you are not able to flash. Download it here.
+   6. Copy the port and the directory of bootloader.bin, smartspot-esp32.bin, and
+      partitions\_singleapp.bin. Replace it by the bolded words of the following
+      command. Use it to flash the esp32.
 
-[https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers](https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers)
+      ~~~
 
-6. Copy the port and the directory of bootloader.bin, smartspot-esp32.bin, and partitions\_singleapp.bin. Replace it by the bolded words of the following command. Use it to flash the esp32.
+      $ python /c/Users/HOPU/GitHub/espidf/components/esptool\_py/esptool/esptool.py --chip esp32 --port **COMX** --baud 115200 --before default\_reset --after hard\_reset write\_flash -z --flash\_mode dio --flash\_freq 40m --flash\_size detect 0x1000 **C:/Users/HOPU/GitHub/SmartSpot\_SmartSDK\_Firmware/bootloader.bin** 0x10000
 
-~~~
+      **C:/Users/HOPU/GitHub/SmartSpot\_SmartSDK\_Firmware/smartspot-esp32.bin** 0x8000 **C:/Users/HOPU/GitHub/SmartSpot\_SmartSDK\_Firmware/partitions\_singleapp.bin**
 
-$ python /c/Users/HOPU/GitHub/espidf/components/esptool\_py/esptool/esptool.py --chip esp32 --port **COMX** --baud 115200 --before default\_reset --after hard\_reset write\_flash -z --flash\_mode dio --flash\_freq 40m --flash\_size detect 0x1000 **C:/Users/HOPU/GitHub/SmartSpot\_SmartSDK\_Firmware/bootloader.bin** 0x10000
+      ~~~
+         ![Commands](./images/python.png)
 
-**C:/Users/HOPU/GitHub/SmartSpot\_SmartSDK\_Firmware/smartspot-esp32.bin** 0x8000 **C:/Users/HOPU/GitHub/SmartSpot\_SmartSDK\_Firmware/partitions\_singleapp.bin**
-
-~~~
-
-![Commands](./images/python.png)
-
-A message like the one above should appear if you flashed the firmware successfully.
+      A message like the one above should appear if you flashed the firmware successfully.
 
 ## Expansion board integration
 
@@ -147,7 +147,7 @@ This is a detailed list of the expansion board components:
   * Orange: Bootstrapping. Connecting to LwM2M servers.
   * Green: Device fully functional.
 
-- **GPIO Led** : is just simply a Led controlled by a GPIO pin of the ESP32. You can manage and switch it on/off from the dashboard.
+* **GPIO Led** : is just simply a Led controlled by a GPIO pin of the ESP32. You can manage and switch it on/off from the dashboard.
 
 The expansion board is completely plug and play. If you previously flashed the ESP32 correctly you will only have to plug it in its mark.
 
