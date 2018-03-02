@@ -32,7 +32,7 @@ detecting people with smartphone WiFi switched-on.
 ## What is included with The Smart Spot Starter Kit
 
    1. ESP32 DevKitC
-         ![ESP32 DevKitc ](./images/ESP32-DevKitC.png)
+      ![ESP32 DevKitc ](./images/ESP32-DevKitC.png)
    2. Starter Kit firmware
       * Physical Web
       * Crowd Monitoring
@@ -47,7 +47,7 @@ detecting people with smartphone WiFi switched-on.
       * GPIO Led   
    4. Micro USB Cable
    5. Smart Spot Air Quality Expansion Board
-   6. I2C Cabl
+   6. I2C Cable
          ![I2C Cable](./images/I2C.png)
    7. 4 x Gas Sensors:
       * Sulfur Dioxide (Red).
@@ -136,39 +136,56 @@ This chapter is a guide for Windows users. In case you use another OS, you can f
 
 This is a detailed list of the expansion board components:
 
-* **Bme280** : This well-known sensor from Bosch measures humidity with ±3% accuracy, barometric pressure with ±1 hPa absolute accuracy, and temperature with ±1.0°C accuracy.  It can be used either with SPI or I2C.
+   * **Bme280** : This well-known sensor from Bosch measures humidity with ±3% 
+     accuracy, barometric pressure with ±1 hPa absolute accuracy, and temperature 
+     with ±1.0°C accuracy. It can be used either with SPI or I2C.
+   * **Mpu6050** : this sensor contains a MEMS accelerometer and a MEMS gyro in a
+     single chip. It is very accurate, as it contains 16-bits analog to digital
+     conversion hardware for each channel. Therefor it  captures the x, y, and z
+     channel at the same time. The sensor uses the I2C-bus interface.
+   * **Opt3001** : is a sensor that measures the intensity of visible light. The 
+     spectral response of the sensor tightly matches the photopic response of the 
+     human eye and includes significant infrared rejection.
+   * **WS2812** : is an intelligent control LED light source that the control 
+     circuit and RGB chip are integrated in a package of 5050 components. It
+     internally includes digital port latch and reshaping amplification drive
+     circuit. Each color has a different meaning, representing the current status of
+     the Smart Spot:
+      * Purple: Starting software.
+      * Blue: Attaching to global connectivity.
+      * Orange: Bootstrapping. Connecting to LwM2M servers.
+      * Green: Device fully functional.
+   * **GPIO Led** : is just simply a Led controlled by a GPIO pin of the ESP32. You can manage and switch it on/off from the dashboard.
 
-* **Mpu6050** : this sensor contains a MEMS accelerometer and a MEMS gyro in a single chip. It is very accurate, as it contains 16-bits analog to digital conversion hardware for each channel. Therefor it captures the x, y, and z channel at the same time. The sensor uses the I2C-bus interface.
+The expansion board is completely plug and play. If you previously flashed the 
+ESP32 correctly you will only have to plug it in its mark.
 
-* **Opt3001** : is a sensor that measures the intensity of visible light. The spectral response of the sensor tightly matches the photopic response of the human eye and includes significant infrared rejection.
-* **WS2812** : is an intelligent control LED light source that the control circuit and RGB chip are integrated in a package of 5050 components. It internally includes digital port latch and reshaping amplification drive circuit. Each color has a different meaning, representing the current status of the Smart Spot:
-  * Purple: Starting software.
-  * Blue: Attaching to global connectivity.
-  * Orange: Bootstrapping. Connecting to LwM2M servers.
-  * Green: Device fully functional.
-
-* **GPIO Led** : is just simply a Led controlled by a GPIO pin of the ESP32. You can manage and switch it on/off from the dashboard.
-
-The expansion board is completely plug and play. If you previously flashed the ESP32 correctly you will only have to plug it in its mark.
-
-![Expansion board](./images/board.png)
+   ![Expansion board](./images/board.png)
 
 # Gas Sensor Integration
 
-The idea is to connect the Smart Spot Starter Kit with the gas sensors. Between the available gases, we selected the most important to quantify the air quality (gases required by the OMS), the most interesting depending of the use cases but also interesting gases to carry out corrections in measures:
+The idea is to connect the Smart Spot Starter Kit with the gas sensors. Between
+the available gases, we selected the most important to quantify the air quality
+(gases required by the OMS), the most interesting depending of the use cases but
+also interesting gases to carry out corrections in measures:
 
-* NO2: Nitrogen dioxide
-* SO2: Sulfur dioxide
-* O3: Ozone
-* CO: Carbon monoxide
+   * NO2: Nitrogen dioxide
+   * SO2: Sulfur dioxide
+   * O3: Ozone
+   * CO: Carbon monoxide
 
-![Sensors](./images/sensors.png)
+      ![Sensors](./images/sensors.png)
 
-In order to carry out the connection between the expansion board and the Smart Spot Air Quality Expansion Board you only have to plug the i2c cable in both sides. You can use any i2c port you want since they all have the same behavior. Finally, plug the gas sensors in the i2c board.
+In order to carry out the connection between the expansion board and the Smart
+Spot Air Quality Expansion Board you only have to plug the i2c cable in both
+sides. You can use any i2c port you want since they all have the same behavior.
+Finally, plug the gas sensors in the i2c board.
 
 ## Register your Smart Spot in the IoT Agent
 
-First, you need to create a WiFi AP with your smartphone for the first connection of the SmartSpot. Once you register in the IoT Agent, you can change the WiFi parameters. This are the default SSID and password:
+First, you need to create a WiFi AP with your smartphone for the first
+connection of the SmartSpot. Once you register in the IoT Agent, you can change
+the WiFi parameters. This are the default SSID and password:
 
 SSID: **defaultSSAP**
 
@@ -176,10 +193,12 @@ Password: **defaultSSAP1234**
 
 You can easily share the connection with your iOS or Android.
 
-![Connection](./images/connection.png)
+   ![Connection](./images/connection.png)
 
 ## **Fiware integrations**
-FIWARE ([www.fiware.org](http://www.fiware.org)) is an open platform promoted by the European Commision and maintained by the FIWARE Foundation, where HOP Ubiquitous is Gold Member.
+FIWARE ([www.fiware.org](http://www.fiware.org)) is an open platform promoted by
+the European Commision and maintained by the FIWARE Foundation, where HOP
+Ubiquitous is Gold Member.
 
 FIWARE offers an Open Ecosystem that join different technology enablers for scalable data mangement and make feasible to integrate 
 different services and Internet of Things devices into a common and interoperable framework based on Open Standards. In particular,
@@ -208,4 +227,5 @@ Thanks to the LwM2M Bootstrap Server deployed and integrated in the Homard platf
 for a the device. In this way, anyone can deploy its own LwM2M IOTAgent with a public server IP and configure the device to integrate it 
 in FIWARE.
 
-A tutorial about Orion Context Broker has been developed by FIWARE and HOP Ubiquitous, which can be downloaded in: [tutorial](http://goo.gl/o1KXcT)
+A tutorial about Orion Context Broker has been developed by FIWARE and HOP
+Ubiquitous, which can be downloaded in: [tutorial](http://goo.gl/o1KXcT)
