@@ -27,12 +27,14 @@ integrate our solution in already existing FIWARE ecosystems.
 Optionally, this system provides information about crowds in specific areas,
 detecting people with smartphone WiFi switched-on.
 
-## What do you need?
+## What do you need? Poner que comprar
 
 ## What is included with The Smart Spot Starter Kit
 
-   1. ESP32 DevKitC.
-      ![ESP32 DevKitc](./images/ESP32-DevKitC.png)     
+   1. ESP32 DevKitC  
+    <p align="center">
+        <img src="./images/ESP32-DevKitC.png"/>
+    </p>     
    2. Starter Kit firmware
       * Physical Web
       * Crowd Monitoring
@@ -47,14 +49,18 @@ detecting people with smartphone WiFi switched-on.
       * GPIO Led   
    4. Micro USB Cable
    5. Smart Spot Air Quality Expansion Board
-   6. I2C Cable   
-      ![I2C Cable](./images/I2C.png)
+   6. I2C Cable  
+      <p align="center">
+         <img src="./images/I2C.png"/>
+      </p>    
    7. 4 x Gas Sensors:
       * Sulfur Dioxide (Red).
       * Ozone + Nitrogen Dioxide (Yellow).
       * Carbon Monoxide (Green).
-      * Nitrogen Dioxide (Orange).
-         ![Gas Sensor](./images/sensor.png)
+      * Nitrogen Dioxide (Orange).  
+         <p align="center">
+            <img src="./images/sensor.png" width=500 height=300/>
+         </p> 
 
 You will need a PC loaded with Windows, Linux or Mac OS with internet connection in order to download the Starter Kit firmware and the ESP32 toolchain and ESP-IDF.
 
@@ -107,11 +113,16 @@ This chapter is a guide for Windows users. In case you use another OS, you can f
    4. Once you downloaded everything, open the ESP32 toolchain in order to flash the 
       firmware. Go to the directory where you placed the toolchain and execute the 
       file mingw32.
-         ![Directory](./images/directory.png)
-
+      
+         <p align="center">
+            <img src="./images/directory.png"/>
+         </p>
+         
    5. Plug your ESP32 into your PC. Then go to Device Manager and look for its port number (i.e.: COM3).
-         ![Device Manager](./images/device-manager.png)
-
+          <p align="center">
+            <img src="./images/device-manager.png"/>
+         </p>
+         
       You may have to download its driver in case you are not able to flash. 
       Download it here.
 
@@ -128,7 +139,9 @@ This chapter is a guide for Windows users. In case you use another OS, you can f
       **C:/Users/HOPU/GitHub/SmartSpot\_SmartSDK\_Firmware/smartspot-esp32.bin** 0x8000 **C:/Users/HOPU/GitHub/SmartSpot\_SmartSDK\_Firmware/partitions\_singleapp.bin**
 
       ~~~
-         ![Commands](./images/python.png)
+         <p align="center">
+            <img src="./images/python.png"/>
+         </p>
 
       A message like the one above should appear if you flashed the firmware successfully.
 
@@ -161,8 +174,10 @@ This is a detailed list of the expansion board components:
 The expansion board is completely plug and play. If you previously flashed the 
 ESP32 correctly you will only have to plug it in its mark.
 
-   ![Expansion board](./images/board.png)
-
+   <p align="center">
+      <img src="./images/board.png" width=400 height=400/>
+   </p>
+   
 # Gas Sensor Integration
 
 The idea is to connect the Smart Spot Starter Kit with the gas sensors. Between
@@ -195,6 +210,9 @@ Password: **defaultSSAP1234**
 You can easily share the connection with your iOS or Android.
 
    ![Connection](./images/connection.png)
+   <p align="center">
+      <img src="./images/connection.png" width=550 height=400/>
+   <p>
 
 ## Fiware integrations
 FIWARE ([www.fiware.org](http://www.fiware.org)) is an open platform promoted by
