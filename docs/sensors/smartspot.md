@@ -27,11 +27,10 @@ integrate our solution in already existing FIWARE ecosystems.
 Optionally, this system provides information about crowds in specific areas,
 detecting people with smartphone WiFi switched-on.
 
-## What do you need? Poner que comprar
+## What do you need?
+What is included with The Smart Spot Starter Kit:  
 
-## What is included with The Smart Spot Starter Kit
-
-   1. ESP32 DevKitC  
+   1. ESP32 DevKitC [(Amazon)](https://www.amazon.com/Espressif-ESP32-ESP32-DEVKITC-ESP-WROOM-32-soldered/dp/B01N0SB08Q/ref=sr_1_4?ie=UTF8&qid=1519978147&sr=8-4&keywords=esp32+devkit)  
        ![ESP32-DevKitC](./images/ESP32-DevKitC.png)     
    2. Starter Kit firmware
       * Physical Web
@@ -39,17 +38,17 @@ detecting people with smartphone WiFi switched-on.
       * LwM2M server
       * Integration with I2C sensor
       * GPIO driver
-   3. Expansion Board:
+   3. Expansion Board: [(HOP Ubiquitous)](http://www.hopu.eu/)  
       * Temperature, Humidity and Pressure Sensor.
       * Accelerometer and Gyroscope.
       * Luminosity Sensor
       * RGB led
       * GPIO Led   
    4. Micro USB Cable
-   5. Smart Spot Air Quality Expansion Board
-   6. I2C Cable  
+   5. Smart Spot Air Quality Expansion Board [(HOP Ubiquitous)](http://www.hopu.eu/)  
+   6. I2C Cable (included with the expansion board)  
       ![I2C Cable](./images/I2C.png)    
-   7. 4 x Gas Sensors:
+   7. 4 x Gas Sensors: [(Aplhasense)](http://www.alphasense.com/index.php/air/)  
       * Sulfur Dioxide (Red).
       * Ozone + Nitrogen Dioxide (Yellow).
       * Carbon Monoxide (Green).
@@ -71,7 +70,7 @@ This chapter is a guide for Windows users. In case you use another OS, you can f
    1. First, you need to download the ESP32 toolchain by clicking in this link: 
       [https://dl.espressif.com/dl/esp32\_win32\_msys2\_environment\_and\_toolchain-20180110.zip](https://dl.espressif.com/dl/esp32_win32_msys2_environment_and_toolchain-20180110.zip). 
       Unzip it and place somewhere safe. This guide assumes the environment is placed in 
-      _C:\ _ .
+      C:\ .
 
    2. You will also need the ESP32 API. In order to download it, open a terminal,
       navigate to a directory where you want to place the IDF and use these commands: _ .
@@ -128,10 +127,14 @@ This chapter is a guide for Windows users. In case you use another OS, you can f
 
       ~~~
 
-      $ python /c/Users/HOPU/GitHub/espidf/components/esptool\_py/esptool/esptool.py --chip esp32 --port **COMX** --baud 115200 --before default\_reset --after hard\_reset write\_flash -z --flash\_mode dio --flash\_freq 40m --flash\_size detect 0x1000 **C:/Users/HOPU/GitHub/SmartSpot\_SmartSDK\_Firmware/bootloader.bin** 0x10000
-
-      **C:/Users/HOPU/GitHub/SmartSpot\_SmartSDK\_Firmware/smartspot-esp32.bin** 0x8000 **C:/Users/HOPU/GitHub/SmartSpot\_SmartSDK\_Firmware/partitions\_singleapp.bin**
-
+      $ python 
+      /c/Users/HOPU/GitHub/espidf/components/esptool_py/esptool/esptool.py --chip esp32 
+      --port COMX --baud 115200 --before default_reset --after hard_reset 
+      write_flash -z --flash_mode dio --flash_freq 40m --flash_size detect 0x1000      
+      C:/Users/HOPU/GitHub/SmartSpot_SmartSDK_Firmware/bootloader.bin 0x10000
+      C:/Users/HOPU/GitHub/SmartSpot_SmartSDK_Firmware/smartspot-esp32.bin 0x8000            
+      C:/Users/HOPU/GitHub/SmartSpot_SmartSDK_Firmware/partitions_singleapp.bin
+      
       ~~~
          
        ![Sensors](./images/python.png)
