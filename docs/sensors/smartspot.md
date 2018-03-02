@@ -155,7 +155,8 @@ This is a detailed list of the expansion board components:
       * Blue: Attaching to global connectivity.
       * Orange: Bootstrapping. Connecting to LwM2M servers.
       * Green: Device fully functional.
-   * **GPIO Led** : is just simply a Led controlled by a GPIO pin of the ESP32. You can manage and switch it on/off from the dashboard.
+   * **GPIO Led** : is just simply a Led controlled by a GPIO pin of the ESP32. You
+     can manage and switch it on/off from the dashboard.
 
 The expansion board is completely plug and play. If you previously flashed the 
 ESP32 correctly you will only have to plug it in its mark.
