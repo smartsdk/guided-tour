@@ -25,11 +25,11 @@ For the purpose of this guide we will use the following components to develop ou
 air quality sensor unit:
 
 * Cloudino WiFi Connector (CWC)
-  * Arduino UNO
-  * PPD42NS. PM10 Sensor
-  * DHT11. Temperature / Humidity Sensor
-  * MQ-131. Ozone Sensor
-  * Grove Multichannel. Gas Sensor (NO2, CO)
+* Arduino UNO
+* PPD42NS. PM10 Sensor
+* DHT11. Temperature / Humidity Sensor
+* MQ-131. Ozone Sensor
+* Grove Multichannel. Gas Sensor (NO2, CO)
 
 ## How to add Air Quality sensors
 
