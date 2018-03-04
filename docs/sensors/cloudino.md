@@ -1,4 +1,4 @@
-# Creating your air quality sensor with Cloudino
+# Creating your Air Quality Sensor with Cloudino
 
 ## Introduction
 
