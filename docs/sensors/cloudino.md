@@ -24,12 +24,28 @@ data through the Cloudino and FIWARE platforms.
 For the purpose of this guide we will use the following components to develop our
 air quality sensor unit:
 
-* Cloudino WiFi Connector (CWC)
-* Arduino UNO
-* PPD42NS. PM10 Sensor
-* DHT11. Temperature / Humidity Sensor
-* MQ-131. Ozone Sensor
-* Grove Multichannel. Gas Sensor (NO2, CO)
+* [Cloudino WiFi Connector (CWC)](http://cloudino.io).
+* [Arduino UNO](https://store.arduino.cc/usa/arduino-uno-rev3).
+* [PPD42NS](https://www.mouser.com/ds/2/744/Seeed_101020012-1217636.pdf). PM10 Sensor.
+* [DHT11](http://www.micropik.com/PDF/dht11.pdf). Temperature / Humidity Sensor.
+* [MQ-131](https://www.compel.ru/item-pdf/cf02de305c8369719f27e4149395c6da/pn/winsen~mq131-high-concentration-ozone-gas-sensor.pdf).
+  Ozone Sensor.
+* [Grove Multichannel](http://cdn-reichelt.de/documents/datenblatt/A300/101020088_01.pdf).
+  Gas Sensor (NO2, CO).
+
+You can find the components in your local electronic shop or online in several
+places:
+
+* <https://www.robotshop.com/>
+* <https://www.seeedstudio.com/>
+* <https://www.sainsmart.com/>
+* <https://store.arduino.cc/usa/arduino-uno-rev3>
+* <https://www.sparkfun.com/products/13678>
+
+The Cloudino can be acquired directly by contacting the developer
+<javier.solis@infotec.mx>, <victor.hernandez@infotec.mx>
+or you can even build your own Cloudino device by using a [ESP8266](https://www.sparkfun.com/products/13678)
+and following the instructions from the [Cloudino documentation.](https://github.com/Cloudino/Cloudino-Doc/wiki/Make-your-first-Cloudino)
 
 ## How to add Air Quality sensors
 
@@ -46,9 +62,6 @@ The proposed schematic is intended for guidance/educational purposes and its
 components are easy to find; however, you can integrate any additional
 electronic components to your Arduino board to create more complex systems and
 post your measurements to both Cloudino and FIWARE platforms.
-
-You can even build your own Cloudino device by following the instructions from
-the [Cloudino documentation](https://github.com/Cloudino/Cloudino-Doc/wiki/Make-your-first-Cloudino)
 
 ## How to install and configure it
 
