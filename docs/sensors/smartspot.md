@@ -206,9 +206,6 @@ You can easily share the connection with your iOS or Android.
    ![Connection](./images/connection.png)
 
 ## Fiware integrations
-FIWARE ([www.fiware.org](http://www.fiware.org)) is an open platform promoted by
-the European Commision and maintained by the FIWARE Foundation, where HOP
-Ubiquitous is Gold Member.
 
 FIWARE offers an Open Ecosystem that join different technology enablers for
 scalable data mangement and make feasible to integrate different services and 
