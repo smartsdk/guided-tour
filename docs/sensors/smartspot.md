@@ -184,7 +184,7 @@ also interesting gases to carry out corrections in measures:
    * O3: Ozone
    * CO: Carbon monoxide
 
-      ![Sensors](./images/sensors.png)
+   ![Sensors](./images/sensors.png)
 
 In order to carry out the connection between the expansion board and the Smart
 Spot Air Quality Expansion Board you only have to plug the i2c cable in both
@@ -201,8 +201,7 @@ SSID: **defaultSSAP**
 
 Password: **defaultSSAP1234**
 
-You can easily share the connection with your iOS or Android.
-
+You can easily share the connection with your iOS or Android.  
    ![Connection](./images/connection.png)
 
 ## Fiware integrations
