@@ -211,10 +211,7 @@ FIWARE offers an Open Ecosystem that join different technology enablers for
 scalable data mangement and make feasible to integrate different services and 
 Internet of Things devices into a common and interoperable framework based on
 Open Standards. In particular, FIWARE is based on Open Standards such as OMA
-NGSI for the Services Interface and ETSI ISG CIM for the data models. HOP
-Ubiquitous is an active member and contributor in ETSI ISG CIM and also an 
-active contributor in OMA; being one of pioneer and main companies working
-around OMA LwM2M protocol.
+NGSI for the Services Interface and ETSI ISG CIM for the data models.
 
 In details, FIWARE has a strong role in the Smart Cities market, since the is
 key to the growth and functionality of Smart Cities, for this reason we are
