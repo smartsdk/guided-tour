@@ -30,7 +30,7 @@ detecting people with smartphone WiFi switched-on.
 ## What do you need?
 What is included with The Smart Spot Starter Kit:  
 
-   1. ESP32 DevKitC [(Amazon)](https://www.amazon.com/Espressif-ESP32-ESP32-DEVKITC-ESP-WROOM-32-soldered/dp/B01N0SB08Q/ref=sr_1_4?ie=UTF8&qid=1519978147&sr=8-4&keywords=esp32+devkit)  
+   1. [ESP32 DevKitC](https://www.amazon.com/Espressif-ESP32-ESP32-DEVKITC-ESP-WROOM-32-soldered/dp/B01N0SB08Q/ref=sr_1_4?ie=UTF8&qid=1519978147&sr=8-4&keywords=esp32+devkit):  
        ![ESP32-DevKitC](./images/ESP32-DevKitC.png)     
    2. Starter Kit firmware
       * Physical Web
@@ -38,17 +38,17 @@ What is included with The Smart Spot Starter Kit:
       * LwM2M server
       * Integration with I2C sensor
       * GPIO driver
-   3. Expansion Board: [(HOP Ubiquitous)](http://www.hopu.eu/)  
+   3. [Expansion Board](http://www.hopu.eu/):  
       * Temperature, Humidity and Pressure Sensor.
       * Accelerometer and Gyroscope.
       * Luminosity Sensor
       * RGB led
       * GPIO Led   
    4. Micro USB Cable
-   5. Smart Spot Air Quality Expansion Board [(HOP Ubiquitous)](http://www.hopu.eu/)  
+   5. [Smart Spot Air Quality Expansion Board](http://www.hopu.eu/)  
    6. I2C Cable (included with the expansion board)  
       ![I2C Cable](./images/I2C.png)    
-   7. 4 x Gas Sensors: [(Aplhasense)](http://www.alphasense.com/index.php/air/)  
+   7. 4 x [Gas Sensors](http://www.alphasense.com/index.php/air/):  
       * Sulfur Dioxide (Red).
       * Ozone + Nitrogen Dioxide (Yellow).
       * Carbon Monoxide (Green).
@@ -193,13 +193,25 @@ Finally, plug the gas sensors in the i2c board.
 
 ## Register your Smart Spot in the IoT Agent
 
-First, you need to create a WiFi AP with your smartphone for the first
+First, you need to create a [WiFi AP](https://www.lifewire.com/use-your-android-phone-as-a-portable-wi-fi-hotspot-2377915) with your smartphone for the first
 connection of the SmartSpot. Once you register in the IoT Agent, you can change
 the WiFi parameters. This are the default SSID and password:
 
 SSID: **defaultSSAP**
 
 Password: **defaultSSAP1234**
+
+Device URL Manager tool is used for manage the physicalweb url of any device by
+software.
+
+A smartPhone will detect a eddystone url advertisement with a fixed device url
+that point to the Device Url Manager, then the Device Url Manager will redirect
+the request to the real url.
+
+To create a device with this tool you need specify a shortened mac and
+the extern url associated on next url: http://url:port/api/v1/devices where:
+   * url: url where is Device URL Manager tool
+   * port: port to connect to Device URL Manager tool.
 
 You can easily share the connection with your iOS or Android.  
    ![Connection](./images/connection.png)
