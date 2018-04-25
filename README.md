@@ -19,8 +19,8 @@ docs. To ensure consistency of the documentation style, we recommend you to
 adhere to the MD [linting rules](https://github.com/DavidAnson/markdownlint/blob/master/doc/Rules.md).
 Compliancy with such rules is checked through a Travis CI process. Once you make
 a pull request to the repository, you will be able to observe the results of
-the compliancy verification in your PR. Merge will be only possible if CI
-process is passed successfully.
+the compliancy verification in your PR. Merge will be only possible if the CI
+process passed successfully.
 
 You can check and build the docs by yourself on your machine using a
 [custom

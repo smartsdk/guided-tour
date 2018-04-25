@@ -8,9 +8,9 @@ and ready-to-use solutions. This is very important to facilitate the take up of
 FIWARE by new developers and its transition from proof-of-concept environments
 to production ones.
 
-This documentation provide an introduction to the most relevant outcomes of
+This documentation provides an introduction to the most relevant outcomes of
 SmartSDK by means of an Application Scenario. The purpose of the application
-scenario is not to provide a complex application, but guide the developers
+scenario is not to provide a complex application, but to guide the developers
 through the features offered by SmartSDK in a simple way.
 
 N.B. Not all features described in the scenario below may be yet available in
@@ -38,7 +38,7 @@ Briefly MJ finds out that she can:
 * Use ContextBroker to collect air pollution data;
 * Use QuantumLeap to store historical data and create dashboards;
 * Use xxx to notify citizens about pollution alerts;
-* Use SmartSpot to let know to all nearby Android users about the air quality
+* Use SmartSpot to let all nearby Android users know about the air quality
   dashboard.
 
 What is also very nice, is that SmartSDK provides many recipes to deploy a basic
