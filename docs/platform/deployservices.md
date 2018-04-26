@@ -199,6 +199,7 @@ all replicas are up.
 ```
 $ docker service ls
 ID                  NAME                      MODE                REPLICAS            IMAGE                              PORTS
+r6xoq2anisf6        grafana_grafana           replicated          1/1                 grafana/grafana:latest             *:3000->3000/tcp
 0ys27a34jhy8        mongo-rs_controller       replicated          1/1                 smartsdk/mongo-rs-swarm:latest
 udqr7mimjisi        mongo-rs_mongo            global              3/3                 mongo:3.2
 natp6rgvb7pr        orion_orion               replicated          2/2                 fiware/orion:1.12.0                *:1026->1026/tcp
@@ -249,12 +250,30 @@ Coming Soon!
 
 ### From the Command Line
 
-To deploy IoT Agents in HA, please refer to [this section](https://smartsdk.github.io/smartsdk-recipes/iot-services/readme/)
- of the SmartSDK recipes documentation. You will find one recipe for each IoT Agent type.
+Let's go to the folder of the IoT Agent of your choice, for example the `ul`.
+The default values for the recipe are good enough for working with a MongoDB
+and Orion Context Broker deployed following this guide.
+```
+$ cd iot-services/iotagent-ul
+$ docker stack deploy -c docker-compose iota-ul
+```
 
-As with the rest of the recipes, the files mentioned in the documentation are
-those located in the same directory where the documentation file is. For this
-case, we are talking about [this directory](https://github.com/smartsdk/smartsdk-recipes/tree/master/recipes/iot-services).
+You can check the agent started properly by looking at its logs.
+```
+$ docker service logs iota-ul_iotagent
+iota-ul_iotagent.1.v5ivpp3c3g58@ms-manager0    | time=2018-04-26T11:59:09.917Z | lvl=INFO | corr=eae6093a-15b6-4816-b1c0-1b2c9fe0a050 | trans=eae6093a-15b6-4816-b1c0-1b2c9fe0a050 | op=IoTAgentNGSI.DbConn | srv=n/a | subsrv=n/a | msg=Attempting to connect to MongoDB instance. Attempt 5 | comp=IoTAgent
+iota-ul_iotagent.1.v5ivpp3c3g58@ms-manager0    | time=2018-04-26T11:59:09.969Z | lvl=INFO | corr=eae6093a-15b6-4816-b1c0-1b2c9fe0a050 | trans=eae6093a-15b6-4816-b1c0-1b2c9fe0a050 | op=IoTAgentNGSI.DbConn | srv=n/a | subsrv=n/a | msg=Successfully connected to MongoDB. | comp=IoTAgent
+iota-ul_iotagent.1.v5ivpp3c3g58@ms-manager0    | time=2018-04-26T11:59:10.029Z | lvl=INFO | corr=eae6093a-15b6-4816-b1c0-1b2c9fe0a050 | trans=eae6093a-15b6-4816-b1c0-1b2c9fe0a050 | op=IoTAgentNGSI.NorthboundServer | srv=n/a | subsrv=n/a | msg=Starting IoT Agent listening on port [4041] | comp=IoTAgent
+iota-ul_iotagent.1.v5ivpp3c3g58@ms-manager0    | time=2018-04-26T11:59:10.030Z | lvl=DEBUG | corr=eae6093a-15b6-4816-b1c0-1b2c9fe0a050 | trans=eae6093a-15b6-4816-b1c0-1b2c9fe0a050 | op=IoTAgentNGSI.NorthboundServer | srv=n/a | subsrv=n/a | msg=Using config:
+iota-ul_iotagent.1.v5ivpp3c3g58@ms-manager0    |
+```
+
+If you can see logs like those (Agent successfully connected to MongoDB),
+your **IoT Agent** is ready!
+
+If you still have issues or want to understand how this works in more detail,
+please refer to [this section](https://smartsdk.github.io/smartsdk-recipes/iot-services/readme/)
+ of the SmartSDK recipes documentation.
 
 ### Using Portainer
 
