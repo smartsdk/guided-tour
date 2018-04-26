@@ -2,7 +2,7 @@
   "default": true,
   "MD003": { "style": "atx" },
   "MD007": { "indent": 4 },
-  "MD013": { 
+  "MD013": {
     "code_blocks": false,
     "tables": false
   },
@@ -13,5 +13,6 @@
   "commands-show-output": false,
   "no-trailing-punctuation": {
     "punctuation": ".,;:!"
-  }
+  },
+  "MD024": false
 }
