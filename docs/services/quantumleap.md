@@ -105,7 +105,7 @@ gone through the previous steps (i.e, QuantumLeap is already processing data).
 Create one datasource per entity type you care about. Follow [these instructions](https://smartsdk.github.io/ngsi-timeseries-api/admin/grafana/).
 
 You are now ready to create your dashboards using the datasources!. If you want
-to have something to get started with, you can got to [${GRAFANA_URL}/dashboard/import](${GRAFANA_URL}/dashboard/import)
+to have something to get started with, you can got to ${GRAFANA_URL}/dashboard/import
 and import the [grafana/dashboard_example.json](https://github.com/smartsdk/guided-tour/blob/master/docs/services/grafana/dashboard_example.json).
 The result will look something like ...
 
