@@ -6,9 +6,9 @@ This section of the guide starts assuming you have already [deployed your platfo
 and [deployed your Orion Context Broker](../platform/deployservices.md).
 
 It also assumes you have sensors inserting data in your Orion Context Broker.
-If you don't have any, you can simulate some data injection using the [entities-simulator]()
-as follows. You need of course to configure the value of ORION_URL with the url
-of Orion in your deployment.
+If you don't have any, you can simulate some data injection using the [entities-simulator](https://github.com/smartsdk/entities-simulator)
+as follows. You need of course to configure the value of `ORION_URL` with the
+url of Orion in your deployment.
 
 ```
 $ ORION_URL=http://$(docker-machine ip ms-manager0):1026

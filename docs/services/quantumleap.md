@@ -48,7 +48,8 @@ $ curl -X GET ${ORION_URL}/v2/subscriptions/ -H 'Accept: application/json'
 [{"id":"5ae2faa8cfdf0100fa49eb1f","description":"Created by QuantumLeap ...]
 ```
 
-If you want to track specific entity types only, use one subscription per each entity type.
+If you want to track specific entity types only, use one subscription per each
+entity type.
 
 At this point, you may be thinking "hold on, why asking QL to ask Orion to
 notify him back?". The answer is, Orion remains the central piece of many FIWARE
@@ -72,7 +73,8 @@ $ curl -X GET \
   -H 'Accept: application/json'
 ```
 
-E.g: Last 4 Historical values of `airqualityobserved_0`'s `NO2` and `CO2`.
+E.g: Last 4 Historical values of `airqualityobserved_0`'s `NO2` and `CO2`
+attributes.
 
 ```
 $ curl -X GET \
