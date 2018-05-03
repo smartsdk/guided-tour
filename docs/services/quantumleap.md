@@ -24,13 +24,14 @@ endpoint `/v2/subscribe` that will create the subscription in Orion. By default,
 it will create a subscription to receive notification for ALL changes of ALL
 entities that enter Orion. For this guide this is good enough; however, if you
 want to adjust the scope of notifications, have a look at the `/v2/ui` endpoint
-of your deployed QL (E.g `${QL_URL}/v2/ui`).
+of your deployed QL (e.g. `${QL_URL}/v2/ui`).
 
 If you are using the [SmartSDK Postman Collection](https://github.com/smartsdk/smartsdk-recipes/blob/master/recipes/tools/postman_collection.json),
 you have already a prepared call for this endpoint within the QuantumLeap folder
 (QL Subscribe).
 
-Otherwise, you can call the endpoint from the command line as follows (mind the IPs)...
+Otherwise, you can call the endpoint from the command line as follows
+(mind the IPs)...
 
 ```
 $ curl -X POST \
@@ -65,7 +66,7 @@ a given entity.
 You will find these queries in the Postman Collection, or you can try them from
 the command line...
 
-E.g: Historical values of `airqualityobserved_0`'s `precipitation`.
+e.g.: Historical values of `airqualityobserved_0`'s `precipitation`.
 
 ```
 $ curl -X GET \
@@ -73,7 +74,7 @@ $ curl -X GET \
   -H 'Accept: application/json'
 ```
 
-E.g: Last 4 Historical values of `airqualityobserved_0`'s `NO2` and `CO2`
+e.g.: Last 4 Historical values of `airqualityobserved_0`'s `NO2` and `CO2`
 attributes.
 
 ```
@@ -97,7 +98,7 @@ Let's assume you have your instance url saved in a variable called `GRAFANA_URL`
 export GRAFANA_URL=http://192.168.99.100:3000
 ```
 
-Login to your instance ${GRAFANA_URL}/login. The default
+Login to your instance `${GRAFANA_URL}/login`. The default
 credentials are `admin`/`admin`, but remember to change them afterwards.
 
 You need to first configure a datasource, which can only be done once you have
@@ -105,7 +106,7 @@ gone through the previous steps (i.e, QuantumLeap is already processing data).
 Create one datasource per entity type you care about. Follow [these instructions](https://smartsdk.github.io/ngsi-timeseries-api/admin/grafana/).
 
 You are now ready to create your dashboards using the datasources!. If you want
-to have something to get started with, you can got to ${GRAFANA_URL}/dashboard/import
+to have something to get started with, you can got to `${GRAFANA_URL}/dashboard/import`
 and import the [grafana/dashboard_example.json](https://github.com/smartsdk/guided-tour/blob/master/docs/services/grafana/dashboard_example.json).
 The result will look something like ...
 

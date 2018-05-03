@@ -28,7 +28,8 @@ from the SmartSDK Recipes repository. Postman collections are documented [here](
 
 The simplest of the queries is to retrieve all entities stored.
 
-In the Postman Collection, within the `Orion` folder use the GET query to Orion Entities.
+In the Postman Collection, within the `Orion` folder use the GET query to Orion
+Entities.
 
 From the command line using curl,
 
