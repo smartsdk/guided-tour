@@ -4,20 +4,20 @@
 
 In order to offer a simple and intuitive way to get started with our Smart Spot
 we have developed an Open Source solution called Smart Spot Starter Kit, which
-has an obvious educational purpose. Just by simply obtaining this kit and follow
-this guide you will be able to manage the device and to acquire data from its
-board sensors, apart from the ones you connect with your smartphone.
+has an obvious educational purpose. Just by simply obtaining this kit and 
+follow this guide you will be able to manage the device and to acquire data 
+from its board sensors, apart from the ones you connect with your smartphone.
 
 To achieve this, we take advantage from technologies like Physical Web. Users
 interact via their smartphones thanks to our device that sends &quot;push&quot;
-notifications with digital content through Bluetooth without the need to install native 
-Apps.
+notifications with digital content through Bluetooth without the need to 
+install native Apps.
 
 In order to monitorize the air pollution, Smart Spot measures the NO2, CO, SO2
 and O3 at specific points in real time. We have a sophisticated high precision
-lab, with a Mass Flow Controller and a Zero Air Generator, where through Machine
-Learning algorithms we improve the precision of our sensor measures reducing
-the effect of cross sensitivity.
+lab, with a Mass Flow Controller and a Zero Air Generator, where through 
+Machine Learning algorithms we improve the precision of our sensor measures 
+reducing the effect of cross sensitivity.
 
 For the care and management of data collected by the Smart Spot a maintenance
 platform is  needed, our device can be managed remotely by platforms which use
@@ -28,10 +28,10 @@ Optionally, this system provides information about crowds in specific areas,
 detecting people with smartphone WiFi switched-on.
 
 ## What do you need?
-What is included with The Smart Spot Starter Kit:  
+What is included with The Smart Spot Starter Kit:
 
-   1. [ESP32 DevKitC](https://www.amazon.com/Espressif-ESP32-ESP32-DEVKITC-ESP-WROOM-32-soldered/dp/B01N0SB08Q/ref=sr_1_4?ie=UTF8&qid=1519978147&sr=8-4&keywords=esp32+devkit):  
-       ![ESP32-DevKitC](./images/ESP32-DevKitC.png)     
+   1. [ESP32 DevKitC](http://a.co/6nSNpvA):    
+      ![ESP32-DevKitC](./images/ESP32-DevKitC.png)
    2. Starter Kit firmware
       * Physical Web
       * Crowd Monitoring
@@ -43,7 +43,7 @@ What is included with The Smart Spot Starter Kit:
       * Accelerometer and Gyroscope.
       * Luminosity Sensor
       * RGB led
-      * GPIO Led   
+      * GPIO Led
    4. Micro USB Cable
    5. [Smart Spot Air Quality Expansion Board](http://www.hopu.eu/)  
    6. I2C Cable (included with the expansion board)  
@@ -54,27 +54,24 @@ What is included with The Smart Spot Starter Kit:
       * Carbon Monoxide (Green).
       * Nitrogen Dioxide (Orange).
       
-      ![Device manager](./images/sensor.png)
-
-You will need a PC loaded with Windows, Linux or Mac OS with internet connection
-in order to download the Starter Kit firmware and the ESP32 toolchain and
-ESP-IDF.
-
-## Getting Started
-
-This chapter is a guide for Windows users. In case you use another OS, you can find further information in the following link
-
-[http://esp-idf.readthedocs.io/en/latest/get-started/index.html](http://esp-idf.readthedocs.io/en/latest/get-started/index.html)
+      ![Device manager](./images/sensor.png) 
 
 
-   1. First, you need to download the ESP32 toolchain by clicking in this link: 
-      [https://dl.espressif.com/dl/esp32\_win32\_msys2\_environment\_and\_toolchain-20180110.zip](https://dl.espressif.com/dl/esp32_win32_msys2_environment_and_toolchain-20180110.zip). 
-      Unzip it and place somewhere safe. This guide assumes the environment is placed in 
-      C:\ .
+## Getting Started 
 
-   2. You will also need the ESP32 API. In order to download it, open a terminal,
-      navigate to a directory where you want to place the IDF and use these commands: _ .
-      
+## Device Configuration:  
+This chapter is a guide for Windows users. In case you use another OS, you can 
+find further information in the following link:
+[ESP-IDF](http://esp-idf.readthedocs.io/en/latest/get-started/index.html)
+
+   1. First, you need to download the ESP32 toolchain by clicking in this link:
+   [ESP32 toolchain](https://bit.ly/2js02AW). Unzip it and place somewhere safe.
+   This guide assumes the environment is placed in  C:\ .
+
+   2. You will also need the ESP32 API. In order to download it, open a
+   terminal, navigate to a directory where you want to place the IDF and use
+   these commands:   
+   
       ~~~
 
       $ git clone --recursive https://github.com/espressif/esp-idf.git
@@ -84,46 +81,56 @@ This chapter is a guide for Windows users. In case you use another OS, you can f
       $ git submodule update –init
 
       ~~~
-     
-      Every time you restart your PC you will need to define the IDF\ _PATH by using this command:
-      
+   
+      Every time you restart your PC you will need to define the IDF\ \_PATH by
+      using this command:
+
       ~~~
 
       $ export IDF\_PATH=&quot;C:/msys32/home/user-name/esp/esp-idf&quot;
 
-      ~~~
+      ~~~ 
 
       In case you want to set the path permanently, check out this link:
+      IDFPATH for Windows: <https://bit.ly/2KxiunW>
+      
+   3. Now is time to download the Smart Sport Firmware. You should open a
+      terminal in  another directory and clone our firmware by using the 
+      following command:
 
-      [http://esp-idf.readthedocs.io/en/latest/get-started/add-idf\_path-to-profile.html#add-idf-path-to-profile-windows](http://esp-idf.readthedocs.io/en/latest/get-started/add-idf_path-to-profile.html#add-idf-path-to-profile-windows)
-
-   3. Now is time to download the Smart Sport Firmware. You should open a terminal in 
-      another directory and clone our firmware by using the following command:
-   
       ~~~
 
       $ git clone –-https://github.com/HOP-Ubiquitous/SmartSpot\_SmartSDK\_Firmware.git
-
+      
       ~~~
- 
-   4. Once you downloaded everything, open the ESP32 toolchain in order to flash the 
-      firmware. Go to the directory where you placed the toolchain and execute the 
-      file mingw32.
+
+   4. Once you downloaded everything, open the ESP32 toolchain in order to 
+      flash the  firmware. Go to the directory where you placed the 
+      toolchain and execute the  file mingw32.
       
          ![Device manager](./images/directory.png)
+
+   5. Plug your ESP32 into your PC. Then go to Device Manager and look for its
+      port number (i.e.: COM3).   
+        
+        ![Device manager](./images/device-manager.png)
          
-         
-   5. Plug your ESP32 into your PC. Then go to Device Manager and look for its port number (i.e.: COM3).  
-         ![Device manager](./images/device-manager.png)
-         
-      You may have to download its driver in case you are not able to flash. 
+      You may have to download its driver in case you are not able to flash.
       Download it here.
 
-      [https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers](https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers)
+        [USB to UART Bridge](https://bit.ly/2v0gwnS)
 
-   6. Copy the port and the directory of bootloader.bin, smartspot-esp32.bin, and
-      partitions\_singleapp.bin. Replace it by the bolded words of the following
-      command. Use it to flash the esp32.
+   6. It is time to flash the esp32. Open a Mingw32 terminal and copy the port
+      and the directory of bootloader.bin, smartspot-esp32.bin, 
+      partitions_singleapp.bin and esptool.py: 
+      
+      * **esptool.py directory** 
+      * **Port** 
+      * **Bootloader.bin directory** 
+      * **smartspot-esp32.bin directory** 
+      * **partitions_singleapp.bin directory**
+
+	  Replace them by the bolded words of the following command:
 
       ~~~
 
@@ -136,12 +143,16 @@ This chapter is a guide for Windows users. In case you use another OS, you can f
       C:/Users/HOPU/GitHub/SmartSpot_SmartSDK_Firmware/partitions_singleapp.bin
       
       ~~~
-         
-       ![Sensors](./images/python.png)
+
+      Copy then the whole command and use it for flashsing the esp32.
+		         
+      ![Sensors](./images/python.png)
 
       A message like the one above should appear if you flashed the firmware successfully.
 
-## Expansion board integration
+
+
+### Expansion board integration
 
 This is a detailed list of the expansion board components:
 
@@ -171,8 +182,8 @@ The expansion board is completely plug and play. If you previously flashed the
 ESP32 correctly you will only have to plug it in its mark.
 
    ![Board](./images/board.png)
-   
-# Gas Sensor Integration
+
+### Gas Sensor Integration
 
 The idea is to connect the Smart Spot Starter Kit with the gas sensors. Between
 the available gases, we selected the most important to quantify the air quality
@@ -186,73 +197,170 @@ also interesting gases to carry out corrections in measures:
 
    ![Sensors](./images/sensors.png)
 
-In order to carry out the connection between the expansion board and the Smart
-Spot Air Quality Expansion Board you only have to plug the i2c cable in both
-sides. You can use any i2c port you want since they all have the same behavior.
-Finally, plug the gas sensors in the i2c board.
+In order to carry out the connection between the Expansion board and the Smart
+Spot Air Quality Expansion Board you only have to plug the I2C cable to one of
+the two I2C Smart Spot Connectors. Regarding I2C Gas connectors, the every port
+must match its gas:
 
-## Register your Smart Spot in the IoT Agent
+| Port | Gas                |
+| ---- |:------------------:|
+| J3   | NO2                |
+| J4   | O3                 |
+| J5   | CO                 |
+| J6   | SO2                |
+| J7   | Work in Progress   |
+| J8   | Work in Progress   |
 
-First, you need to create a [WiFi AP](https://www.lifewire.com/use-your-android-phone-as-a-portable-wi-fi-hotspot-2377915) with your smartphone for the first
-connection of the SmartSpot. Once you register in the IoT Agent, you can change
-the WiFi parameters. This are the default SSID and password:
+The Smart Spot LwM2M Client offers both a proprietary OMA LwM2M object called
+*"SmartSpot Gas Concentration"* created specifically to provide information
+related to interesting variables of the gas sensors, and on the other hand the
+standard IPSO Alliance Concentration Object. Information and specification 
+about this last one can be found in this [link](https://bit.ly/2FDVC2s).
 
-SSID: **defaultSSAP**
+These object are multinstance. Each analyte (the gas that is going to be
+measured) has a ID instance. For example, if you want to know the current
+concentration value of CO you will have to read the resource *3325/2/5700*. 
 
+### Device Deployment 
+
+The Smart Spots have a pre-configured WiFi Station where 
+devices will connect. This AP can be easily deployed from smartphones, GSM 
+routers, common WiFi Access Points, …
+
+The default configuration is: 
+SSID name: **defaultSSAP** 
 Password: **defaultSSAP1234**
 
-Device URL Manager tool is used for manage the physicalweb url of any device by
-software.
+You must create an access point in your smartphone (HotSpot) or router with the
+default SSID name and Password for the device to connect to the network. When
+this access point is created the device connect automatically.
 
-A smartPhone will detect a eddystone url advertisement with a fixed device url
-that point to the Device Url Manager, then the Device Url Manager will redirect
-the request to the real url.
+With a Wi-Fi hotspot, you can share your mobile data connection on your
+smartphone wirelessly. Look in your Settings menu for Wireless & Network and
+check where you can enable a Wi-Fi hotspot. You should change now the SSID and
+Password for the ones above.
 
-To create a device with this tool you need specify a shortened mac and
-the extern url associated on next url: http://url:port/api/v1/devices where:
-   * url: url where is Device URL Manager tool
-   * port: port to connect to Device URL Manager tool.
-
-You can easily share the connection with your iOS or Android.  
    ![Connection](./images/connection.png)
 
-## Fiware integrations
 
-FIWARE offers an Open Ecosystem that join different technology enablers for
-scalable data mangement and make feasible to integrate different services and 
-Internet of Things devices into a common and interoperable framework based on
-Open Standards. In particular, FIWARE is based on Open Standards such as OMA
-NGSI for the Services Interface and ETSI ISG CIM for the data models.
+## Infrastructure Deploy: 
+In order to facilitate the interaction and configuration between user and 
+devices, a fiware infrastructure will be deployed. It will allow the 
+connection and configuration of LwM2M clients, storing data and building 
+custom applications. 
+(If you have any LwM2M Server were to connect your devices you can skip this
+section). 
 
-In details, FIWARE has a strong role in the Smart Cities market, since the is
-key to the growth and functionality of Smart Cities, for this reason we are
-committed to initiatives such as Open and Agile Smart Cities (OASC) association
-with over 100 cities enrolled and FIWARE technology as the basis for making it 
-feasible.
+### Prerequisites: 
+   * Ubuntu 16.04 or higher. You can find it [here](https://www.ubuntu.com/
+     download/desktop). 
 
-Smart Spot is a FIWARE-ready device, it means that Smart Spot has been
-validated, passed a set of tests, participated in plugfests and the most
-important is supporting the APIs, FIWARE data models based on ETSI ISG CIM and
-it is fully interoperable and integrated with key components from FIWARE such as
-Orion Context Broker.
+   * Docker. Instruction [here](https://docs.docker.com/install/linux/
+     docker-ce/ubuntu/) or [here](https://www.digitalocean.com/community/
+     tutorials/como-instalar-y-usar-docker-en-ubuntu-16-04-es). 
 
-In details, Orion Context Broker is the core of FIWARE platform; since it
-enables the common integration of heterogenous data sources into a common
-component, which enables the capacity to carry out advanced queries, cross data
-among heterogenous domains (e.g., noise with crowd, weather and mobility, etc.),
-and finally it can exports data to several data analytics components such as
-Hadoop / COSMOS (Big Data), SHT (Time Series), CKAN (Open Data), MongoDB
-(Non-structured data), etc.
+   * Docker Compose. Instruction [here](https://docs.docker.com/compose/
+     install/#prerequisites). 
 
-FIWARE and the solutions from HOP Ubiquitous are contributing to the creation of
-adapted and standardized solutions to satisfy the described process from the
-cocreation and citizens engagement to the deployment of solutions based on IoT
-to reach the digitalization and enhancement of different areas in the city.
+### Configuration
 
-Thanks to the LwM2M Bootstrap Server deployed and integrated in the Homard
-platform, it is really easy to setup the server configuration for a the device.
-In this way, anyone can deploy its own LwM2M IOTAgent with a public server IP
-and configure the device to integrate it in FIWARE.
+Services in the architecture are deployed using a docker-compose file, all the
+documentation and code can be found [here](https://github.com/HOP-Ubiquitous/
+fiware-docker-infrastructure).
 
-A tutorial about Orion Context Broker has been developed by FIWARE and HOP
-Ubiquitous, which can be downloaded in: [tutorial](http://goo.gl/o1KXcT)
+The repository can be easily cloned with the following command:
+
+    ~~~
+
+    $ git clone https://github.com/HOP-Ubiquitous/fiware-docker-infrastructure
+
+    ~~~
+
+#### Ubuntu User
+
+Therefore, the configuration options are explicitly declared in this file. For
+services with complex configuration a brief extra description is provided.
+
+Please, take into account that the guidelines that you can find in the HOP
+Ubiquitous github are thought for a localhost deployment. If you are making a
+distributed deployment, please make sure to have the proper ports open and the
+different hosts with visible ips addresses between each other.
+
+#### Windows User
+
+For Windows users is necessary install a virtual machine to run Ubuntu in your
+PC. [VirtualBox](https://www.virtualbox.org/) is a option for this issue. 
+Create a new virtual Machine, choose a name, type Linux and Version Ubuntu 
+(32bits or 64bits). Select the options that you prefer of your virtual machine 
+in the next dialog windows.
+
+The first time that you start your virtual machine, VirtualBox will ask you
+about the Ubuntu Install file. Search the file in this window dialog and Ubuntu
+will start to install.
+
+For a correct operation of Smart Spot Open Hardware you must consider that the
+network adapter is “bridge adapter mode”. This option is in VirtualBox /
+configuration / network, and the dropdown “connect to” and choose “Bridge
+adapter”. 
+
+#### Deployed services:
+
+##### IoT Agent Configuration
+
+In order to be able to map
+the OMA LwM2M information model to OMA NGSI entities, attributes and metadata a
+configuration file is created reflecting the correspondence. config.js in the
+docker-compose/ directory contains two blocks:
+
+   * LwM2M Server configuration, specifying aspects like server port, content-
+     format used or the log level of the service.
+
+   * NGSI configuration, where information about the http server, the storage 
+     and the mapping between the protocols are specified. On the other hand, 
+     a dynamic configuration can be carried out using the service API. The 
+     postman collection of this service provides a skeleton template.  
+
+More information about the component can be found in the [LwM2M IoT Agent 
+Guide](http://fiware-iotagent-lwm2m.readthedocs.io/en/latest/).
+
+##### Cygnus configuration
+agent.conf In order to configure the channels and databases in which the
+information will persist, it is necessary to configure the agent.conf file in
+the docker-compose/ directory. This file will be loaded into the docker
+container as a configuration file. An example of the file that is loaded by
+default can be found in this [url](https://github.com/telefonicaid/fiware-
+cygnus/blob/master/docker/cygnus-ngsi/agent.conf). In the previous example we 
+can see how to initialize each of the different connectors to databases.
+
+To simplify the debug better add only the necessary onesOrion-Cygnus
+Communication In order to get the information that reaches Orion to be
+persistent, it is necessary to create subscriptions on Orion by setting Cygnus
+as the url of the callback. An example of the subscription to create can be
+found in the [postman](https://www.getpostman.com/) collection within the main
+directory. More information about the component can be found in the [Cygnus
+Guide](http://fiware-cygnus. readthedocs.io/en/latest/).
+
+##### QuantumLeap, Crate and Grafana configuration 
+These three components work jointly to accomplish a visual representation of 
+the information in Orion Context Broker. QuantumLeap is a library that receives
+Orion information through subscriptions and stores the information in a Crate 
+database. Last, the grafana container launches a web services with user 
+interface in which the Crate database deployed can be configured as data 
+source. A more detailed guide of this services interaction can be found in the
+use-cases/ directory. 
+
+##### Perseo-core and Perseo-fe configuration 
+Perseo CEP is a Complex Event Processing (CEP) module. In this module, Perseo-
+core is the  back-end of Perseo CEP, the rule-engine. It checks incoming events
+and, if any action must be done, it call to Perseo-fe through a POST request.
+Perseo-fe refresh the set of Perseo-core rule periodically. When Perseo-core
+send an action to Perseo-fe, it is responsible of send an action vía SMS, e-mail
+or HTTP. A more detailed guide of this services interaction can be found in the
+use-cases/ directory.docker-compose.yml In order for Perseo CEP can send a
+notification, it must have configured the following servers: SMPP, SMTP and HTTP
+in docker-compose.yml file contained in the docker-compose/ directory. The
+environment variables available for Perseo configuration can be found in this
+url.
+
+### Build, deploy and run 
+
