@@ -153,6 +153,8 @@ find further information in the following link:
 
 
 ### Expansion board integration
+   
+   ![Board](./images/board.png)
 
 This is a detailed list of the expansion board components:
 
@@ -181,7 +183,7 @@ This is a detailed list of the expansion board components:
 The expansion board is completely plug and play. If you previously flashed the 
 ESP32 correctly you will only have to plug it in its mark.
 
-   ![Board](./images/board.png)
+   ![Expansion Board with ESP32](./images/boardWithESP32.png)
 
 ### Gas Sensor Integration
 
