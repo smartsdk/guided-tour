@@ -92,7 +92,7 @@ find further information in the following link:
       ~~~ 
 
       In case you want to set the path permanently, check out this link:
-      IDFPATH for Windows: <https://bit.ly/2KxiunW>
+      <https://bit.ly/2KxiunW>
       
    3. Now is time to download the Smart Sport Firmware. You should open a
       terminal in  another directory and clone our firmware by using the 
@@ -252,21 +252,17 @@ custom applications.
 section). 
 
 ### Prerequisites: 
-   * Ubuntu 16.04 or higher. You can find it [here](https://www.ubuntu.com/
-     download/desktop). 
+   * Ubuntu 16.04 or higher. You can find it [here](https://bit.ly/2emfC27). 
 
-   * Docker. Instruction [here](https://docs.docker.com/install/linux/
-     docker-ce/ubuntu/) or [here](https://www.digitalocean.com/community/
-     tutorials/como-instalar-y-usar-docker-en-ubuntu-16-04-es). 
-
-   * Docker Compose. Instruction [here](https://docs.docker.com/compose/
-     install/#prerequisites). 
+   * Docker. Instruction [here](https://dockr.ly/2rgbOBK) or
+     [here](https://do.co/2FZsV13).
+     
+   * Docker Compose. Instruction [here](https://dockr.ly/2IdnNKU). 
 
 ### Configuration
 
 Services in the architecture are deployed using a docker-compose file, all the
-documentation and code can be found [here](https://github.com/HOP-Ubiquitous/
-fiware-docker-infrastructure).
+documentation and code can be found [here](https://bit.ly/2KA6Kku).
 
 The repository can be easily cloned with the following command:
 
@@ -328,9 +324,9 @@ agent.conf In order to configure the channels and databases in which the
 information will persist, it is necessary to configure the agent.conf file in
 the docker-compose/ directory. This file will be loaded into the docker
 container as a configuration file. An example of the file that is loaded by
-default can be found in this [url](https://github.com/telefonicaid/fiware-
-cygnus/blob/master/docker/cygnus-ngsi/agent.conf). In the previous example we 
-can see how to initialize each of the different connectors to databases.
+default can be found in this [url](https://bit.ly/2w70Cgu). In the previous
+example we  can see how to initialize each of the different connectors to
+databases.
 
 To simplify the debug better add only the necessary onesOrion-Cygnus
 Communication In order to get the information that reaches Orion to be
@@ -338,7 +334,7 @@ persistent, it is necessary to create subscriptions on Orion by setting Cygnus
 as the url of the callback. An example of the subscription to create can be
 found in the [postman](https://www.getpostman.com/) collection within the main
 directory. More information about the component can be found in the [Cygnus
-Guide](http://fiware-cygnus. readthedocs.io/en/latest/).
+Guide](http://fiware-cygnus.readthedocs.io/en/latest/).
 
 ##### QuantumLeap, Crate and Grafana configuration 
 These three components work jointly to accomplish a visual representation of 
