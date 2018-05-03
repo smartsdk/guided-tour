@@ -6,7 +6,7 @@
 
 This section will guide you through the deployment of the core services.
 It assumes you have already deployed your infrastructure, as instructed in
-[this section](swarmscluster.md) of the guide. It also assumes you are
+[this section](swarmcluster/) of the guide. It also assumes you are
 familiarized with [docker swarm clusters](https://docs.docker.com/engine/swarm/).
 
 At this point, you should have your
@@ -25,7 +25,7 @@ $ docker node ls
 
 If the above command does not return you the list of cluster nodes you were
 expecting after having configured your cluster, something went wrong and you
-should revisit [this section](swarmcluster.md). In the miniswarm case, the
+should revisit [this section](swarmcluster/). In the miniswarm case, the
 output would look like this...
 
 ```
@@ -44,8 +44,9 @@ services.
 ```
 $ git clone https://github.com/smartsdk/smartsdk-recipes.git
 $ cd smartsdk-recipes/recipes/
-# NOTE: This folder you are now at will be our 'root' folder for this guide.
- ```
+```
+
+NOTE: `smartsdk-recipes/recipes/` will be our 'root' folder for this guide.
 
 ### Checking the networks
 
@@ -85,7 +86,7 @@ $ cd utils/mongo-replicaset
 In Linux/Mac...
 
 ```
-$ source settings.env  # In Windows, simply execute settings.bat instead.
+$ source settings.env
 $ docker stack deploy -c docker-compose.yml ${STACK_NAME}
 ```
 
@@ -107,7 +108,7 @@ To make sure the replicaset is properly established, after some minutes check
 the output of the logs of the replicaset controller. See below for example.
 
 ```
-$ docker service logs ${STACK_NAME}_controller    # (In windows use %STACK_NAME%_controller instead)
+$ docker service logs ${STACK_NAME}_controller
 mongo-rs_controller.1.ooelrlkfujnn@ms-manager0    | INFO:__main__:Waiting mongo service (and tasks) (mongo-rs_mongo) to start
 mongo-rs_controller.1.njolaq8j49tx@ms-manager0    | INFO:__main__:Waiting mongo service (and tasks) (mongo-rs_mongo) to start
 mongo-rs_controller.1.njolaq8j49tx@ms-manager0    | ERROR:__main__:Expired attempts waiting for mongo service (mongo-rs_mongo)
@@ -119,6 +120,8 @@ mongo-rs_controller.1.ooelrlkfujnn@ms-manager0    | INFO:__main__:To add: {'10.0
 mongo-rs_controller.1.ooelrlkfujnn@ms-manager0    | INFO:__main__:new replSetReconfig: {'ok': 1.0}
 mongo-rs_controller.1.ooelrlkfujnn@ms-manager0    | INFO:__main__:Primary is: 10.0.0.8
 ```
+
+NOTE: In windows use `%STACK_NAME%_controller` instead.
 
 If you got something like that, your **MongoDB Replicaset** is ready!
 If you still have issues or want to understand how this works in more detail,
@@ -141,10 +144,12 @@ To deploy Orion, please execute the following commands...
 
 ```
 $ cd data-management/context-broker/ha/
-$ source settings.env  # In Windows, simply execute settings.bat instead.
+$ source settings.env
 $ docker stack deploy -c docker-compose.yml orion
 $ cd ../../../
 ```
+
+NOTE: In Windows, simply execute `settings.bat` instead.
 
 The first time this will take a while until the images are pulled to the nodes.
 With command `docker service ls` you can check if all the replicas are up or not.
@@ -207,7 +212,7 @@ To deploy Quantumleap, please execute the following commands...
 
 ```
 $ cd data-management/quantumleap/
-$ source settings.env  # In Windows, simply execute settings.bat instead.
+$ source settings.env
 $ docker stack deploy -c docker-compose.yml quantumleap
 $ docker stack deploy -c docker-compose-addons.yml grafana
 $ cd ../../
@@ -231,9 +236,10 @@ n97db06olz7n        quantumleap_traefik       global              1/1           
 You can check the status of your crate cluster by curling to the endpoint where
 your cluster is deployed, using the header HOST as configured in your settings.
 
+NOTE: Recall you must have called settings.env in this same terminal
+
 ```
-# Recall you must have called settings.env in this same terminal
-$ IP_OF_MY_CLUSTER=$(docker-machine ip ms-manager0)  # Or put here your IP
+$ IP_OF_MY_CLUSTER=$(docker-machine ip ms-manager0)
 $ curl --header "Host: ${CRATE_HOST}.${CLUSTER_DOMAIN}" $IP_OF_MY_CLUSTER
 {
   "ok" : true,
