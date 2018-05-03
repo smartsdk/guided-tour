@@ -6,7 +6,7 @@
 
 This section will guide you through the deployment of the core services.
 It assumes you have already deployed your infrastructure, as instructed in
-[this section](deployservices.md) of the guide. It also assumes you are
+[this section](swarmscluster.md) of the guide. It also assumes you are
 familiarized with [docker swarm clusters](https://docs.docker.com/engine/swarm/).
 
 At this point, you should have your
@@ -25,7 +25,7 @@ $ docker node ls
 
 If the above command does not return you the list of cluster nodes you were
 expecting after having configured your cluster, something went wrong and you
-should revisit [this section](deployservices.md). In the miniswarm case, the
+should revisit [this section](swarmcluster.md). In the miniswarm case, the
 output would look like this...
 
 ```
