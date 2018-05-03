@@ -360,3 +360,627 @@ url.
 
 ### Build, deploy and run 
 
+The architecture building and execution must contains using [docker-
+compose](https://docs.docker.com/compose/overview) must contains a previous
+step, the IoT Agent container building. This is due to the LWM2M IoT Agent
+madurity state. Currently some modifications in its code are needed and, for
+this reason, the modified source code is provided to ensure the interoperability
+between devices and Orion.
+
+### Build LWM2M IoT Agent
+
+Within the IoT Agent folder execute:
+
+~~~
+$ docker build -t "iotagent:latest" $(pwd)
+~~~
+
+In order for the iotagent to receive its configuration, a config.js file must
+exist in the docker-compose directory. This directory will include the
+information that must be mapped between the devices and the orion.  In this
+section we are going to give an overview of those sections and explain how to
+configure them:
+
+   * config.lwm2m: This section is about the Lwm2m server that we are setting
+     up, the port in which LwM2M requests are going to be received, the default
+     device type and the used protocols.
+   * config.ngsi: In this section the configuration about the services and
+     devices that are going to interact with the LwM2M IOT-Agent is needed:
+      * ContextBroker: The host ip and the port of the Orion Context Broker need
+        to be fixed here.
+      * server: Modify the server port only if you want it to be running in a
+        different one, the default port is 4042. This same port needs to be
+        setted as well in the providerURL (with the proper ip address).
+      * deviceRegistry: The database type that is going to be used to store the
+        device registrations, it should be a mongodb instance.
+      * mongodb: The MongoDB ip, port and database name.
+      * types: This is one of the most important sections. In this section the
+        device type resource mapping is going to be specified. There are a set
+        of sections that can be left as default, but no the following ones:
+         * lazy: In this section we specify the lazy LwM2M resources that we
+           want to be read. Name and type need to be fixed for each one.
+         * active: Same like in lazy section bus this time for active resources.
+           The IOT-Agent will set a observer in every active resource after the
+           device connection.
+         * lwm2mResourceMapping: This section is the one that is going to set
+           the needed OMA-LwM2M resources to be read in order to map the lazy
+           and active resources.
+      * providerURL: The URL in which one the LwM2M IOT-Agent API is going to be
+        available. The specified port in the server section, needs to be the
+        same here.
+
+In the following table you can find a config.js file as example for the FIWARE
+docker infrastructure that can be found in the [HOP Ubiquitous
+gitHub](https://github.com/HOP-Ubiquitous/fiware-docker-infrastructure). In the
+readme file of that repository, a complete guide to deploy the docker
+infrastructure can be found.
+
+~~~
+
+var config = {};
+
+config.lwm2m = {
+    logLevel: 'DEBUG',
+    port: '5683',
+    defaultType: 'SmartSpot',
+    ipProtocol: 'udp4',
+    serverProtocol: 'udp4',
+    delayedObservationTimeout: 2000,
+    formats: [
+        {
+            name: 'application-vnd-oma-lwm2m/tlv',
+            value: 11542
+        },
+        {
+            name: 'application-vnd-oma-lwm2m/json',
+            value: 11543
+        },
+        {
+            name: 'application-vnd-oma-lwm2m/opaque',
+            value: 11544
+        }
+    ],
+    writeFormat: 'application-vnd-oma-lwm2m/opaque',
+    types: [
+        {
+            name: 'SmartSpot',
+            url: '/smartspot'
+        }
+    ]
+};
+
+config.ngsi = {
+    logLevel: 'DEBUG',
+    contextBroker: {
+        host: 'orion',
+        port: '1026'
+    },
+    server: {port: '4042'},
+    deviceRegistry: {type: 'mongodb'},
+    mongodb: {
+        host: 'mongo',
+        port: '27017',
+        db: 'mongo-iotagent'
+    },
+    types: {
+        'SmartSpot': {
+            service: 'SmartSpot',
+            subservice: '/smartspot',
+            removeSuffix: true,
+            commands: [],
+            lazy: [
+		{
+                    name: 'physicalUrl',
+                    type: 'string'
+                },
+		{
+                    name: 'IPSODigitalOutputDigitalOutputState0',
+                    type: 'boolean'
+                },
+		{
+                    name: 'IPSODigitalOutputDigitalOutputState1',
+                    type: 'boolean'
+                },
+		{
+                    name: 'IPSODigitalOutputDigitalOutputState2',
+                    type: 'boolean'
+                },
+		{
+                    name: 'IPSODigitalOutputDigitalOutputState3',
+                    type: 'boolean'
+                },
+		{
+                    name: 'IPSODigitalOutputDigitalOutputState4',
+                    type: 'boolean'
+                },
+		{
+                    name: 'IPSODigitalOutputDigitalOutputState5',
+                    type: 'boolean'
+                },
+		{
+                    name: 'IPSODigitalOutputDigitalOutputState6',
+                    type: 'boolean'
+                },
+		{
+                    name: 'IPSODigitalOutputDigitalOutputState7',
+                    type: 'boolean'
+                },
+		{
+                    name: 'IPSODigitalOutputDigitalOutputState8',
+                    type: 'boolean'
+                },
+		{
+                    name: 'IPSODigitalOutputDigitalOutputState9',
+                    type: 'boolean'
+                },
+		{
+                    name: 'IPSODigitalOutputDigitalOutputState10',
+                    type: 'boolean'
+                },
+		{
+                    name: 'IPSODigitalOutputDigitalOutputState11',
+                    type: 'boolean'
+                },
+		{
+                    name: 'NearWiFiDevicesRestrictdetectionwithRSSIthreshold',
+                    type: 'integer'
+                },
+		{
+                    name: 'WLANConnectivitySSID',
+                    type: 'string'
+                },
+		{
+                    name: 'WLANConnectivityWPAPreSharedKey',
+                    type: 'string'
+                }
+            ],
+            active: [
+		{
+                    name: 'temperature',
+                    type: 'float'
+                },
+                {
+                    name: 'humidity',
+                    type: 'float'
+                },
+                {
+                    name: 'IPSOAnalogInputAnalogInputCurrentValue0',
+                    type: 'integer'
+                },
+                {
+                    name: 'IPSOAnalogInputAnalogInputCurrentValue1',
+                    type: 'integer'
+                },
+                {
+                    name: 'IPSOAnalogInputAnalogInputCurrentValue2',
+                    type: 'integer'
+                },
+                {
+                    name: 'IPSOAnalogInputAnalogInputCurrentValue3',
+                    type: 'integer'
+                },
+                {
+                    name: 'IPSOAnalogInputAnalogInputCurrentValue4',
+                    type: 'integer'
+                },
+                {
+                    name: 'IPSOIlluminanceSensorValue',
+                    type: 'float'
+                },
+                {
+                    name: 'IPSOAccelerometerXValue',
+                    type: 'float'
+                },
+                {
+                    name: 'IPSOAccelerometerYValue',
+                    type: 'float'
+                },
+                {
+                    name: 'IPSOAccelerometerZValue',
+                    type: 'float'
+                },
+                {
+                    name: 'IPSOPressureSensorValue',
+                    type: 'float'
+                },
+                {
+                    name: 'IPSOConcentrationSensorValue0', //NO2
+                    type: 'float'
+                },
+                {
+                    name: 'IPSOConcentrationSensorValue1', //CO
+       type: 'float'
+                },
+                {
+                    name: 'IPSOConcentrationSensorValue2', //O3
+                    type: 'float'
+                },
+                {
+                    name: 'IPSOConcentrationSensorValue3', //SO2
+                    type: 'float'
+                },
+                {
+                    name: 'NearWiFiDevicesLastDeviceinformation',
+                    type: 'integer'
+                },
+ 		{
+                    name: 'NearWiFiDevicesDevicesfoundinthelastmin',
+                    type: 'integer'
+                },
+                {
+                    name: 'NearWiFiDevicesDevicesfoundinthelast10min',
+                    type: 'integer'
+                },
+                {
+                    name: 'NearWiFiDevicesDevicesfoundinthelasthour',
+                    type: 'integer'
+                }
+                 ],
+            lwm2mResourceMapping: {
+    	'IPSOAnalogInputAnalogInputCurrentValue0':{ 
+            objectType:3202,
+            objectInstance:0,
+            objectResource:5600
+            },
+        'IPSOAnalogInputAnalogInputCurrentValue1':{
+            objectType:3202,
+            objectInstance:1,
+            objectResource:5600
+            },
+        'IPSOAnalogInputAnalogInputCurrentValue2':{
+            objectType:3202,
+            objectInstance:2,
+            objectResource:5600
+            },
+        'IPSOAnalogInputAnalogInputCurrentValue3':{
+            objectType:3202,
+            objectInstance:3,
+            objectResource:5600
+            },
+        'IPSOAnalogInputAnalogInputCurrentValue4':{
+            objectType:3202,
+            objectInstance:4,
+            objectResource:5600
+            },
+        'IPSOIlluminanceSensorValue':{
+            objectType:3301,
+            objectInstance:0,
+            objectResource:5700
+            },
+        'temperature': {
+            objectType: 3303, 
+            objectInstance: 1,
+            objectResource: 5700
+            },
+        'humidity': {
+            objectType: 3304,
+            objectInstance: 1,
+            objectResource: 5700
+            },
+	'IPSOAccelerometerXValue':{
+            objectType:3313,
+            objectInstance:0,
+            objectResource:5702
+            },
+        'IPSOAccelerometerYValue':{
+            objectType:3313,
+            objectInstance:0,
+            objectResource:5703
+            },
+        'IPSOAccelerometerZValue':{
+            objectType:3313,
+            objectInstance:0,
+            objectResource:5704
+            },
+        'IPSOPressureSensorValue':{
+            objectType:3323,
+            objectInstance:0,
+            objectResource:5700
+            },
+	'IPSOConcentrationSensorValue0':{
+            objectType:3325,
+            objectInstance:0,
+            objectResource:5700
+            },
+        'IPSOConcentrationSensorValue1':{
+            objectType:3325,
+            objectInstance:1,
+            objectResource:5700
+            },
+        'IPSOConcentrationSensorValue2':{
+            objectType:3325,
+            objectInstance:2,
+            objectResource:5700
+            },
+        'IPSOConcentrationSensorValue3':{
+            objectType:3325,
+            objectInstance:3,
+            objectResource:5700
+            },
+	'NearWiFiDevicesLastDeviceinformation':{
+            objectType:10001,
+            objectInstance:0,
+            objectResource:0
+            },
+        'NearWiFiDevicesDevicesfoundinthelastmin':{
+            objectType:10001,
+            objectInstance:0,
+            objectResource:1
+            },
+        'NearWiFiDevicesDevicesfoundinthelast10min':{
+            objectType:10001,
+            objectInstance:0,
+            objectResource:2
+            },
+        'NearWiFiDevicesDevicesfoundinthelasthour':{
+            objectType:10001,
+            objectInstance:0,
+            objectResource:3
+            },
+	'physicalUrl': { 
+	    objectType: 10000,
+	    objectInstance: 0,
+	    objectResource: 0
+	},
+	'IPSODigitalOutputDigitalOutputState0':{
+            objectType:3201,
+            objectInstance:0,
+            objectResource:5550
+            },
+        'IPSODigitalOutputDigitalOutputState1':{
+            objectType:3201,
+            objectInstance:1,
+            objectResource:5550
+            },
+        'IPSODigitalOutputDigitalOutputState2':{
+            objectType:3201,
+            objectInstance:2,
+            objectResource:5550
+            },
+        'IPSODigitalOutputDigitalOutputState3':{
+            objectType:3201,
+            objectInstance:3,
+            objectResource:5550
+            },
+        'IPSODigitalOutputDigitalOutputState4':{
+            objectType:3201,
+            objectInstance:4,
+            objectResource:5550
+            },
+        'IPSODigitalOutputDigitalOutputState5':{
+            objectType:3201,
+            objectInstance:5,
+            objectResource:5550
+            },
+        'IPSODigitalOutputDigitalOutputState6':{
+            objectType:3201,
+            objectInstance:6,
+            objectResource:5550
+            },
+        'IPSODigitalOutputDigitalOutputState7':{
+            objectType:3201,
+            objectInstance:7,
+            objectResource:5550
+            },
+        'IPSODigitalOutputDigitalOutputState8':{
+            objectType:3201,
+            objectInstance:8,
+            objectResource:5550
+            },
+        'IPSODigitalOutputDigitalOutputState9':{
+            objectType:3201,
+            objectInstance:9,
+            objectResource:5550
+            },
+        'IPSODigitalOutputDigitalOutputState10':{
+            objectType:3201,
+            objectInstance:10,
+            objectResource:5550
+            },
+        'IPSODigitalOutputDigitalOutputState11':{
+            objectType:3201,
+            objectInstance:11,
+            objectResource:5550
+            },
+	'NearWiFiDevicesRestrictdetectionwithRSSIthreshold':{
+            objectType:10001,
+            objectInstance:0,
+            objectResource:5
+            },
+        'WLANConnectivitySSID':{
+            objectType:12,
+            objectInstance:0,
+            objectResource:5
+            },        
+	'WLANConnectivityWPAPreSharedKey':{
+            objectType:12,
+            objectInstance:0,
+            objectResource:17
+            }
+
+            }
+        }
+    },
+    service: 'SmartSpot',
+    subservice: '/smartspot',
+    providerUrl: 'http://iotagent:4042',
+    deviceRegistrationDuration: 'P1M'
+};
+
+module.exports = config;
+
+~~~
+
+### Build architecture through docker-compose
+
+Please, take a look to the docker-compose.yml file, in this one you can find the
+port mapping between the host machine and the docker containers that are going
+to be deployed inside. Make sure that every port that is on the left side of the
+mapping is reachable. For example:
+
+~~~
+... 
+
+iotagent:
+
+  image: iotagent
+
+  ports:
+
+    - "5693:5683/udp"
+...
+
+~~~
+
+he 5693 port of the host machine (that is connected to the 5683 of the docker
+container) must be reachable from the network.
+
+The following commands are docker commands, probably your current installation
+doesn’t allows you to execute those commands without root rights. In order to
+solve this issue you need to add your current user to the docker group. Make
+sure that the group exists and lather execute:
+
+~~~
+
+$ sudo gpasswd -a $USER docker
+
+~~~
+
+Now you are able to execute every docker command without root access:
+
+First of all, in order to be able to execute docker-compose commands, you will
+need to go to the docker-compose directory. After that, you will be able to
+launch the infrastructure.
+
+Launch infrastructure:
+
+~~~
+
+$ docker-compose up
+
+~~~
+
+Launch infrastructure in background:
+
+~~~
+
+$ docker-compose up -d
+
+~~~
+
+Stop infrastructure:
+
+~~~
+
+$ docker-compose down
+
+~~~
+
+Erase all stopped docker containers:
+
+~~~
+
+$ docker rm $(docker ps -a -q)
+
+~~~
+
+### Initialize the device: Bootstrap
+
+Every LwM2M device needs a previous tep that is called bootstrap. By this way,
+the device acquires the addresses of the LwM2M servers to connect with. To
+perform this step, in this guide we are going to use the Leshan Bootstrap
+server. Leshan is an open project source regarding LwM2M services by the Eclipse
+Foundation. They provide a good set of services including an online [bootstrap
+server](http://leshan.eclipse.org/bs).
+
+In the device that you have already acquired, leshan is already configured as
+bootstrap server. In the leshan website, you need to register your device
+filling the following data:
+
+   * Client endpoint: Your device has an unique endpoint name (e.g
+     HOP240ac403f14e).
+   * LwM2M Server URL: For example “coap://iotAgentIP:ioTAgentPORT”. Please make
+     sure that your device is connected to a network where the “iotAgentIP” is
+     reachable, and internet too.
+
+   ![Bootstrap Configuration](./images/bootstrapConfiguration.png)
+
+After this process, the device will be ready to be turned on, and perform the
+Bootstrap procedure.
+
+### Test the LwM2M deployment
+
+When everything is running and the device is turned on, the communication
+between the device and the FIWARE services will start, we can test it sending
+some GET request to the ORION Context Broker, like the following ones:
+
+   * GET orion entities with a limit of 50: This requests retrieves the entities
+     that the ORION Context Broker is storing with a limit of 50.
+
+     ~~~
+     
+     curl --header "fiware-service:SmartSpot" 
+     http://orionIP:orionPORT/v2/entities?limit=50
+
+     ~~~
+
+   * GET orion entities as data model: This requests performs same as the
+     previous one, but the entities will be retrieved in the FIWARE datamodel
+     format.
+
+     ~~~
+     
+     curl --header "fiware-service:SmartSpot" 
+     http://orionIP:orionPORT/v2/entities?options=keyValues&limit=50
+
+     ~~~
+   
+   * GET types v2: Retrieves the types of the registered attributes in the
+     fiware-service entity put as header.
+
+     ~~~
+
+     curl --header "fiware-service:SmartSpot" 
+     http://orionIP:orionPORT/v2/types
+
+     ~~~
+
+If every previous step has been performed properly, the requested information
+will be retrieved and the ORION API will be ready to be used in any kind of
+application.
+
+For more information, the following links can be visited:
+   * [FIWARE Orion Context Broker](https://bit.ly/2rhiZK5).
+   * [FIWARE-IOTAgent LwM2M](https://bit.ly/2whpiDp). 
+
+## Compatibility and versions
+
+The docker-compose service description do not use version tag in the majority of
+the services. That implies the use of the service last version at the time of
+perform the pull. There are some exceptions like the
+[MongoDB](https://www.mongodb.com) version or the IoT Agent that must be build
+in the host machine.
+
+## To Be Done
+
+Add FIWARE security stack Create different docker-composes adapting the
+components to the user case required. Change diagrams and add perseo
+documentation
+
+## Extensibility
+
+From HOP Ubiquitous we are pretty interested in the extension of the services
+ready to be deployed. If you have experience with any other FIWARE component do
+not hesitate to contact us.
+
+### Maintainers 
+<german@hopu.eu> (FIWARE config)  
+<joseluis@hopu.eu> (FIWARE config)   
+<felipe@hopu.eu> (FIWARE config)  
+<rafa@hopu.eu> (Device configuration)
+
+## Known issues
+
+Currently a IoT Agent memory issue has been discovered. The error implies the
+service stop and for this reason a restart condition is provided in the docker-
+compose file.
