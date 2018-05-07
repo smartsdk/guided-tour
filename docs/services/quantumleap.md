@@ -3,10 +3,10 @@
 ## Prerequisites
 
 This section of the guide starts assuming you have already
-[deployed your platform](../platform/swarmcluster.md)
-and [deployed the core services](../platform/deployservices.md). It also
+[deployed your platform](../platform/swarmcluster/)
+and [deployed the core services](../platform/deployservices/). It also
 assumes you have a data flow comming to your Orion Context Broker, as pointed
-out in [this section](.contextbroker.md).
+out in [this section](contextbroker/).
 
 ## Store Air Quality data from Context Broker in QuantumLeap
 
@@ -88,7 +88,7 @@ You can explore QuantumLeap's API at `${QL_URL}/v2/ui` or directly into the
 
 ## Creating nice dashboards using QuantumLeap and Grafana
 
-If you followed the section on [deploying your services](../platform/deployservices.md),
+If you followed the section on [deploying your services](../platform/deployservices/),
 you should have access to an instance of [Grafana](https://grafana.com/) almost
 ready to interact with your historical data.
 
