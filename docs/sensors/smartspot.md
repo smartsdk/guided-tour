@@ -126,8 +126,8 @@ find further information in the following link:
       * **smartspot-esp32.bin directory** 
       * **partitions_singleapp.bin directory**
 
-    Replace them by the bolded words of the following command:
-
+      Replace them by the bolded words of the following command:
+      
       ~~~
       $ python 
       /c/Users/HOPU/GitHub/espidf/components/esptool_py/esptool/esptool.py
