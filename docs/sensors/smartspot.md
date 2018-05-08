@@ -385,41 +385,42 @@ $ docker build -t "iotagent:latest" $(pwd)
 ~~~
 
 In order for the iotagent to receive its configuration, a config.js file must
-exist in the docker-compose directory. This directory will include the
-information that must be mapped between the devices and the orion.  In this
-section we are going to give an overview of those sections and explain how to
-configure them:  
+exist in the docker-compose directory (fiware-docker-infrastructure/docker-
+compose/config.js). This directory will include the information that must be
+mapped between the devices and the orion. In this section we are going to give
+an overview of those sections and explain how to configure them:
 
-* config.lwm2m: This section is about the Lwm2m server that we are setting
+* \`config.lwm2m\`: This section is about the Lwm2m server that we are setting
   up, the port in which LwM2M requests are going to be received, the default
   device type and the used protocols
 
-* config.ngsi: In this section the configuration about the services and
+* \`config.ngsi\`: In this section the configuration about the services and
   devices that are going to interact with the LwM2M IOT-Agent is needed:
-    * ContextBroker: The host ip and the port of the Orion Context Broker need
+    * \`ContextBroker\`: The host ip and the port of the Orion Context Broker need
       to be fixed here.
-    * server: Modify the server port only if you want it to be running in a
+    * \`server\`: Modify the server port only if you want it to be running in a
       different one, the default port is 4042. This same port needs to be
      setted as well in the providerURL (with the proper ip address).
-    * deviceRegistry: The database type that is going to be used to store the
+    * \`deviceRegistry\`: The database type that is going to be used to store the
       device registrations, it should be a mongodb instance.
-    * mongodb: The MongoDB ip, port and database name.
-    * types: This is one of the most important sections. In this section the
+    * \`mongodb\`: The MongoDB ip, port and database name.
+    * \`types\`: This is one of the most important sections. In this section the
       device type resource mapping is going to be specified. There are a set
       of sections that can be left as default, but no the following ones:
-        * lazy: In this section we specify the lazy LwM2M resources that we
+        * \`lazy\`: In this section we specify the lazy LwM2M resources that we
           want to be read. Name and type need to be fixed for each one.
-        * active: Same like in lazy section bus this time for active resources.
+        * \`active\`: Same like in lazy section bus this time for active resources.
           The IOT-Agent will set a observer in every active resource after the
           device connection.
-        * lwm2mResourceMapping: This section is the one that is going to set
+        * \`lwm2mResourceMapping\`: This section is the one that is going to set
           the needed OMA-LwM2M resources to be read in order to map the lazy
           and active resources.
-    * providerURL: The URL in which one the LwM2M IOT-Agent API is going to be
+    * \`providerURL\`: The URL in which one the LwM2M IOT-Agent API is going to be
       available. The specified port in the server section, needs to be the
       same here.
 
-In the following table you can find a config.js file as example for the FIWARE
+File <--- poner referencia
+In the following file (table) you can find a config.js file as example for the FIWARE
 docker infrastructure that can be found in the [HOP Ubiquitous
 gitHub](https://github.com/HOP-Ubiquitous/fiware-docker-infrastructure). In the
 readme file of that repository, a complete guide to deploy the docker
