@@ -75,22 +75,18 @@ find further information in the following link:
    these commands:   
    
       ~~~
-
       $ git clone --recursive https://github.com/espressif/esp-idf.git
 
       $ git checkout tags/v3.0-rc1
 
       $ git submodule update –init
-
       ~~~
    
       Every time you restart your PC you will need to define the IDF\ \_PATH by
       using this command:
 
       ~~~
-
       $ export IDF\_PATH=&quot;C:/msys32/home/user-name/esp/esp-idf&quot;
-
       ~~~ 
 
       In case you want to set the path permanently, check out this link:
@@ -101,9 +97,7 @@ find further information in the following link:
       following command:
 
       ~~~
-
       $ git clone –-https://github.com/HOP-Ubiquitous/SmartSpot\_SmartSDK\_Firmware.git
-      
       ~~~
 
    4. Once you downloaded everything, open the ESP32 toolchain in order to 
@@ -135,7 +129,6 @@ find further information in the following link:
 	  Replace them by the bolded words of the following command:
 
       ~~~
-
       $ python 
       /c/Users/HOPU/GitHub/espidf/components/esptool_py/esptool/esptool.py
       --chip esp32
@@ -145,8 +138,7 @@ find further information in the following link:
       C:/Users/HOPU/GitHub/SmartSpot_SmartSDK_Firmware/bootloader.bin 0x10000
       C:/Users/HOPU/GitHub/SmartSpot_SmartSDK_Firmware/smartspot-esp32.bin
       0x8000
-      C:/Users/HOPU/GitHub/SmartSpot_SmartSDK_Firmware/partitions_singleapp.bin
-      
+      C:/Users/HOPU/GitHub/SmartSpot_SmartSDK_Firmware/partitions_singleapp.bin 
       ~~~
 
       Copy then the whole command and use it for flashsing the esp32.
@@ -273,9 +265,7 @@ documentation and code can be found [here](https://bit.ly/2KA6Kku).
 The repository can be easily cloned with the following command:
 
     ~~~
-
     $ git clone https://github.com/HOP-Ubiquitous/fiware-docker-infrastructure
-
     ~~~
 
 #### Ubuntu User
@@ -424,7 +414,6 @@ readme file of that repository, a complete guide to deploy the docker
 infrastructure can be found.
 
 ~~~
-
 var config = {};
 
 config.lwm2m = {
@@ -816,7 +805,6 @@ config.ngsi = {
 };
 
 module.exports = config;
-
 ~~~
 
 ### Build architecture through docker-compose
@@ -837,7 +825,6 @@ iotagent:
 
     - "5693:5683/udp"
 ...
-
 ~~~
 
 he 5693 port of the host machine (that is connected to the 5683 of the docker
@@ -849,9 +836,7 @@ solve this issue you need to add your current user to the docker group. Make
 sure that the group exists and lather execute:
 
 ~~~
-
 $ sudo gpasswd -a $USER docker
-
 ~~~
 
 Now you are able to execute every docker command without root access:
@@ -863,23 +848,18 @@ launch the infrastructure.
 Launch infrastructure:
 
 ~~~
-
 $ docker-compose up
-
 ~~~
 
 Launch infrastructure in background:
 
 ~~~
-
 $ docker-compose up -d
-
 ~~~
 
 Stop infrastructure:
 
 ~~~
-
 $ docker-compose down
 
 ~~~
@@ -887,9 +867,7 @@ $ docker-compose down
 Erase all stopped docker containers:
 
 ~~~
-
 $ docker rm $(docker ps -a -q)
-
 ~~~
 
 ### Initialize the device: Bootstrap
@@ -936,10 +914,8 @@ some GET request to the ORION Context Broker, like the following ones:
   * GET types v2: Retrieves the types of the registered attributes in the
     fiware-service entity put as header.
      ~~~
-
      curl --header "fiware-service:SmartSpot" 
      http://orionIP:orionPORT/v2/types
-
      ~~~
 
 If every previous step has been performed properly, the requested information
