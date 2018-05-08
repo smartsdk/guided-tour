@@ -154,28 +154,31 @@ find further information in the following link:
    ![Board](./images/board.png)
 
 This is a detailed list of the expansion board components:  
-   * **Bme280** : This well-known sensor from Bosch measures humidity with ±3% 
+* **Bme280** : This well-known sensor from Bosch measures humidity with ±3% 
      accuracy, barometric pressure with ±1 hPa absolute accuracy, and
      temperature with ±1.0°C accuracy. It can be used either with SPI or I2C.
-   * **Mpu6050** : this sensor contains a MEMS accelerometer and a MEMS gyro in
-     a single chip. It is very accurate, as it contains 16-bits analog to
-     digital conversion hardware for each channel. Therefor it  captures the
-     x, y, and z channel at the same time. The sensor uses the I2C-bus
-     interface.
-   * **Opt3001** : is a sensor that measures the intensity of visible light. The
-     spectral response of the sensor tightly matches the photopic response of
-     the human eye and includes significant infrared rejection.
-   * **WS2812** : is an intelligent control LED light source that the control 
-     circuit and RGB chip are integrated in a package of 5050 components. It
-     internally includes digital port latch and reshaping amplification drive
-     circuit. Each color has a different meaning, representing the current
-     status of the Smart Spot:
-       * Purple: Starting software.
-       * Blue: Attaching to global connectivity.
-       * Orange: Bootstrapping. Connecting to LwM2M servers.
-       * Green: Device fully functional.
-   * **GPIO Led** : is just simply a Led controlled by a GPIO pin of the ESP32.
-     You can manage and switch it on/off from the dashboard.
+
+* **Mpu6050** : this sensor contains a MEMS accelerometer and a MEMS gyro in
+  a single chip. It is very accurate, as it contains 16-bits analog to
+  digital conversion hardware for each channel. Therefor it  captures the
+  x, y, and z channel at the same time. The sensor uses the I2C-bus
+  interface.
+
+* **Opt3001** : is a sensor that measures the intensity of visible light. The
+  spectral response of the sensor tightly matches the photopic response of
+  the human eye and includes significant infrared rejection.
+
+* **WS2812** : is an intelligent control LED light source that the control 
+  circuit and RGB chip are integrated in a package of 5050 components. It
+  internally includes digital port latch and reshaping amplification drive
+  circuit. Each color has a different meaning, representing the current
+  status of the Smart Spot:
+    * Purple: Starting software.
+    * Blue: Attaching to global connectivity.
+    * Orange: Bootstrapping. Connecting to LwM2M servers.
+    * Green: Device fully functional.
+* **GPIO Led** : is just simply a Led controlled by a GPIO pin of the ESP32.
+  You can manage and switch it on/off from the dashboard.
 
 The expansion board is completely plug and play. If you previously flashed the 
 ESP32 correctly you will only have to plug it in its mark.
@@ -187,11 +190,15 @@ ESP32 correctly you will only have to plug it in its mark.
 The idea is to connect the Smart Spot Starter Kit with the gas sensors. Between
 the available gases, we selected the most important to quantify the air quality
 (gases required by the OMS), the most interesting depending of the use cases but
-also interesting gases to carry out corrections in measures:  
-    * NO2: Nitrogen dioxide
-    * SO2: Sulfur dioxide
-    * O3: Ozone
-    * CO: Carbon monoxide
+also interesting gases to carry out corrections in measures:
+
+* NO2: Nitrogen dioxide
+
+* SO2: Sulfur dioxide
+
+* O3: Ozone
+
+* CO: Carbon monoxide
 
    ![Sensors](./images/sensors.png)
 
@@ -886,11 +893,13 @@ server](http://leshan.eclipse.org/bs).
 In the device that you have already acquired, leshan is already configured as
 bootstrap server. In the leshan website, you need to register your device
 filling the following data:  
-   * Client endpoint: Your device has an unique endpoint name (e.g
-      HOP240ac403f14e).
-   * LwM2M Server URL: For example “coap://iotAgentIP:ioTAgentPORT”. Please make
-      sure that your device is connected to a network where the “iotAgentIP” is
-      reachable, and internet too.
+
+* Client endpoint: Your device has an unique endpoint name (e.g
+  HOP240ac403f14e).
+
+* LwM2M Server URL: For example “coap://iotAgentIP:ioTAgentPORT”. Please make
+  sure that your device is connected to a network where the “iotAgentIP” is
+  reachable, and internet too.
 
    ![Bootstrap Configuration](./images/bootstrapConfiguration.png)
 
@@ -902,31 +911,35 @@ Bootstrap procedure.
 When everything is running and the device is turned on, the communication
 between the device and the FIWARE services will start, we can test it sending
 some GET request to the ORION Context Broker, like the following ones:  
-   * GET orion entities with a limit of 50: This requests retrieves the entities
-     that the ORION Context Broker is storing with a limit of 50.  
-     ~~~
-     curl --header "fiware-service:SmartSpot" 
-     http://orionIP:orionPORT/v2/entities?limit=50
-     ~~~
-  * GET orion entities as data model: This requests performs same as the
-    previous one, but the entities will be retrieved in the FIWARE datamodel
-    format.
-     ~~~
-     curl --header "fiware-service:SmartSpot" 
-     http://orionIP:orionPORT/v2/entities?options=keyValues&limit=50
-     ~~~   
-  * GET types v2: Retrieves the types of the registered attributes in the
-    fiware-service entity put as header.
-     ~~~
-     curl --header "fiware-service:SmartSpot" 
-     http://orionIP:orionPORT/v2/types
-     ~~~
+
+* GET orion entities with a limit of 50: This requests retrieves the entities
+  that the ORION Context Broker is storing with a limit of 50.  
+  ~~~
+  curl --header "fiware-service:SmartSpot" 
+  http://orionIP:orionPORT/v2/entities?limit=50
+  ~~~
+
+* GET orion entities as data model: This requests performs same as the
+  previous one, but the entities will be retrieved in the FIWARE datamodel
+  format.
+  ~~~
+  curl --header "fiware-service:SmartSpot" 
+  http://orionIP:orionPORT/v2/entities?options=keyValues&limit=50
+  ~~~   
+
+* GET types v2: Retrieves the types of the registered attributes in the
+  fiware-service entity put as header.
+  ~~~
+  curl --header "fiware-service:SmartSpot" 
+  http://orionIP:orionPORT/v2/types
+  ~~~
 
 If every previous step has been performed properly, the requested information
 will be retrieved and the ORION API will be ready to be used in any kind of
 application.
 
 For more information, the following links can be visited:
+
 * [FIWARE Orion Context Broker](https://bit.ly/2rhiZK5).
    
 * [FIWARE-IOTAgent LwM2M](https://bit.ly/2whpiDp). 
