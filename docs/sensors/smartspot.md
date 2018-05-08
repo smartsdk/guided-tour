@@ -126,7 +126,7 @@ find further information in the following link:
       * **smartspot-esp32.bin directory** 
       * **partitions_singleapp.bin directory**
 
-	  Replace them by the bolded words of the following command:
+    Replace them by the bolded words of the following command:
 
       ~~~
       $ python 
@@ -142,7 +142,7 @@ find further information in the following link:
       ~~~
 
       Copy then the whole command and use it for flashsing the esp32.
-		         
+             
       ![Sensors](./images/python.png)
 
       A message like the one above should appear if you flashed the firmware successfully.
@@ -154,6 +154,7 @@ find further information in the following link:
    ![Board](./images/board.png)
 
 This is a detailed list of the expansion board components:  
+
 * **Bme280** : This well-known sensor from Bosch measures humidity with ±3% 
      accuracy, barometric pressure with ±1 hPa absolute accuracy, and
      temperature with ±1.0°C accuracy. It can be used either with SPI or I2C.
@@ -477,73 +478,73 @@ config.ngsi = {
             removeSuffix: true,
             commands: [],
             lazy: [
-		{
+    {
                     name: 'physicalUrl',
                     type: 'string'
                 },
-		{
+    {
                     name: 'IPSODigitalOutputDigitalOutputState0',
                     type: 'boolean'
                 },
-		{
+    {
                     name: 'IPSODigitalOutputDigitalOutputState1',
                     type: 'boolean'
                 },
-		{
+    {
                     name: 'IPSODigitalOutputDigitalOutputState2',
                     type: 'boolean'
                 },
-		{
+    {
                     name: 'IPSODigitalOutputDigitalOutputState3',
                     type: 'boolean'
                 },
-		{
+    {
                     name: 'IPSODigitalOutputDigitalOutputState4',
                     type: 'boolean'
                 },
-		{
+    {
                     name: 'IPSODigitalOutputDigitalOutputState5',
                     type: 'boolean'
                 },
-		{
+    {
                     name: 'IPSODigitalOutputDigitalOutputState6',
                     type: 'boolean'
                 },
-		{
+    {
                     name: 'IPSODigitalOutputDigitalOutputState7',
                     type: 'boolean'
                 },
-		{
+    {
                     name: 'IPSODigitalOutputDigitalOutputState8',
                     type: 'boolean'
                 },
-		{
+    {
                     name: 'IPSODigitalOutputDigitalOutputState9',
                     type: 'boolean'
                 },
-		{
+    {
                     name: 'IPSODigitalOutputDigitalOutputState10',
                     type: 'boolean'
                 },
-		{
+    {
                     name: 'IPSODigitalOutputDigitalOutputState11',
                     type: 'boolean'
                 },
-		{
+    {
                     name: 'NearWiFiDevicesRestrictdetectionwithRSSIthreshold',
                     type: 'integer'
                 },
-		{
+    {
                     name: 'WLANConnectivitySSID',
                     type: 'string'
                 },
-		{
+    {
                     name: 'WLANConnectivityWPAPreSharedKey',
                     type: 'string'
                 }
             ],
             active: [
-		{
+    {
                     name: 'temperature',
                     type: 'float'
                 },
@@ -611,7 +612,7 @@ config.ngsi = {
                     name: 'NearWiFiDevicesLastDeviceinformation',
                     type: 'integer'
                 },
- 		{
+    {
                     name: 'NearWiFiDevicesDevicesfoundinthelastmin',
                     type: 'integer'
                 },
@@ -625,7 +626,7 @@ config.ngsi = {
                 }
                  ],
             lwm2mResourceMapping: {
-    	'IPSOAnalogInputAnalogInputCurrentValue0':{ 
+      'IPSOAnalogInputAnalogInputCurrentValue0':{ 
             objectType:3202,
             objectInstance:0,
             objectResource:5600
@@ -665,7 +666,7 @@ config.ngsi = {
             objectInstance: 1,
             objectResource: 5700
             },
-	'IPSOAccelerometerXValue':{
+  'IPSOAccelerometerXValue':{
             objectType:3313,
             objectInstance:0,
             objectResource:5702
@@ -685,7 +686,7 @@ config.ngsi = {
             objectInstance:0,
             objectResource:5700
             },
-	'IPSOConcentrationSensorValue0':{
+  'IPSOConcentrationSensorValue0':{
             objectType:3325,
             objectInstance:0,
             objectResource:5700
@@ -705,7 +706,7 @@ config.ngsi = {
             objectInstance:3,
             objectResource:5700
             },
-	'NearWiFiDevicesLastDeviceinformation':{
+  'NearWiFiDevicesLastDeviceinformation':{
             objectType:10001,
             objectInstance:0,
             objectResource:0
@@ -725,12 +726,12 @@ config.ngsi = {
             objectInstance:0,
             objectResource:3
             },
-	'physicalUrl': { 
-	    objectType: 10000,
-	    objectInstance: 0,
-	    objectResource: 0
-	},
-	'IPSODigitalOutputDigitalOutputState0':{
+  'physicalUrl': { 
+      objectType: 10000,
+      objectInstance: 0,
+      objectResource: 0
+  },
+  'IPSODigitalOutputDigitalOutputState0':{
             objectType:3201,
             objectInstance:0,
             objectResource:5550
@@ -790,7 +791,7 @@ config.ngsi = {
             objectInstance:11,
             objectResource:5550
             },
-	'NearWiFiDevicesRestrictdetectionwithRSSIthreshold':{
+  'NearWiFiDevicesRestrictdetectionwithRSSIthreshold':{
             objectType:10001,
             objectInstance:0,
             objectResource:5
@@ -800,7 +801,7 @@ config.ngsi = {
             objectInstance:0,
             objectResource:5
             },        
-	'WLANConnectivityWPAPreSharedKey':{
+  'WLANConnectivityWPAPreSharedKey':{
             objectType:12,
             objectInstance:0,
             objectResource:17
@@ -914,6 +915,7 @@ some GET request to the ORION Context Broker, like the following ones:
 
 * GET orion entities with a limit of 50: This requests retrieves the entities
   that the ORION Context Broker is storing with a limit of 50.  
+
   ~~~
   curl --header "fiware-service:SmartSpot" 
   http://orionIP:orionPORT/v2/entities?limit=50
@@ -922,6 +924,7 @@ some GET request to the ORION Context Broker, like the following ones:
 * GET orion entities as data model: This requests performs same as the
   previous one, but the entities will be retrieved in the FIWARE datamodel
   format.
+
   ~~~
   curl --header "fiware-service:SmartSpot" 
   http://orionIP:orionPORT/v2/entities?options=keyValues&limit=50
@@ -929,6 +932,7 @@ some GET request to the ORION Context Broker, like the following ones:
 
 * GET types v2: Retrieves the types of the registered attributes in the
   fiware-service entity put as header.
+  
   ~~~
   curl --header "fiware-service:SmartSpot" 
   http://orionIP:orionPORT/v2/types
