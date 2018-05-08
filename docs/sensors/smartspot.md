@@ -153,28 +153,29 @@ find further information in the following link:
    
    ![Board](./images/board.png)
 
-This is a detailed list of the expansion board components:
-    * **Bme280** : This well-known sensor from Bosch measures humidity with ±3% 
-      accuracy, barometric pressure with ±1 hPa absolute accuracy, and temperature 
-      with ±1.0°C accuracy. It can be used either with SPI or I2C.
-    * **Mpu6050** : this sensor contains a MEMS accelerometer and a MEMS gyro in a
-      single chip. It is very accurate, as it contains 16-bits analog to digital
-      conversion hardware for each channel. Therefor it  captures the x, y, and z
-      channel at the same time. The sensor uses the I2C-bus interface.
-    * **Opt3001** : is a sensor that measures the intensity of visible light. The 
-      spectral response of the sensor tightly matches the photopic response of the 
-      human eye and includes significant infrared rejection.
-    * **WS2812** : is an intelligent control LED light source that the control 
-      circuit and RGB chip are integrated in a package of 5050 components. It
-      internally includes digital port latch and reshaping amplification drive
-      circuit. Each color has a different meaning, representing the current status of
-      the Smart Spot:
-        * Purple: Starting software.
-        * Blue: Attaching to global connectivity.
-        * Orange: Bootstrapping. Connecting to LwM2M servers.
-        * Green: Device fully functional.
-    * **GPIO Led** : is just simply a Led controlled by a GPIO pin of the ESP32. You
-      can manage and switch it on/off from the dashboard.
+This is a detailed list of the expansion board components:  
+   * **Bme280** : This well-known sensor from Bosch measures humidity with ±3% 
+     accuracy, barometric pressure with ±1 hPa absolute accuracy, and
+     temperature with ±1.0°C accuracy. It can be used either with SPI or I2C.
+   * **Mpu6050** : this sensor contains a MEMS accelerometer and a MEMS gyro in
+     a single chip. It is very accurate, as it contains 16-bits analog to
+     digital conversion hardware for each channel. Therefor it  captures the
+     x, y, and z channel at the same time. The sensor uses the I2C-bus
+     interface.
+   * **Opt3001** : is a sensor that measures the intensity of visible light. The
+     spectral response of the sensor tightly matches the photopic response of
+     the human eye and includes significant infrared rejection.
+   * **WS2812** : is an intelligent control LED light source that the control 
+     circuit and RGB chip are integrated in a package of 5050 components. It
+     internally includes digital port latch and reshaping amplification drive
+     circuit. Each color has a different meaning, representing the current
+     status of the Smart Spot:
+       * Purple: Starting software.
+       * Blue: Attaching to global connectivity.
+       * Orange: Bootstrapping. Connecting to LwM2M servers.
+       * Green: Device fully functional.
+   * **GPIO Led** : is just simply a Led controlled by a GPIO pin of the ESP32.
+     You can manage and switch it on/off from the dashboard.
 
 The expansion board is completely plug and play. If you previously flashed the 
 ESP32 correctly you will only have to plug it in its mark.
@@ -186,12 +187,11 @@ ESP32 correctly you will only have to plug it in its mark.
 The idea is to connect the Smart Spot Starter Kit with the gas sensors. Between
 the available gases, we selected the most important to quantify the air quality
 (gases required by the OMS), the most interesting depending of the use cases but
-also interesting gases to carry out corrections in measures:
-
-   * NO2: Nitrogen dioxide
-   * SO2: Sulfur dioxide
-   * O3: Ozone
-   * CO: Carbon monoxide
+also interesting gases to carry out corrections in measures:  
+    * NO2: Nitrogen dioxide
+    * SO2: Sulfur dioxide
+    * O3: Ozone
+    * CO: Carbon monoxide
 
    ![Sensors](./images/sensors.png)
 
@@ -241,7 +241,8 @@ Password for the ones above.
    ![Connection](./images/connection.png)
 
 
-## Infrastructure Deploy: 
+## Infrastructure Deploy
+
 In order to facilitate the interaction and configuration between user and 
 devices, a fiware infrastructure will be deployed. It will allow the 
 connection and configuration of LwM2M clients, storing data and building 
@@ -249,13 +250,14 @@ custom applications.
 (If you have any LwM2M Server were to connect your devices you can skip this
 section). 
 
-### Prerequisites: 
-   * Ubuntu 16.04 or higher. You can find it [here](https://bit.ly/2emfC27). 
+### Prerequisites  
+  
+* Ubuntu 16.04 or higher. You can find it [here](https://bit.ly/2emfC27). 
 
-   * Docker. Instruction [here](https://dockr.ly/2rgbOBK) or
+* Docker. Instruction [here](https://dockr.ly/2rgbOBK) or
      [here](https://do.co/2FZsV13).
-     
-   * Docker Compose. Instruction [here](https://dockr.ly/2IdnNKU). 
+
+* Docker Compose. Instruction [here](https://dockr.ly/2IdnNKU). 
 
 ### Configuration
 
@@ -295,22 +297,22 @@ network adapter is “bridge adapter mode”. This option is in VirtualBox /
 configuration / network, and the dropdown “connect to” and choose “Bridge
 adapter”. 
 
-#### Deployed services:
+#### Deployed services
 
 ##### IoT Agent Configuration
 
 In order to be able to map
 the OMA LwM2M information model to OMA NGSI entities, attributes and metadata a
 configuration file is created reflecting the correspondence. config.js in the
-docker-compose/ directory contains two blocks:
+docker-compose/ directory contains two blocks:  
 
-   * LwM2M Server configuration, specifying aspects like server port, content-
-     format used or the log level of the service.
+* LwM2M Server configuration, specifying aspects like server port, content-
+  format used or the log level of the service.
 
-   * NGSI configuration, where information about the http server, the storage 
-     and the mapping between the protocols are specified. On the other hand, 
-     a dynamic configuration can be carried out using the service API. The 
-     postman collection of this service provides a skeleton template.  
+* NGSI configuration, where information about the http server, the storage 
+  and the mapping between the protocols are specified. On the other hand, 
+  a dynamic configuration can be carried out using the service API. The 
+  postman collection of this service provides a skeleton template.  
 
 More information about the component can be found in the [LwM2M IoT Agent 
 Guide](http://fiware-iotagent-lwm2m.readthedocs.io/en/latest/).
@@ -378,34 +380,36 @@ In order for the iotagent to receive its configuration, a config.js file must
 exist in the docker-compose directory. This directory will include the
 information that must be mapped between the devices and the orion.  In this
 section we are going to give an overview of those sections and explain how to
-configure them:   
-    * config.lwm2m: This section is about the Lwm2m server that we are setting
-      up, the port in which LwM2M requests are going to be received, the default
-      device type and the used protocols.
-    * config.ngsi: In this section the configuration about the services and
-      devices that are going to interact with the LwM2M IOT-Agent is needed:
-       * ContextBroker: The host ip and the port of the Orion Context Broker need
-         to be fixed here.
-       * server: Modify the server port only if you want it to be running in a
-         different one, the default port is 4042. This same port needs to be
-         setted as well in the providerURL (with the proper ip address).
-       * deviceRegistry: The database type that is going to be used to store the
-         device registrations, it should be a mongodb instance.
-       * mongodb: The MongoDB ip, port and database name.
-       * types: This is one of the most important sections. In this section the
-         device type resource mapping is going to be specified. There are a set
-         of sections that can be left as default, but no the following ones:
-          * lazy: In this section we specify the lazy LwM2M resources that we
-            want to be read. Name and type need to be fixed for each one.
-          * active: Same like in lazy section bus this time for active resources.
-            The IOT-Agent will set a observer in every active resource after the
-            device connection.
-          * lwm2mResourceMapping: This section is the one that is going to set
-            the needed OMA-LwM2M resources to be read in order to map the lazy
-            and active resources.
-       * providerURL: The URL in which one the LwM2M IOT-Agent API is going to be
-         available. The specified port in the server section, needs to be the
-         same here.
+configure them:  
+
+* config.lwm2m: This section is about the Lwm2m server that we are setting
+  up, the port in which LwM2M requests are going to be received, the default
+  device type and the used protocols
+
+* config.ngsi: In this section the configuration about the services and
+  devices that are going to interact with the LwM2M IOT-Agent is needed:
+    * ContextBroker: The host ip and the port of the Orion Context Broker need
+      to be fixed here.
+    * server: Modify the server port only if you want it to be running in a
+      different one, the default port is 4042. This same port needs to be
+     setted as well in the providerURL (with the proper ip address).
+    * deviceRegistry: The database type that is going to be used to store the
+      device registrations, it should be a mongodb instance.
+    * mongodb: The MongoDB ip, port and database name.
+    * types: This is one of the most important sections. In this section the
+      device type resource mapping is going to be specified. There are a set
+      of sections that can be left as default, but no the following ones:
+        * lazy: In this section we specify the lazy LwM2M resources that we
+          want to be read. Name and type need to be fixed for each one.
+        * active: Same like in lazy section bus this time for active resources.
+          The IOT-Agent will set a observer in every active resource after the
+          device connection.
+        * lwm2mResourceMapping: This section is the one that is going to set
+          the needed OMA-LwM2M resources to be read in order to map the lazy
+          and active resources.
+    * providerURL: The URL in which one the LwM2M IOT-Agent API is going to be
+      available. The specified port in the server section, needs to be the
+      same here.
 
 In the following table you can find a config.js file as example for the FIWARE
 docker infrastructure that can be found in the [HOP Ubiquitous
@@ -827,7 +831,7 @@ iotagent:
 ...
 ~~~
 
-he 5693 port of the host machine (that is connected to the 5683 of the docker
+The 5693 port of the host machine (that is connected to the 5683 of the docker
 container) must be reachable from the network.
 
 The following commands are docker commands, probably your current installation
@@ -923,9 +927,9 @@ will be retrieved and the ORION API will be ready to be used in any kind of
 application.
 
 For more information, the following links can be visited:
-   * [FIWARE Orion Context Broker](https://bit.ly/2rhiZK5).
+* [FIWARE Orion Context Broker](https://bit.ly/2rhiZK5).
    
-   * [FIWARE-IOTAgent LwM2M](https://bit.ly/2whpiDp). 
+* [FIWARE-IOTAgent LwM2M](https://bit.ly/2whpiDp). 
 
 ## Compatibility and versions
 
