@@ -934,8 +934,10 @@ some GET request to the ORION Context Broker, like the following ones:
   fiware-service entity put as header.  
   
   ~~~
+  
   curl --header "fiware-service:SmartSpot" 
   http://orionIP:orionPORT/v2/types
+  
   ~~~  
   
 If every previous step has been performed properly, the requested information
