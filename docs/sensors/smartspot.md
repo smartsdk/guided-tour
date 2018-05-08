@@ -28,6 +28,7 @@ Optionally, this system provides information about crowds in specific areas,
 detecting people with smartphone WiFi switched-on.
 
 ## What do you need?
+
 What is included with The Smart Spot Starter Kit:
 
    1. [ESP32 DevKitC](http://a.co/6nSNpvA):    
@@ -59,7 +60,8 @@ What is included with The Smart Spot Starter Kit:
 
 ## Getting Started 
 
-## Device Configuration:  
+## Device Configuration  
+
 This chapter is a guide for Windows users. In case you use another OS, you can 
 find further information in the following link:
 [ESP-IDF](http://esp-idf.readthedocs.io/en/latest/get-started/index.html)
@@ -135,11 +137,14 @@ find further information in the following link:
       ~~~
 
       $ python 
-      /c/Users/HOPU/GitHub/espidf/components/esptool_py/esptool/esptool.py --chip esp32 
+      /c/Users/HOPU/GitHub/espidf/components/esptool_py/esptool/esptool.py
+      --chip esp32
       --port COMX --baud 115200 --before default_reset --after hard_reset 
-      write_flash -z --flash_mode dio --flash_freq 40m --flash_size detect 0x1000      
+      write_flash -z --flash_mode dio --flash_freq 40m --flash_size detect
+      0x1000
       C:/Users/HOPU/GitHub/SmartSpot_SmartSDK_Firmware/bootloader.bin 0x10000
-      C:/Users/HOPU/GitHub/SmartSpot_SmartSDK_Firmware/smartspot-esp32.bin 0x8000            
+      C:/Users/HOPU/GitHub/SmartSpot_SmartSDK_Firmware/smartspot-esp32.bin
+      0x8000
       C:/Users/HOPU/GitHub/SmartSpot_SmartSDK_Firmware/partitions_singleapp.bin
       
       ~~~
@@ -157,28 +162,27 @@ find further information in the following link:
    ![Board](./images/board.png)
 
 This is a detailed list of the expansion board components:
-
-   * **Bme280** : This well-known sensor from Bosch measures humidity with ±3% 
-     accuracy, barometric pressure with ±1 hPa absolute accuracy, and temperature 
-     with ±1.0°C accuracy. It can be used either with SPI or I2C.
-   * **Mpu6050** : this sensor contains a MEMS accelerometer and a MEMS gyro in a
-     single chip. It is very accurate, as it contains 16-bits analog to digital
-     conversion hardware for each channel. Therefor it  captures the x, y, and z
-     channel at the same time. The sensor uses the I2C-bus interface.
-   * **Opt3001** : is a sensor that measures the intensity of visible light. The 
-     spectral response of the sensor tightly matches the photopic response of the 
-     human eye and includes significant infrared rejection.
-   * **WS2812** : is an intelligent control LED light source that the control 
-     circuit and RGB chip are integrated in a package of 5050 components. It
-     internally includes digital port latch and reshaping amplification drive
-     circuit. Each color has a different meaning, representing the current status of
-     the Smart Spot:
-      * Purple: Starting software.
-      * Blue: Attaching to global connectivity.
-      * Orange: Bootstrapping. Connecting to LwM2M servers.
-      * Green: Device fully functional.
-   * **GPIO Led** : is just simply a Led controlled by a GPIO pin of the ESP32. You
-     can manage and switch it on/off from the dashboard.
+    * **Bme280** : This well-known sensor from Bosch measures humidity with ±3% 
+      accuracy, barometric pressure with ±1 hPa absolute accuracy, and temperature 
+      with ±1.0°C accuracy. It can be used either with SPI or I2C.
+    * **Mpu6050** : this sensor contains a MEMS accelerometer and a MEMS gyro in a
+      single chip. It is very accurate, as it contains 16-bits analog to digital
+      conversion hardware for each channel. Therefor it  captures the x, y, and z
+      channel at the same time. The sensor uses the I2C-bus interface.
+    * **Opt3001** : is a sensor that measures the intensity of visible light. The 
+      spectral response of the sensor tightly matches the photopic response of the 
+      human eye and includes significant infrared rejection.
+    * **WS2812** : is an intelligent control LED light source that the control 
+      circuit and RGB chip are integrated in a package of 5050 components. It
+      internally includes digital port latch and reshaping amplification drive
+      circuit. Each color has a different meaning, representing the current status of
+      the Smart Spot:
+        * Purple: Starting software.
+        * Blue: Attaching to global connectivity.
+        * Orange: Bootstrapping. Connecting to LwM2M servers.
+        * Green: Device fully functional.
+    * **GPIO Led** : is just simply a Led controlled by a GPIO pin of the ESP32. You
+      can manage and switch it on/off from the dashboard.
 
 The expansion board is completely plug and play. If you previously flashed the 
 ESP32 correctly you will only have to plug it in its mark.
@@ -322,6 +326,7 @@ More information about the component can be found in the [LwM2M IoT Agent
 Guide](http://fiware-iotagent-lwm2m.readthedocs.io/en/latest/).
 
 ##### Cygnus configuration
+
 agent.conf In order to configure the channels and databases in which the
 information will persist, it is necessary to configure the agent.conf file in
 the docker-compose/ directory. This file will be loaded into the docker
@@ -339,6 +344,7 @@ directory. More information about the component can be found in the [Cygnus
 Guide](http://fiware-cygnus.readthedocs.io/en/latest/).
 
 ##### QuantumLeap, Crate and Grafana configuration 
+
 These three components work jointly to accomplish a visual representation of 
 the information in Orion Context Broker. QuantumLeap is a library that receives
 Orion information through subscriptions and stores the information in a Crate 
@@ -348,6 +354,7 @@ source. A more detailed guide of this services interaction can be found in the
 use-cases/ directory. 
 
 ##### Perseo-core and Perseo-fe configuration 
+
 Perseo CEP is a Complex Event Processing (CEP) module. In this module, Perseo-
 core is the  back-end of Perseo CEP, the rule-engine. It checks incoming events
 and, if any action must be done, it call to Perseo-fe through a POST request.
@@ -381,35 +388,34 @@ In order for the iotagent to receive its configuration, a config.js file must
 exist in the docker-compose directory. This directory will include the
 information that must be mapped between the devices and the orion.  In this
 section we are going to give an overview of those sections and explain how to
-configure them:
-
-   * config.lwm2m: This section is about the Lwm2m server that we are setting
-     up, the port in which LwM2M requests are going to be received, the default
-     device type and the used protocols.
-   * config.ngsi: In this section the configuration about the services and
-     devices that are going to interact with the LwM2M IOT-Agent is needed:
-      * ContextBroker: The host ip and the port of the Orion Context Broker need
-        to be fixed here.
-      * server: Modify the server port only if you want it to be running in a
-        different one, the default port is 4042. This same port needs to be
-        setted as well in the providerURL (with the proper ip address).
-      * deviceRegistry: The database type that is going to be used to store the
-        device registrations, it should be a mongodb instance.
-      * mongodb: The MongoDB ip, port and database name.
-      * types: This is one of the most important sections. In this section the
-        device type resource mapping is going to be specified. There are a set
-        of sections that can be left as default, but no the following ones:
-         * lazy: In this section we specify the lazy LwM2M resources that we
-           want to be read. Name and type need to be fixed for each one.
-         * active: Same like in lazy section bus this time for active resources.
-           The IOT-Agent will set a observer in every active resource after the
-           device connection.
-         * lwm2mResourceMapping: This section is the one that is going to set
-           the needed OMA-LwM2M resources to be read in order to map the lazy
-           and active resources.
-      * providerURL: The URL in which one the LwM2M IOT-Agent API is going to be
-        available. The specified port in the server section, needs to be the
-        same here.
+configure them:   
+    * config.lwm2m: This section is about the Lwm2m server that we are setting
+      up, the port in which LwM2M requests are going to be received, the default
+      device type and the used protocols.
+    * config.ngsi: In this section the configuration about the services and
+      devices that are going to interact with the LwM2M IOT-Agent is needed:
+       * ContextBroker: The host ip and the port of the Orion Context Broker need
+         to be fixed here.
+       * server: Modify the server port only if you want it to be running in a
+         different one, the default port is 4042. This same port needs to be
+         setted as well in the providerURL (with the proper ip address).
+       * deviceRegistry: The database type that is going to be used to store the
+         device registrations, it should be a mongodb instance.
+       * mongodb: The MongoDB ip, port and database name.
+       * types: This is one of the most important sections. In this section the
+         device type resource mapping is going to be specified. There are a set
+         of sections that can be left as default, but no the following ones:
+          * lazy: In this section we specify the lazy LwM2M resources that we
+            want to be read. Name and type need to be fixed for each one.
+          * active: Same like in lazy section bus this time for active resources.
+            The IOT-Agent will set a observer in every active resource after the
+            device connection.
+          * lwm2mResourceMapping: This section is the one that is going to set
+            the needed OMA-LwM2M resources to be read in order to map the lazy
+            and active resources.
+       * providerURL: The URL in which one the LwM2M IOT-Agent API is going to be
+         available. The specified port in the server section, needs to be the
+         same here.
 
 In the following table you can find a config.js file as example for the FIWARE
 docker infrastructure that can be found in the [HOP Ubiquitous
@@ -897,13 +903,12 @@ server](http://leshan.eclipse.org/bs).
 
 In the device that you have already acquired, leshan is already configured as
 bootstrap server. In the leshan website, you need to register your device
-filling the following data:
-
+filling the following data:  
    * Client endpoint: Your device has an unique endpoint name (e.g
-     HOP240ac403f14e).
+      HOP240ac403f14e).
    * LwM2M Server URL: For example “coap://iotAgentIP:ioTAgentPORT”. Please make
-     sure that your device is connected to a network where the “iotAgentIP” is
-     reachable, and internet too.
+      sure that your device is connected to a network where the “iotAgentIP” is
+      reachable, and internet too.
 
    ![Bootstrap Configuration](./images/bootstrapConfiguration.png)
 
@@ -914,32 +919,22 @@ Bootstrap procedure.
 
 When everything is running and the device is turned on, the communication
 between the device and the FIWARE services will start, we can test it sending
-some GET request to the ORION Context Broker, like the following ones:
-
+some GET request to the ORION Context Broker, like the following ones:  
    * GET orion entities with a limit of 50: This requests retrieves the entities
-     that the ORION Context Broker is storing with a limit of 50.
-
+     that the ORION Context Broker is storing with a limit of 50.  
      ~~~
-     
      curl --header "fiware-service:SmartSpot" 
      http://orionIP:orionPORT/v2/entities?limit=50
-
      ~~~
-
-   * GET orion entities as data model: This requests performs same as the
-     previous one, but the entities will be retrieved in the FIWARE datamodel
-     format.
-
+  * GET orion entities as data model: This requests performs same as the
+    previous one, but the entities will be retrieved in the FIWARE datamodel
+    format.
      ~~~
-     
      curl --header "fiware-service:SmartSpot" 
      http://orionIP:orionPORT/v2/entities?options=keyValues&limit=50
-
-     ~~~
-   
-   * GET types v2: Retrieves the types of the registered attributes in the
-     fiware-service entity put as header.
-
+     ~~~   
+  * GET types v2: Retrieves the types of the registered attributes in the
+    fiware-service entity put as header.
      ~~~
 
      curl --header "fiware-service:SmartSpot" 
@@ -975,7 +970,8 @@ From HOP Ubiquitous we are pretty interested in the extension of the services
 ready to be deployed. If you have experience with any other FIWARE component do
 not hesitate to contact us.
 
-### Maintainers 
+### Maintainers  
+
 <german@hopu.eu> (FIWARE config)  
 <joseluis@hopu.eu> (FIWARE config)   
 <felipe@hopu.eu> (FIWARE config)  
