@@ -937,7 +937,7 @@ some GET request to the ORION Context Broker, like the following ones:
   curl --header "fiware-service:SmartSpot" 
   http://orionIP:orionPORT/v2/types
   ~~~
- 
+
 If every previous step has been performed properly, the requested information
 will be retrieved and the ORION API will be ready to be used in any kind of
 application.
