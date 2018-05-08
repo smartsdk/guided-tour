@@ -274,9 +274,9 @@ documentation and code can be found [here](https://bit.ly/2KA6Kku).
 
 The repository can be easily cloned with the following command:
 
-    ~~~
-    $ git clone https://github.com/HOP-Ubiquitous/fiware-docker-infrastructure
-    ~~~
+~~~
+$ git clone https://github.com/HOP-Ubiquitous/fiware-docker-infrastructure
+~~~
 
 #### Ubuntu User
 
