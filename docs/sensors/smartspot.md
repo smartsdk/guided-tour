@@ -74,20 +74,20 @@ find further information in the following link:
    terminal, navigate to a directory where you want to place the IDF and use
    these commands:   
    
-      ~~~
+      ```
       $ git clone --recursive https://github.com/espressif/esp-idf.git
 
       $ git checkout tags/v3.0-rc1
 
       $ git submodule update –init
-      ~~~
+      ```
    
       Every time you restart your PC you will need to define the IDF\ \_PATH by
       using this command:
 
-      ~~~
+      ```
       $ export IDF\_PATH=&quot;C:/msys32/home/user-name/esp/esp-idf&quot;
-      ~~~ 
+      ``` 
 
       In case you want to set the path permanently, check out this link:
       <https://bit.ly/2KxiunW>
@@ -96,9 +96,9 @@ find further information in the following link:
       terminal in  another directory and clone our firmware by using the 
       following command:
 
-      ~~~
+      ```
       $ git clone –-https://github.com/HOP-Ubiquitous/SmartSpot\_SmartSDK\_Firmware.git
-      ~~~
+      ```
 
    4. Once you downloaded everything, open the ESP32 toolchain in order to 
       flash the  firmware. Go to the directory where you placed the 
@@ -128,7 +128,7 @@ find further information in the following link:
 
       Replace them by the bolded words of the following command:
       
-      ~~~
+      ```
       $ python 
       /c/Users/HOPU/GitHub/espidf/components/esptool_py/esptool/esptool.py
       --chip esp32
@@ -139,7 +139,7 @@ find further information in the following link:
       C:/Users/HOPU/GitHub/SmartSpot_SmartSDK_Firmware/smartspot-esp32.bin
       0x8000
       C:/Users/HOPU/GitHub/SmartSpot_SmartSDK_Firmware/partitions_singleapp.bin 
-      ~~~
+      ```
 
       Copy then the whole command and use it for flashsing the esp32.
              
@@ -274,9 +274,9 @@ documentation and code can be found [here](https://bit.ly/2KA6Kku).
 
 The repository can be easily cloned with the following command:
 
-~~~
+```
 $ git clone https://github.com/HOP-Ubiquitous/fiware-docker-infrastructure
-~~~
+```
 
 #### Ubuntu User
 
@@ -380,9 +380,9 @@ between devices and Orion.
 
 Within the IoT Agent folder execute:
 
-~~~
+```
 $ docker build -t "iotagent:latest" $(pwd)
-~~~
+```
 
 In order for the iotagent to receive its configuration, a config.js file must
 exist in the docker-compose directory (fiware-docker-infrastructure/docker-
@@ -426,7 +426,7 @@ gitHub](https://github.com/HOP-Ubiquitous/fiware-docker-infrastructure). In the
 readme file of that repository, a complete guide to deploy the docker
 infrastructure can be found.
 
-~~~
+```
 var config = {};
 
 config.lwm2m = {
@@ -818,7 +818,7 @@ config.ngsi = {
 };
 
 module.exports = config;
-~~~
+```
 
 ### Build architecture through docker-compose
 
@@ -827,7 +827,7 @@ port mapping between the host machine and the docker containers that are going
 to be deployed inside. Make sure that every port that is on the left side of the
 mapping is reachable. For example:
 
-~~~
+```
 ... 
 
 iotagent:
@@ -838,7 +838,7 @@ iotagent:
 
     - "5693:5683/udp"
 ...
-~~~
+```
 
 The 5693 port of the host machine (that is connected to the 5683 of the docker
 container) must be reachable from the network.
@@ -848,9 +848,9 @@ doesn’t allows you to execute those commands without root rights. In order to
 solve this issue you need to add your current user to the docker group. Make
 sure that the group exists and lather execute:
 
-~~~
+```
 $ sudo gpasswd -a $USER docker
-~~~
+```
 
 Now you are able to execute every docker command without root access:
 
@@ -860,28 +860,27 @@ launch the infrastructure.
 
 Launch infrastructure:
 
-~~~
+```
 $ docker-compose up
-~~~
+```
 
 Launch infrastructure in background:
 
-~~~
+```
 $ docker-compose up -d
-~~~
+```
 
 Stop infrastructure:
 
-~~~
+```
 $ docker-compose down
-
-~~~
+```
 
 Erase all stopped docker containers:
 
-~~~
+```
 $ docker rm $(docker ps -a -q)
-~~~
+```
 
 ### Initialize the device: Bootstrap
 
@@ -917,27 +916,27 @@ some GET request to the ORION Context Broker, like the following ones:
 * GET orion entities with a limit of 50: This requests retrieves the entities
   that the ORION Context Broker is storing with a limit of 50.  
 
-  ~~~
+  ```
   curl --header "fiware-service:SmartSpot" 
   http://orionIP:orionPORT/v2/entities?limit=50
-  ~~~
+  ```
 
 * GET orion entities as data model: This requests performs same as the
   previous one, but the entities will be retrieved in the FIWARE datamodel
   format.  
 
-  ~~~
+  ```
   curl --header "fiware-service:SmartSpot" 
   http://orionIP:orionPORT/v2/entities?options=keyValues&limit=50
-  ~~~   
+  ```   
 
 * GET types v2: Retrieves the types of the registered attributes in the
   fiware-service entity put as header.  
 
-  ~~~
+  ```
   curl --header "fiware-service:SmartSpot" 
   http://orionIP:orionPORT/v2/types
-  ~~~
+  ```
 
 If every previous step has been performed properly, the requested information
 will be retrieved and the ORION API will be ready to be used in any kind of
