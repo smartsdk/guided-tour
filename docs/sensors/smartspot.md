@@ -146,10 +146,21 @@ find further information in the following link:
 
       A message like the one above should appear if you flashed the firmware successfully.
 
-
-
 ### Expansion board integration
-   
+
+In case you don’t know the endpoint of the device you can use this command in
+order to use the log of the serial port (remember to use your port
+configuration):
+
+```
+$ miniterm.py COMX 115200
+```
+
+The endpoint will look similar to this:
+
+   ![endPoint](./images/endPoint.png)
+
+
    ![Board](./images/board.png)
 
 This is a detailed list of the expansion board components:  
@@ -192,13 +203,13 @@ the available gases, we selected the most important to quantify the air quality
 (gases required by the OMS), the most interesting depending of the use cases but
 also interesting gases to carry out corrections in measures:
 
-* NO2: Nitrogen dioxide
+* NO2: Nitrogen dioxide (instance 0)
 
-* SO2: Sulfur dioxide
+* O3: Ozone (instance 1)
 
-* O3: Ozone
+* CO: Carbon monoxide (instance 2)
 
-* CO: Carbon monoxide
+* SO2: Sulfur dioxide (instance 3)
 
    ![Sensors](./images/sensors.png)
 
