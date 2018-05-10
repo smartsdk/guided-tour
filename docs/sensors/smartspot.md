@@ -524,44 +524,44 @@ Bootstrap procedure.
 
 ### Test the LwM2M deployment
 
-When everything is running and the device is turned on, the communication
-between the device and the FIWARE services will start, we can test it sending
-some GET request to the ORION Context Broker, like the following ones:  
+* When everything is running and the device is turned on, the communication
+  between the device and the FIWARE services will start, we can test it sending
+  some GET request to the ORION Context Broker, like the following ones:  
 
-* GET orion entities with a limit of 50: This requests retrieves the entities
-  that the ORION Context Broker is storing with a limit of 50.  
+    * GET orion entities with a limit of 50: This requests retrieves the entit ies
+      that the ORION Context Broker is storing with a limit of 50.  
 
-  ```
-  curl --header "fiware-service:SmartSpot" 
-  http://orionIP:orionPORT/v2/entities?limit=50
-  ```
+      ```
+      curl --header "fiware-service:SmartSpot" 
+      http://orionIP:orionPORT/v2/entities?limit=50
+      ```
 
-* GET orion entities as data model: This requests performs same as the
-  previous one, but the entities will be retrieved in the FIWARE datamodel
-  format.  
+    * GET orion entities as data model: This requests performs same as the
+      previous one, but the entities will be retrieved in the FIWARE datamodel
+      format.  
 
-  ```
-  curl --header "fiware-service:SmartSpot" 
-  http://orionIP:orionPORT/v2/entities?options=keyValues&limit=50
-  ```   
+      ```
+      curl --header "fiware-service:SmartSpot" 
+      http://orionIP:orionPORT/v2/entities?options=keyValues&limit=50
+      ```   
 
-* GET types v2: Retrieves the types of the registered attributes in the
-  fiware-service entity put as header.  
+    * GET types v2: Retrieves the types of the registered attributes in the
+      fiware-service entity put as header.  
 
-  ```
-  curl --header "fiware-service:SmartSpot" 
-  http://orionIP:orionPORT/v2/types
-  ```
+      ```
+      curl --header "fiware-service:SmartSpot" 
+      http://orionIP:orionPORT/v2/types
+      ```
 
-If every previous step has been performed properly, the requested information
-will be retrieved and the ORION API will be ready to be used in any kind of
-application.
+* If every previous step has been performed properly, the requested information
+  will be retrieved and the ORION API will be ready to be used in any kind of
+  application.
 
-For more information, the following links can be visited:
+* For more information, the following links can be visited:
 
-* [FIWARE Orion Context Broker](https://bit.ly/2rhiZK5).
+    * [FIWARE Orion Context Broker](https://bit.ly/2rhiZK5).
    
-* [FIWARE-IOTAgent LwM2M](https://bit.ly/2whpiDp). 
+    * [FIWARE-IOTAgent LwM2M](https://bit.ly/2whpiDp). 
 
 ## Compatibility and versions
 
