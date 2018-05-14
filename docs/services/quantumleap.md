@@ -8,6 +8,18 @@ and [deployed the core services](../platform/deployservices/). It also
 assumes you have a data flow comming to your Orion Context Broker, as pointed
 out in [this section](contextbroker/).
 
+To simplify, we will store the endpoints of *QuantumLeap* and *Orion* in
+environment variables so that you can reuse the commands shown below with little
+adjustments.
+
+```
+$ export ORION_URL=http://192.168.99.100:1026
+$ export QL_URL=http://192.168.99.100:8668
+```
+
+Of course, in Windows, use `setx` instead of `export`, and `%VAR%` instead of
+`$VAR`.
+
 ## Store Air Quality data from Context Broker in QuantumLeap
 
 QuantumLeap tracks historical data of the entities when it receives NGSI
@@ -30,12 +42,11 @@ If you are using the [SmartSDK Postman Collection](https://github.com/smartsdk/s
 you have already a prepared call for this endpoint within the QuantumLeap folder
 (QL Subscribe).
 
-Otherwise, you can call the endpoint from the command line as follows
-(mind the IPs)...
+Otherwise, you can call the endpoint from the command line as follows.
 
 ```
 $ curl -X POST \
-  '${QL_URL}/v2/subscribe?orionUrl=${ORION_URL}/v2&quantumleapUrl=http://quantumleap:8668/v2' \
+  "${QL_URL}/v2/subscribe?orionUrl=${ORION_URL}/v2&quantumleapUrl=${QL_URL}/v2" \
   -H 'Accept: application/json'
 ```
 
@@ -70,7 +81,7 @@ e.g.: Historical values of `airqualityobserved_0`'s `precipitation`.
 
 ```
 $ curl -X GET \
-  '${QL_URL}/v2/entities/airqualityobserved_0/attrs/precipitation?type=AirQualityObserved' \
+  "${QL_URL}/v2/entities/airqualityobserved_0/attrs/precipitation?type=AirQualityObserved" \
   -H 'Accept: application/json'
 ```
 
@@ -79,7 +90,7 @@ attributes.
 
 ```
 $ curl -X GET \
-  '${QL_URL}/v2/entities/airqualityobserved_0?type=AirQualityObserved&attrs=NO2,CO&lastN=4' \
+  "${QL_URL}/v2/entities/airqualityobserved_0?type=AirQualityObserved&attrs=NO2,CO&lastN=4" \
   -H 'Accept: application/json'
 ```
 
@@ -106,8 +117,8 @@ gone through the previous steps (i.e, QuantumLeap is already processing data).
 Create one datasource per entity type you care about. Follow [these instructions](https://smartsdk.github.io/ngsi-timeseries-api/admin/grafana/).
 
 You are now ready to create your dashboards using the datasources!. If you want
-to have something to get started with, you can got to `${GRAFANA_URL}/dashboard/import`
-and import the [grafana/dashboard_example.json](https://github.com/smartsdk/guided-tour/blob/master/docs/services/grafana/dashboard_example.json).
+to have something to get started with, you can go to
+`${GRAFANA_URL}/dashboard/import` and import the [grafana/dashboard_example.json](https://github.com/smartsdk/guided-tour/blob/master/docs/services/grafana/dashboard_example.json).
 The result will look something like ...
 
 ![dashboard_example](grafana/dashboard_example.png "Dashboard Example")
