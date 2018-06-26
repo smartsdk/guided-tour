@@ -27,8 +27,6 @@ asked to MJ, the head of the IT department, to deploy in no time a solution to:
 * Notify citizens of pollution alerts;
 * Self-advertise to citizens the availability of the new service;
 
-[Scenario Diagram]
-
 FIWARE offers several functionalities that may help MJ, and SmartSDK
 wraps and extend them in a easy way to deploy them, saving her a lot of time!
 
@@ -37,11 +35,8 @@ Briefly MJ finds out that she can:
 * Use Cloudino or SmartSpot to measure air pollution;
 * Use ContextBroker to collect air pollution data;
 * Use QuantumLeap to store historical data and create dashboards;
-* Use xxx to notify citizens about pollution alerts;
 * Use SmartSpot to let all nearby Android users know about the air quality
   dashboard.
 
 What is also very nice, is that SmartSDK provides many recipes to deploy a basic
 platform offering all the above features!
-
-[Architecture Diagram]
