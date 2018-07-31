@@ -78,7 +78,7 @@ export GRAFANA_URL=http://192.168.99.100:3000
 
 インスタンス `${GRAFANA_URL}/login` にログインします。デフォルトの資格情報は admin/admin ですが、後で変更する必要があります。
 
-最初にデータソースを設定する必要があります。これは、前の手順 (つまり、QuantumLeap が既にデータを処理している場合) を経た後にのみ行うことができます。気になるエンティティタイプごとに1つのデータソースを作成します。以下の[手順](https://smartsdk.github.io/ngsi-timeseries-api/admin/grafana/)に従ってください。
+最初にデータソースを設定する必要があります。これは、前の手順 (つまり、QuantumLeap が既にデータを処理している場合) を経た後にのみ行うことができます。気になるエンティティタイプごとに1つのデータソースを作成します。以下の[手順](https://quantumleap.readthedocs.io/en/latest/admin/grafana/)に従ってください。
 
 これで、データソースを使用してダッシュボードを作成する準備が整いました。何かを始めたいのであれば${GRAFANA_URL}/dashboard/import、grafana / dashboard_example.jsonにアクセスしてインポートすることができます。結果は次のようになります...
 
