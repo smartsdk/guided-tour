@@ -1,12 +1,16 @@
 # Create your Docker Swarm Cluster
 
+We document here how you can create your Docker Swarm Cluster both in the
+FIWARE Lab and in your local development environment (see further below).
+
 ## Create your Docker Swarm Cluster in FIWARE Lab
 
 ### Register in FIWARE Lab
 
 Fist of all, you need to register at the site
-<https://account.lab.fiware.org/>.  The first time you have to click the
-“Sing up” button to be redirected to the Sing up form.
+[https://account.lab.fiware.org/](https://account.lab.fiware.org/).
+The first time you have to click the “Sing up” button to be redirected to the
+Sing up form.
 
 ![img](./images/01-create-account-fiware-lab-01.png
 "Home page account portal of FIWARE Lab")
@@ -35,8 +39,7 @@ and click on “Authenticate with Fiware”.
 ![img](./images/04-user-first-login-01-platform-auth-01.png
 "Home page of SmartSDK Platform Manager")
 
-You will be redirected to the Fiware Lab login page.  Insert your
-credentials.
+You will be redirected to the Fiware Lab login page. Insert your credentials.
 
 ![img](./images/04-user-first-login-02-platform-auth-02.png
 "Fiware Lab Login Page")
@@ -47,8 +50,7 @@ your public information in order to create and enable your account.
 ![img](./images/04-user-first-login-03-platform-auth-03.png
 "Fiware Lab Authorization Request")
 
-Then you will be redirected to the SmartSDK Platform as an authorized
-user.
+Then you will be redirected to the SmartSDK Platform as an authorized user.
 
 
 ### Setup Swarm on Fiware Lab
@@ -75,13 +77,14 @@ Then click the “Add Environment” button.
 "Add Enviroment")
 
 Fill the `Name` and the optional `Description` and ensure the
-Enviroment Template is set to `Swarm`.
+Enviroment Template is set to `Fiware Swarm`.
 
 ![img](./images/05-user-setup-swarm-03-new-env-details.png
 "Select Swarm as the Enviroment Template")
 
 You will be redirected to the environments list.  Select the newly
-created environment.
+created environment and switch to it! (it should now appear selected in the
+top-left corner).
 
 ![img](./images/05-user-setup-swarm-04-list-envs.png
 "Select newly created environment")
@@ -96,57 +99,100 @@ link.  Click the link and continue reading.
 
 ## Deploy your cluster
 
-In the add host procedure we can leverage the FIWARE Lab Rancher UI
-driver in order to automatically create hosts on the FIWARE Lab.
+Before deploying your cluster you will need to prepare a Security Group in your
+FIWARE Lab Cloud to make sure all required ports are open. You need to go to
+your [FIWARE Lab Cloud account](https://cloud.lab.fiware.org) in section
+"Access & Security".
 
-In the initial page select the “FIWARE Lab” driver.
+![img](./images/05-user-setup-swarm-06-add-host-ports.png
+"Add new hosts driver selection")
+
+For this demo, you need to have the following rules:
+
+| Protocol | Port  | Notes (just FYI)   |
+| -------- |:-----:| :----------------- |
+|   TCP    | 22    |  SSH               |
+|   TCP    | 80    |  HTTP              |
+|   TCP    | 443   |  HTTPS             |
+|   TCP    | 2376  |  Docker Swarm      |
+|   TCP    | 2377  |  Rancher           |
+|   TCP    | 2378  |  Rancher           |
+|   UDP    | 500   |  IPSec             |
+|   UDP    | 4500  |  IPSec             |
+|   TCP    | 1026  |  Orion CB          |
+|   TCP    | 8668  |  QuantumLeap       |
+|   TCP    | 3000  |  Grafana           |
+
+Now, back to the Platform Manager, in the "Add Host" procedure we can leverage
+on the FIWARE Lab Rancher UI driver in order to automatically create hosts on
+the FIWARE Lab.
+
+The alternative is for you to have the VMs created outside this platform
+manager (for example from your FIWARE LAB ui), get the same Docker version
+installed in those VMs and afterwards come here to add such hosts following the
+instructions in the "Custom" selection shown in the figure below.
 
 ![img](./images/05-user-setup-swarm-06-add-host-initial.png
 "Add new hosts driver selection")
 
-Then insert your FIWARE Cloud Lab credentials.  Please note that those
-credential are usually different from the ones used for the OAuth2
-procedure.  Those credentials are the ones used for the OpenStack
-authentication and are the same you would use on the [cloud lab](https://cloud.lab.fiware.org).
+However, in this guide we will use the recommended FIWARE Lab Option, because
+it is much easier (i.e, it creates the VMs for you with required pieces of
+software and configurations).
+
+In the initial page select the “FIWARE Lab” driver.
 
 ![img](./images/05-user-setup-swarm-07-add-host-fiware-lab.png
 "Insert FIWARE credentials")
+
+Then insert your FIWARE Cloud Lab credentials.  Please note that those
+credential are usually different from the ones used for the OAuth2
+procedure. Those credentials are the ones used for the OpenStack
+authentication and are the same you would use on the
+[cloud lab](https://cloud.lab.fiware.org). Note the username is actually the
+complete email address, not your "alias".
 
 ![img](./images/05-user-setup-swarm-08-add-host-fiware-details.png
 "Select hosts configuration")
 
 If you have more than one region enabled, you can choose where to
-create new hosts.
+create new hosts. Make sure you created the Security Group in the region you
+are about to select.
 
 ![img](./images/05-user-setup-swarm-09-add-host-select-region.png
 "Region selection")
 
 Then you need to provide some information regarding the host
-configuration you want to deploy.
+configuration you want to deploy. If you have resources for more than one VM,
+you can set the quantity accordingly and the VM names will be suffixed by
+instance number.
 
 ![img](./images/05-user-setup-swarm-10-add-host-details.png
 "Add hosts configuration details")
-
-**Note:** if your OpenStack installation uses a lower MTU than the
-de-facto standard of 1500 bytes, you need to configure the Docker
-Engine Option properly.
 
 The supported configuration requires the following settings:
 
 -   Image: `Ubuntu 16.04 LTS`
 -   Flavor: `m1.medium`
--   Security Groups: `Ports 22/TCP and 2376/TCP Open`
--   Storage Engine: `overlay2`
--   Docker Install Url: `https://releases.rancher.com/install-docker/17.12.sh`
+-   Security Groups: Select the one you created in the previous steps.
+-   Docker Install Url: `https://platform-manager-legacy.smartsdk.eu/install-docker/17.12-smartsdk.sh`
+-   Storage Driver: `overlay2`
 -   Docker Engine Options: key: `mtu`, value `1400`
+
+To set some of those you will need to expand the "ADVANCED OPTIONS". Your
+config should end up looking like the example below.
 
 ![img](./images/05-user-setup-swarm-11-add-host-mtu.png
 "Save hosts configuration")
 
-Now you can go to the end of the page and click the “Save” button.
+**Note:** If your OpenStack installation uses a lower MTU than the
+de-facto standard of 1500 bytes, you need to configure the Docker
+Engine Option properly. The example uses `1400` because it's the one required
+for `spain2` region.
 
-For a few minutes you will see a waiting page.  In the background the
-driver is starting and provisioning the newly created hosts.
+At the end of the page then click the “Save” button.
+
+For a few minutes you will see a waiting page. In the background the driver is
+starting and provisioning the newly created hosts.
 
 ![img](./images/05-user-setup-swarm-13-wait-for-host.png
 "Wait for hosts")
@@ -181,7 +227,7 @@ To deploy a stack from our templates, follow the “App Templates” link.
 ![img](./images/09-portainer-03-apps.png
 "Application listing")
 
-For the “Onion Context Broker” there are optional values that can be
+For the “Orion Context Broker” there are optional values that can be
 changed.
 
 ![img](./images/09-portainer-04-context-broker-config.png
