@@ -200,14 +200,14 @@ starting and provisioning the newly created hosts.
 
 ## Deploy a stack using the web interface
 
-After waiting for a while (usually a couple of minutes) your host
+After waiting for a while (usually a couple of minutes) your host(s)
 should be in the “active” state.
 
 ![img](./images/07-host-added-01-display.png
 "Host added")
 
-Follow the menu “Swarm - Portainer” menu you can start our customized
-portainer web interface.
+Follow the “Swarm -> Portainer” menu to start our customized portainer web
+interface.
 
 First be sure that in the settings the correct templates are loaded
 from the url:
@@ -216,47 +216,16 @@ from the url:
 ![img](./images/09-portainer-01-settings.png
 "Portainer Template Settings")
 
-Usually for SmartSDK recipes the required networks “frontend” and
-“backend” are to be create as in the following screenshot.
+Usually for SmartSDK recipes two overlay networks named `frontend` and
+`backend` need to be create as in the following screenshot.
 
 ![img](./images/09-portainer-02-network.png
 "Network Creation")
 
-To deploy a stack from our templates, follow the “App Templates” link.
-
-![img](./images/09-portainer-03-apps.png
-"Application listing")
-
-For the “Orion Context Broker” there are optional values that can be
-changed.
-
-![img](./images/09-portainer-04-context-broker-config.png
-"Orion Contex Brober Application settings")
-
-A link to the documentation is provided in order to clarify the exact
-meaning of the variables.
-
-![img](./images/09-portainer-05-context-broker-help.png
-"Link to the Original Context Broker Documentation")
-
-Complete the form with at least the “Stack Name”:
-
-![img](./images/09-portainer-06-context-broker-name.png
-"Complete the Orion Context Broker Form")
-
-Click on “Deploy the stack” and wait a bit for the starting of the stack.
-
-![img](./images/09-portainer-07-context-broker-success.png
-"Successful start of a deploy")
-
-Note that a configuration can be edited ad any time in order to change
-suitable parameters.
-
-![img](./images/09-portainer-09-context-broker-edit.png
-"Edit the configuration of a running deploy")
-
-This end our web graphical user interface tour.  The next section
-explores the command line oriented tools.
+This end our web graphical user interface tour. The next section explores the
+command line oriented tools in case you are interested in working from the CLI.
+Otherwise, you are ready to jump to the
+[Deploy your platform services](deployservices.md) section.
 
 
 ### Export configuration for Docker CLI
@@ -264,13 +233,14 @@ explores the command line oriented tools.
 Once the host is up you can export the settings.  The settings are
 useful if you want to manage the host using the `docker-machine` tool.
 You can also use the setting to connect to the host directly using
-`ssh`.
+`ssh`. Go to "Infrastructure -> Hosts" and click in "Machine Config" as shown
+below. Notice the IP address of the host whose config you are downloading.
 
 ![img](./images/07-host-added-02-machine-config-download.png
 "Add hosts configuration details")
 
-For the ssh connection see the following example.  Extract the
-settings.
+For the ssh connection see the following example. Extract the downloaded
+settings file.
 
     user@localhost tar xvzf h1.tar.gz
     f92db4d8-5b28-44d8-ae54-7fcb823e2e4a
@@ -291,7 +261,8 @@ settings.
     f92db4d8-5b28-44d8-ae54-7fcb823e2e4a/machines/h1/server-key.pem
     f92db4d8-5b28-44d8-ae54-7fcb823e2e4a/machines/h1/server.pem
 
-Use ssh to connect tho the host and show the running docker container.
+Use ssh to connect tho the host and show the running docker containers. Check
+the values of your folder name and IP of the host whose config you downloaded.
 
     user@localhost ssh -i f92db4d8-5b28-44d8-ae54-7fcb823e2e4a/machines/h1/id_rsa \
       -o IdentitiesOnly=yes ubuntu@130.206.126.99 sudo docker ps
@@ -336,8 +307,8 @@ Download them from the right bottom corner of the interface the
 ![img](./images/07-host-added-04-download-cli-rancher.png
 "Downloload rancher CLI")
 
-Download the account and environment API keys from the API tab.  Make
-sure you have selected the correct environment.
+Create and download the account and environment API keys from the API tab.  
+Make sure you have selected the correct environment.
 
 An overview of the API page.  Click on “Add Account API Key”.
 
@@ -354,12 +325,14 @@ Take note of the access and secrey keys in a secure place.
 ![img](./images/08-download-api-03-account-api-key.png
 "Account key tokens")
 
-Fill the name and description for the account API key
+Now the Environment API Key (may be hidden in "ADVANCED OPTIONS").
+Click "Add Environment API Key" and fill the name and description for the
+Environment API key.
 
 ![img](./images/08-download-api-04-env-api-key.png
 "New enviroment key creation")
 
-Take note of the access and secrey keys in a secure place.
+Take note of the access and secret keys in a secure place.
 
 ![img](./images/08-download-api-05-env-api-key.png
 "Environment key tokens")
@@ -428,7 +401,7 @@ $ miniswarm -h
         ms-worker1    -        virtualbox   Running   tcp://192.168.99.102:2376            v18.02.0-ce
 
 
-1. Initialise the swarm cluster:
+1. Initialise the swarm cluster (adjust to your manager IP):
 
         $ docker-machine ssh ms-manager0 "docker swarm init --advertise-addr <ms-manager0-ip>"
         Swarm initialized: current node <node ID> is now a manager.
@@ -467,19 +440,22 @@ $ miniswarm -h
 
 1. Launch a docker service:
 
-        $ docker service create --name helloworld alpine ping docker.com
+        $ docker service create --name helloworld --restart-condition=none alpine ping -c 4 docker.com
 
         sm3hi368lbsxye3n2rgdwv5xo
         overall progress: 1 out of 1 tasks
         1/1: running   [==================================================>]
         verify: Service converged
 
-1. Check the service logs
+1. Check the service logs (Quit with ctrl+C)
 
         $ docker service logs -f helloworld
-        helloworld.1.ogo00hqdmtm0@ms-worker1    | PING docker.com (54.209.25.207): 56 data bytes
+        helloworld.1.k5jtv8w7zyu2@ms-manager0    | PING docker.com (54.209.102.157): 56 data bytes
+        helloworld.1.k5jtv8w7zyu2@ms-manager0    |
+        helloworld.1.k5jtv8w7zyu2@ms-manager0    | --- docker.com ping statistics ---
+        helloworld.1.k5jtv8w7zyu2@ms-manager0    | 4 packets transmitted, 0 packets received, 100% packet loss
 
-1. Remove the services
+1. Remove the service (don't leave it pinging)
 
         $ docker service rm helloworld
         helloworld
