@@ -198,7 +198,7 @@ starting and provisioning the newly created hosts.
 "Wait for hosts")
 
 
-## Deploy a stack using the web interface
+## Preparing Portainer
 
 After waiting for a while (usually a couple of minutes) your host(s)
 should be in the “active” state.
@@ -216,8 +216,8 @@ from the url:
 ![img](./images/09-portainer-01-settings.png
 "Portainer Template Settings")
 
-Usually for SmartSDK recipes two overlay networks named `frontend` and
-`backend` need to be create as in the following screenshot.
+For SmartSDK recipes, two docker overlay networks named `frontend` and
+`backend` need to be create as in the following screenshot. Create them now.
 
 ![img](./images/09-portainer-02-network.png
 "Network Creation")
@@ -383,7 +383,7 @@ If you are interested to explore miniswarm usage:
 $ miniswarm -h
 ```
 
-#### Create step-by-step your cluster on Windows / Mac / Linux
+#### Create your cluster step-by-step on Windows / Mac / Linux
 
 1. Create 3 docker virtual machines:
 
