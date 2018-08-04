@@ -52,7 +52,6 @@ your public information in order to create and enable your account.
 
 Then you will be redirected to the SmartSDK Platform as an authorized user.
 
-
 ### Setup Swarm on Fiware Lab
 
 In the SmartSDK platform, depending on what is enabled by the
@@ -119,6 +118,9 @@ For this demo, you need to have the following rules:
 |   TCP    | 2378  |  Rancher           |
 |   UDP    | 500   |  IPSec             |
 |   UDP    | 4500  |  IPSec             |
+|   UDP    | 4789  |  Docker Swarm      |
+|   UDP    | 7946  |  Docker Swarm      |
+|   TCP    | 7946  |  Docker Swarm      |
 |   TCP    | 1026  |  Orion CB          |
 |   TCP    | 8668  |  QuantumLeap       |
 |   TCP    | 3000  |  Grafana           |
@@ -197,7 +199,6 @@ starting and provisioning the newly created hosts.
 ![img](./images/05-user-setup-swarm-13-wait-for-host.png
 "Wait for hosts")
 
-
 ## Preparing Portainer
 
 After waiting for a while (usually a couple of minutes) your host(s)
@@ -217,16 +218,17 @@ from the url:
 "Portainer Template Settings")
 
 For SmartSDK recipes, two docker overlay networks named `frontend` and
-`backend` need to be create as in the following screenshot. Create them now.
+`backend` need to be create as in the following screenshot. Pay close attention
+to include the `com.docker.network.driver.mtu` option with the value of `1400`
+if your network requires to reduce the MTU, as is the case of `Spain2` FIWARE
+Lab node.
 
-![img](./images/09-portainer-02-network.png
-"Network Creation")
+![img](./images/09-portainer-02-network.png "Network Creation")
 
-This end our web graphical user interface tour. The next section explores the
-command line oriented tools in case you are interested in working from the CLI.
+This ends our web graphical user interface tour. The next section explores the
+command-line-oriented tools in case you are interested in working from the CLI.
 Otherwise, you are ready to jump to the
 [Deploy your platform services](deployservices.md) section.
-
 
 ### Export configuration for Docker CLI
 
