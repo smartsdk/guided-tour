@@ -114,7 +114,7 @@ credentials are `admin`/`admin`, but remember to change them afterwards.
 
 You need to first configure a datasource, which can only be done once you have
 gone through the previous steps (i.e, QuantumLeap is already processing data).
-Create one datasource per entity type you care about. Follow [these instructions](https://smartsdk.github.io/ngsi-timeseries-api/admin/grafana/).
+Create one datasource per entity type you care about. Follow [these instructions](https://quantumleap.readthedocs.io/en/latest/admin/grafana/).
 
 You are now ready to create your dashboards using the datasources!. If you want
 to have something to get started with, you can go to

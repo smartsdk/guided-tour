@@ -28,7 +28,7 @@ asked to MJ, the head of the IT department, to deploy in no time a solution to:
 * Self-advertise to citizens the availability of the new service;
 
 FIWARE offers several functionalities that may help MJ, and SmartSDK
-wraps and extend them in a easy way to deploy them, saving her a lot of time!
+wraps and extend them in an easy way to deploy them, saving her a lot of time!
 
 Briefly MJ finds out that she can:
 
