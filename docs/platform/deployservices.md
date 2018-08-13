@@ -220,7 +220,7 @@ orion_orion.2.yu0h9clplwms@ms-worker0    | time=Thursday 26 Apr 08:05:32 2018.33
 
 If you can see messages like those (Orion Running and connected to database),
 your **Orion** is ready! However, if you still have issues or want to understand
- how this works in more detail, please refer to [this section](https://smartsdk.github.io/smartsdk-recipes/data-management/context-broker/ha/readme/)
+ how this works in more detail, please refer to [this section](https://smartsdk-recipes.readthedocs.io/en/latest/data-management/context-broker/ha/readme/)
  of the SmartSDK recipes documentation.
 
 ### Using Portainer
@@ -448,7 +448,7 @@ logs like those (Agent successfully connected to MongoDB), your **IoT Agent**
 is probably ready! You will use it later on in this guide.
 
 If you still have issues or want to understand how this works in more detail,
-please refer to [this section](https://smartsdk.github.io/smartsdk-recipes/iot-services/readme/)
+please refer to [this section](https://smartsdk-recipes.readthedocs.io/en/latest/iot-services/readme/)
  of the SmartSDK recipes documentation.
 
 ### Using Portainer
@@ -476,7 +476,7 @@ More info about this recipe can be found in the [IoT Agents recipes documentatio
 This section was just a quick overview of the essentials to get you quickly up
 and running. If you want to know more, you can find more info about the
 deployment of FIWARE Services using Docker in the [smartsdk recipes repository](https://github.com/smartsdk/smartsdk-recipes).
-The documentation for that repo is published [here](https://smartsdk.github.io/smartsdk-recipes/).
+The documentation for that repo is published [here](https://smartsdk-recipes.readthedocs.io/en/latest/).
 
 Next sections of this guide will focus on how to use the services you have just
 deployed and connected.

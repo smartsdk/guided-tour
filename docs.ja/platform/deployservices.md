@@ -132,7 +132,7 @@ orion_orion.2.yu0h9clplwms@ms-worker0    | time=Thursday 26 Apr 08:05:32 2018.32
 orion_orion.2.yu0h9clplwms@ms-worker0    | time=Thursday 26 Apr 08:05:32 2018.331Z | lvl=INFO | corr=N/A | trans=N/A | from=N/A | srv=N/A | subsrv=N/A | comp=Orion | op=mongoConnectionPool.cpp[217]:mongoConnect | msg=Successful connection to database
 ```
 
-"Orion Running" と "connected to database" のようなメッセージが見える場合は、**Orion** の準備が完了です！ただし、問題がまだ残っている場合、またはこの方法の詳細を理解したい場合 は、SmartSDK レシピのドキュメントの[このセクション](https://smartsdk.github.io/smartsdk-recipes/data-management/context-broker/ha/readme/)を参照してください。
+"Orion Running" と "connected to database" のようなメッセージが見える場合は、**Orion** の準備が完了です！ただし、問題がまだ残っている場合、またはこの方法の詳細を理解したい場合 は、SmartSDK レシピのドキュメントの[このセクション](https://smartsdk-recipes.readthedocs.io/en/latest/data-management/context-broker/ha/readme/)を参照してください。
 
 ### Portainer の使用
 
@@ -253,7 +253,7 @@ iota-ul_iotagent.1.v5ivpp3c3g58@ms-manager0    |
 
 "Agent successfully connected to MongoDB" のようなログを見つけることができれば、**IoT Agent** は準備が整いました！
 
-問題がまだ残っている場合、またはこの方法の詳細を理解したい場合は、SmartSDKレシピのドキュメントの[このセクション](https://smartsdk.github.io/smartsdk-recipes/iot-services/readme/)を参照してください。
+問題がまだ残っている場合、またはこの方法の詳細を理解したい場合は、SmartSDKレシピのドキュメントの[このセクション](https://smartsdk-recipes.readthedocs.io/en/latest/iot-services/readme/)を参照してください。
 
 ### Portainer の使用
 
@@ -261,4 +261,4 @@ iota-ul_iotagent.1.v5ivpp3c3g58@ms-manager0    |
 
 ## さらに探求
 
-このセクションでは、すばやく動かすための基本事項の概要を説明しました。詳細を知りたい場合は、[smartsdk recipes repository](https://github.com/smartsdk/smartsdk-recipes) レシピのリポジトリに Docker を使用した、FIWARE Services のデプロイメントに関する詳細を見つけることができます。そのリポジトリのドキュメントは[ここ](https://smartsdk.github.io/smartsdk-recipes/)に掲載されています。
+このセクションでは、すばやく動かすための基本事項の概要を説明しました。詳細を知りたい場合は、[smartsdk recipes repository](https://github.com/smartsdk/smartsdk-recipes) レシピのリポジトリに Docker を使用した、FIWARE Services のデプロイメントに関する詳細を見つけることができます。そのリポジトリのドキュメントは[ここ](https://smartsdk-recipes.readthedocs.io/en/latest/)に掲載されています。

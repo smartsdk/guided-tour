@@ -95,7 +95,7 @@ $ curl -X GET \
 ```
 
 You can explore QuantumLeap's API at `${QL_URL}/v2/ui` or directly into the
-[swagger specification](https://github.com/smartsdk/ngsi-timeseries-api/blob/master/specification/quantumleap.yml).
+[swagger specification](https://app.swaggerhub.com/apis/smartsdk/ngsi-tsdb/0.1).
 
 ## Creating nice dashboards using QuantumLeap and Grafana
 
