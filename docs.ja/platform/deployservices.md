@@ -4,9 +4,18 @@
 
 ### クラスタへのアクセスの確認
 
-このセクションでは、コア・サービスのデプロイについて説明します。このガイドの[このセクション](swarmcluster/)で指示されているように、インフラストラクチャを既に展開していることを前提としています。また、[docker swarm clusters](https://docs.docker.com/engine/swarm/) に精通していることを前提としています。
+このセクションでは、コア・サービスのデプロイについて説明します。このガイドの
+[このセクション](swarmcluster/)で指示されているように、インフラストラクチャを
+既に展開していることを前提としています。また、[docker swarm clusters](https://docs.docker.com/engine/swarm/)
+に精通していることを前提としています。
 
-この時点で、[Docker クライアントをインストールし](https://docs.docker.com/install/)、サービスをデプロイする Docker Engine に接続する必要があります。これは何を意味するのでしょうか？これは、あなたがローカルで docker コマンドを実行できることを意味し、それらはあなたの Docker Swarm クラスタとやりとりします。たとえば、[miniswarm](https://github.com/aelsabbahy/miniswarm)を使用して、swarm をローカルで作成した場合は、`eval $(docker-machine env ms-manager0)` コマンドを実行した後で、コマンドラインに戻ります。
+この時点で、[Docker クライアントをインストールし](https://docs.docker.com/install/)、
+サービスをデプロイする Docker Engine に接続する必要があります。これは何を意味
+するのでしょうか？これは、あなたがローカルで docker コマンドを実行できることを
+意味し、それらはあなたの Docker Swarm クラスタとやりとりします。たとえば、
+[miniswarm](https://github.com/aelsabbahy/miniswarm)を使用して、swarm を
+ローカルで作成した場合は、`eval $(docker-machine env ms-manager0)` コマンドを
+実行した後で、コマンドラインに戻ります。
 
 簡単なテストをしましょう。次のコマンドを実行してください...
 
@@ -14,7 +23,9 @@
 $ docker node ls
 ```
 
-上記のコマンドでクラスタを構成した後に、期待していたクラスタ・ノードの一覧が返されない場合は、何かが間違っているため、[このセクション](swarmcluster/)に戻ってください。miniSwarm の場合、出力は次のようになります...
+上記のコマンドでクラスタを構成した後に、期待していたクラスタ・ノードの一覧が
+返されない場合は、何かが間違っているため、[このセクション](swarmcluster/)に
+戻ってください。miniSwarm の場合、出力は次のようになります...
 
 ```
 $ docker node ls
@@ -37,7 +48,12 @@ $ cd smartsdk-recipes/recipes/
 
 ### ネットワークの確認
 
-環境を再確認する最後のステップは適切に設定されており、サービスが使用される Docker ネットワークがあることを確認しています。このガイドでは、我々は `backend` と  `frontend` と呼ばれる2つのオーバーレイネットワークを使用することにしました。`tools/create_networks.sh` スクリプトを実行することで作成できます。Windows の場合は、そのファイルに表示されている Docker コマンドを実行するだけです。このように、Docker ネットワークをリストすると、次のようなものが表示されます...
+環境を再確認する最後のステップは適切に設定されており、サービスが使用される
+Docker ネットワークがあることを確認しています。このガイドでは、我々は `backend`
+と  `frontend` と呼ばれる2つのオーバーレイネットワークを使用することにしました。
+`tools/create_networks.sh` スクリプトを実行することで作成できます。Windows の
+場合は、そのファイルに表示されている Docker コマンドを実行するだけです。
+このように、Docker ネットワークをリストすると、次のようなものが表示されます...
 
 ```
 $ docker network ls
@@ -51,7 +67,8 @@ xv2z53zsiztb        ingress             overlay             swarm
 5e4bb9a11160        none                null                local
 ```
 
-最後に、SmartSDK アーキテクチャ全体を構成する主要なサービスのデプロイを開始する準備が整いました。
+最後に、SmartSDK アーキテクチャ全体を構成する主要なサービスのデプロイを開始する
+準備が整いました。
 
 ### 高可用性 MongoDB レプリカセットの導入
 
@@ -83,7 +100,9 @@ $ docker stack deploy -c docker-compose.yml %STACK_NAME%
 $ cd ../../
 ```
 
-イメージがノードにプルされるまで、最初は時間がかかります。レプリカセットが適切に確立されていることを確認するには、レプリカセット・コントローラのログの出力を確認してください。例えば以下を参照してください。
+イメージがノードにプルされるまで、最初は時間がかかります。レプリカセットが適切に
+確立されていることを確認するには、レプリカセット・コントローラのログの出力を確認
+してください。例えば以下を参照してください。
 
 ```
 $ docker service logs ${STACK_NAME}_controller
@@ -101,7 +120,9 @@ mongo-rs_controller.1.ooelrlkfujnn@ms-manager0    | INFO:__main__:Primary is: 10
 
 注 : Windowsでは `%STACK_NAME%_controller` を代わりに使用します。
 
-このようなものがあれば、**MongoDB Replicaset** は準備が整いました！問題がまだ残っている場合、またはこの方法の詳細を理解したい場合 は、SmartSDK レシピのドキュメントのこの[セクション](https://github.com/smartsdk/smartsdk-recipes/tree/master/recipes/utils/mongo-replicaset)を参照してください。
+このようなものがあれば、**MongoDB Replicaset** は準備が整いました！問題がまだ
+残っている場合、またはこの方法の詳細を理解したい場合 は、SmartSDK レシピの
+ドキュメントのこの[セクション](https://github.com/smartsdk/smartsdk-recipes/tree/master/recipes/utils/mongo-replicaset)を参照してください。
 
 ### Portainer の使用
 
@@ -111,7 +132,9 @@ mongo-rs_controller.1.ooelrlkfujnn@ms-manager0    | INFO:__main__:Primary is: 10
 
 ### コマンドラインから
 
-Orion は MongoDB データベースが必要です。このガイドに従っている場合は、既に1つのレプリカセットを実行しておく必要があります。設定ファイルのデフォルト設定は、それらの mongo インスタンスを使用することを前提としています。
+Orion は MongoDB データベースが必要です。このガイドに従っている場合は、既に
+1つのレプリカセットを実行しておく必要があります。設定ファイルのデフォルト
+設定は、それらの mongo インスタンスを使用することを前提としています。
 
 Orion を展開するには、以下のコマンドを実行してください...
 
@@ -124,7 +147,10 @@ $ cd ../../../
 
 注 : Windows では、単に `settings.bat` を代わりに実行します。
 
-イメージがノードにプルされるまで、最初は時間がかかります。`docker service ls` コマンドを使用すると、すべてのレプリカが起動しているかどうかを確認できます。数分後、すべてのレプリカが起動しているときに、そのログをチェックすることによって、Orionが正常に展開されたことを確認できます...
+イメージがノードにプルされるまで、最初は時間がかかります。`docker service ls`
+コマンドを使用すると、すべてのレプリカが起動しているかどうかを確認できます。
+数分後、すべてのレプリカが起動しているときに、そのログをチェックすることに
+よって、Orionが正常に展開されたことを確認できます...
 
 ```
 $ docker service logs orion_orion
@@ -132,7 +158,10 @@ orion_orion.2.yu0h9clplwms@ms-worker0    | time=Thursday 26 Apr 08:05:32 2018.32
 orion_orion.2.yu0h9clplwms@ms-worker0    | time=Thursday 26 Apr 08:05:32 2018.331Z | lvl=INFO | corr=N/A | trans=N/A | from=N/A | srv=N/A | subsrv=N/A | comp=Orion | op=mongoConnectionPool.cpp[217]:mongoConnect | msg=Successful connection to database
 ```
 
-"Orion Running" と "connected to database" のようなメッセージが見える場合は、**Orion** の準備が完了です！ただし、問題がまだ残っている場合、またはこの方法の詳細を理解したい場合 は、SmartSDK レシピのドキュメントの[このセクション](https://smartsdk.github.io/smartsdk-recipes/data-management/context-broker/ha/readme/)を参照してください。
+"Orion Running" と "connected to database" のようなメッセージが見える場合は、
+**Orion** の準備が完了です！ただし、問題がまだ残っている場合、またはこの方法の
+詳細を理解したい場合 は、SmartSDK レシピのドキュメントの[このセクション](https://smartsdk.github.io/smartsdk-recipes/data-management/context-broker/ha/readme/)
+を参照してください。
 
 ### Portainer の使用
 
@@ -140,9 +169,13 @@ orion_orion.2.yu0h9clplwms@ms-worker0    | time=Thursday 26 Apr 08:05:32 2018.33
 
 ## 高可用性 QuantumLeap を導入
 
-Quantumleap は CrateDB クラスタの上に構築されています。構成の一部の値は、Swarm クラスタ内にあるノードの数によって異なります。
+Quantumleap は CrateDB クラスタの上に構築されています。構成の一部の値は、
+Swarm クラスタ内にあるノードの数によって異なります。
 
-デフォルト値は 1ノード・クラスタをデプロイし、新しいユーザのデフォルトとして機能することを確認します。ただし、クラスタにノードが増えていることがわかっている場合は、ドキュメントに従ってこれらの値を調整できます。たとえば、3ノードクラスタでは、これらの値をデフォルト `settings.env` から更新できます :
+デフォルト値は 1ノード・クラスタをデプロイし、新しいユーザのデフォルトとして
+機能することを確認します。ただし、クラスタにノードが増えていることがわかって
+いる場合は、ドキュメントに従ってこれらの値を調整できます。たとえば、3ノード
+クラスタでは、これらの値をデフォルト `settings.env` から更新できます :
 
 ```
 export EXPECTED_NODES=3
@@ -152,9 +185,12 @@ export MINIMUM_MASTER_NODES=2
 
 ### 前提条件
 
-Crate は mmap のカウントに 最低 262,144 を必要とします。これはデフォルトで Swarm ノードでは低くなります。したがって、このサービスを起動する前に、各 Swarm ノードで次のコマンドを実行する必要があります。
+Crate は mmap のカウントに 最低 262,144 を必要とします。これはデフォルトで
+Swarm ノードでは低くなります。したがって、このサービスを起動する前に、
+各 Swarm ノードで次のコマンドを実行する必要があります。
 
-あなたが miniSwarm の例に従ったと仮定すると、あなたは次のコマンドを実行できます...
+あなたが miniSwarm の例に従ったと仮定すると、あなたは次のコマンドを実行で
+きます...
 
 ```
 $ docker-machine ssh ms-manager0
@@ -163,7 +199,8 @@ docker@ms-manager0:~$ sudo sysctl -w vm.max_map_count=262144
 
 クラスタのすべてのノードに対してその設定を繰り返すことを忘れないでください。
 
-詳細 は、crate docs の対応する[設定ドキュメント](https://crate.io/docs/crate/reference/en/latest/config/system.html?highlight=max_map_count)、または、elasticsearch docs の[このページ](https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html)を参照してください。
+詳細 は、crate docs の対応する[設定ドキュメント](https://crate.io/docs/crate/reference/en/latest/config/system.html?highlight=max_map_count)、
+または、elasticsearch docs の[このページ](https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html)を参照してください。
 
 ### コマンドラインから
 
@@ -177,7 +214,8 @@ $ docker stack deploy -c docker-compose-addons.yml grafana
 $ cd ../../
 ```
 
-初回は、以前のサービスよりもさらに時間がかかります。 すべてのレプリカが起動するまで待ちます。
+初回は、以前のサービスよりもさらに時間がかかります。 すべてのレプリカが
+起動するまで待ちます。
 
 ```
 $ docker service ls
@@ -191,9 +229,12 @@ zn77x57xg3mc        quantumleap_quantumleap   replicated          2/2           
 n97db06olz7n        quantumleap_traefik       global              1/1                 traefik:1.3.5-alpine               *:80->80/tcp, *:443->443/tcp, *:4200->4200/tcp, *:4300->4300/tcp, *:8080->8080/tcp
 ```
 
-設定で構成されている HOST ヘッダを使用して、クラスタがデプロイされているエンド・ポイントに curl を実行して、Crate クラスタのステータスを確認できます。
+設定で構成されている HOST ヘッダを使用して、クラスタがデプロイされている
+エンド・ポイントに curl を実行して、Crate クラスタのステータスを確認
+できます。
 
-注 : この同じ端末で `settings.env` を呼び出さなければならないことを思い出してください
+注 : この同じ端末で `settings.env` を呼び出さなければならないことを
+思い出してください
 
 ```
 $ IP_OF_MY_CLUSTER=$(docker-machine ip ms-manager0)
@@ -214,7 +255,8 @@ $ curl --header "Host: ${CRATE_HOST}.${CLUSTER_DOMAIN}" $IP_OF_MY_CLUSTER
 }
 ```
 
-次のコマンドを実行することによって Quantumleap が動作していることを確認することができます...
+次のコマンドを実行することによって Quantumleap が動作していることを確認する
+ことができます...
 
 ```
 $ docker service logs quantumleap_quantumleap
@@ -223,7 +265,8 @@ quantumleap_quantumleap.1.tn4mcwvcj9ej@ms-worker1    |  * Running on http://0.0.
 
 出力が似ていれば、**Quantumleap** の準備は完了です！
 
-問題がまだ残っている場合、またはこの方法の詳細を理解したい場合は、SmartSDK レシピのドキュメントの[このセクション](https://github.com/smartsdk/smartsdk-recipes/tree/master/recipes/data-management/quantumleap)を参照してください。
+問題がまだ残っている場合、またはこの方法の詳細を理解したい場合は、SmartSDK
+レシピのドキュメントの[このセクション](https://github.com/smartsdk/smartsdk-recipes/tree/master/recipes/data-management/quantumleap)を参照してください。
 
 ### Portainer の使用
 
@@ -233,7 +276,9 @@ quantumleap_quantumleap.1.tn4mcwvcj9ej@ms-worker1    |  * Running on http://0.0.
 
 ### コマンドラインから
 
-あなたが選んだ IoT Agent のフォルダに行きましょう。たとえば、`ul` です。レシピのデフォルト値は、このガイドの後にデプロイされた MongoDB および Orion Context Broker を使用するのに十分です。
+あなたが選んだ IoT Agent のフォルダに行きましょう。たとえば、`ul` です。
+レシピのデフォルト値は、このガイドの後にデプロイされた MongoDB および
+Orion Context Broker を使用するのに十分です。
 
 ```
 $ cd iot-services/iotagent-ul
@@ -251,9 +296,11 @@ iota-ul_iotagent.1.v5ivpp3c3g58@ms-manager0    | time=2018-04-26T11:59:10.030Z |
 iota-ul_iotagent.1.v5ivpp3c3g58@ms-manager0    |
 ```
 
-"Agent successfully connected to MongoDB" のようなログを見つけることができれば、**IoT Agent** は準備が整いました！
+"Agent successfully connected to MongoDB" のようなログを見つけることが
+できれば、**IoT Agent** は準備が整いました！
 
-問題がまだ残っている場合、またはこの方法の詳細を理解したい場合は、SmartSDKレシピのドキュメントの[このセクション](https://smartsdk.github.io/smartsdk-recipes/iot-services/readme/)を参照してください。
+問題がまだ残っている場合、またはこの方法の詳細を理解したい場合は、
+SmartSDKレシピのドキュメントの[このセクション](https://smartsdk.github.io/smartsdk-recipes/iot-services/readme/)を参照してください。
 
 ### Portainer の使用
 
@@ -261,4 +308,8 @@ iota-ul_iotagent.1.v5ivpp3c3g58@ms-manager0    |
 
 ## さらに探求
 
-このセクションでは、すばやく動かすための基本事項の概要を説明しました。詳細を知りたい場合は、[smartsdk recipes repository](https://github.com/smartsdk/smartsdk-recipes) レシピのリポジトリに Docker を使用した、FIWARE Services のデプロイメントに関する詳細を見つけることができます。そのリポジトリのドキュメントは[ここ](https://smartsdk.github.io/smartsdk-recipes/)に掲載されています。
+このセクションでは、すばやく動かすための基本事項の概要を説明しました。
+詳細を知りたい場合は、[smartsdk recipes repository](https://github.com/smartsdk/smartsdk-recipes)
+レシピのリポジトリに Docker を使用した、FIWARE Services のデプロイメントに関する
+詳細を見つけることができます。そのリポジトリのドキュメントは[ここ](https://smartsdk.github.io/smartsdk-recipes/)
+に掲載されています。
