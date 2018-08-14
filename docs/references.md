@@ -3,4 +3,4 @@
 * [miniswarm](https://github.com/aelsabbahy/miniswarm)
 * [docker](https://docs.docker.com)
 * [cloudino](http://cloudino.io)
-* [quantumleap](https://smartsdk.github.io/ngsi-timeseries-api/)
+* [quantumleap](https://quantumleap.readthedocs.io)

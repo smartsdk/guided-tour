@@ -1,12 +1,16 @@
 # Create your Docker Swarm Cluster
 
+We document here how you can create your Docker Swarm Cluster both in the
+FIWARE Lab and in your local development environment (see further below).
+
 ## Create your Docker Swarm Cluster in FIWARE Lab
 
 ### Register in FIWARE Lab
 
 Fist of all, you need to register at the site
-<https://account.lab.fiware.org/>.  The first time you have to click the
-“Sing up” button to be redirected to the Sing up form.
+[https://account.lab.fiware.org/](https://account.lab.fiware.org/).
+The first time you have to click the “Sing up” button to be redirected to the
+Sing up form.
 
 ![img](./images/01-create-account-fiware-lab-01.png
 "Home page account portal of FIWARE Lab")
@@ -35,8 +39,7 @@ and click on “Authenticate with Fiware”.
 ![img](./images/04-user-first-login-01-platform-auth-01.png
 "Home page of SmartSDK Platform Manager")
 
-You will be redirected to the Fiware Lab login page.  Insert your
-credentials.
+You will be redirected to the Fiware Lab login page. Insert your credentials.
 
 ![img](./images/04-user-first-login-02-platform-auth-02.png
 "Fiware Lab Login Page")
@@ -47,9 +50,7 @@ your public information in order to create and enable your account.
 ![img](./images/04-user-first-login-03-platform-auth-03.png
 "Fiware Lab Authorization Request")
 
-Then you will be redirected to the SmartSDK Platform as an authorized
-user.
-
+Then you will be redirected to the SmartSDK Platform as an authorized user.
 
 ### Setup Swarm on Fiware Lab
 
@@ -75,13 +76,14 @@ Then click the “Add Environment” button.
 "Add Enviroment")
 
 Fill the `Name` and the optional `Description` and ensure the
-Enviroment Template is set to `Swarm`.
+Enviroment Template is set to `Fiware Swarm`.
 
 ![img](./images/05-user-setup-swarm-03-new-env-details.png
 "Select Swarm as the Enviroment Template")
 
 You will be redirected to the environments list.  Select the newly
-created environment.
+created environment and switch to it! (it should now appear selected in the
+top-left corner).
 
 ![img](./images/05-user-setup-swarm-04-list-envs.png
 "Select newly created environment")
@@ -96,72 +98,117 @@ link.  Click the link and continue reading.
 
 ## Deploy your cluster
 
-In the add host procedure we can leverage the FIWARE Lab Rancher UI
-driver in order to automatically create hosts on the FIWARE Lab.
+Before deploying your cluster you will need to prepare a Security Group in your
+FIWARE Lab Cloud to make sure all required ports are open. You need to go to
+your [FIWARE Lab Cloud account](https://cloud.lab.fiware.org) in section
+"Access & Security".
 
-In the initial page select the “FIWARE Lab” driver.
+![img](./images/05-user-setup-swarm-06-add-host-ports.png
+"Add new hosts driver selection")
+
+For this demo, you need to have the following rules:
+
+| Protocol | Port  | Notes (just FYI)   |
+| -------- |:-----:| :----------------- |
+|   TCP    | 22    |  SSH               |
+|   TCP    | 80    |  HTTP              |
+|   TCP    | 443   |  HTTPS             |
+|   TCP    | 2376  |  Docker Swarm      |
+|   TCP    | 2377  |  Rancher           |
+|   TCP    | 2378  |  Rancher           |
+|   UDP    | 500   |  IPSec             |
+|   UDP    | 4500  |  IPSec             |
+|   UDP    | 4789  |  Docker Swarm      |
+|   UDP    | 7946  |  Docker Swarm      |
+|   TCP    | 7946  |  Docker Swarm      |
+|   TCP    | 1026  |  Orion CB          |
+|   TCP    | 8668  |  QuantumLeap       |
+|   TCP    | 3000  |  Grafana           |
+
+Now, back to the Platform Manager, in the "Add Host" procedure we can leverage
+on the FIWARE Lab Rancher UI driver in order to automatically create hosts on
+the FIWARE Lab.
+
+The alternative is for you to have the VMs created outside this platform
+manager (for example from your FIWARE LAB ui), get the same Docker version
+installed in those VMs and afterwards come here to add such hosts following the
+instructions in the "Custom" selection shown in the figure below.
 
 ![img](./images/05-user-setup-swarm-06-add-host-initial.png
 "Add new hosts driver selection")
 
-Then insert your FIWARE Cloud Lab credentials.  Please note that those
-credential are usually different from the ones used for the OAuth2
-procedure.  Those credentials are the ones used for the OpenStack
-authentication and are the same you would use on the [cloud lab](https://cloud.lab.fiware.org).
+However, in this guide we will use the recommended FIWARE Lab Option, because
+it is much easier (i.e, it creates the VMs for you with required pieces of
+software and configurations).
+
+In the initial page select the “FIWARE Lab” driver.
 
 ![img](./images/05-user-setup-swarm-07-add-host-fiware-lab.png
 "Insert FIWARE credentials")
+
+Then insert your FIWARE Cloud Lab credentials.  Please note that those
+credential are usually different from the ones used for the OAuth2
+procedure. Those credentials are the ones used for the OpenStack
+authentication and are the same you would use on the
+[cloud lab](https://cloud.lab.fiware.org). Note the username is actually the
+complete email address, not your "alias".
 
 ![img](./images/05-user-setup-swarm-08-add-host-fiware-details.png
 "Select hosts configuration")
 
 If you have more than one region enabled, you can choose where to
-create new hosts.
+create new hosts. Make sure you created the Security Group in the region you
+are about to select.
 
 ![img](./images/05-user-setup-swarm-09-add-host-select-region.png
 "Region selection")
 
 Then you need to provide some information regarding the host
-configuration you want to deploy.
+configuration you want to deploy. If you have resources for more than one VM,
+you can set the quantity accordingly and the VM names will be suffixed by
+instance number.
 
 ![img](./images/05-user-setup-swarm-10-add-host-details.png
 "Add hosts configuration details")
-
-**Note:** if your OpenStack installation uses a lower MTU than the
-de-facto standard of 1500 bytes, you need to configure the Docker
-Engine Option properly.
 
 The supported configuration requires the following settings:
 
 -   Image: `Ubuntu 16.04 LTS`
 -   Flavor: `m1.medium`
--   Security Groups: `Ports 22/TCP and 2376/TCP Open`
--   Storage Engine: `overlay2`
--   Docker Install Url: `https://releases.rancher.com/install-docker/17.12.sh`
+-   Security Groups: Select the one you created in the previous steps.
+-   Docker Install Url: `https://platform-manager-legacy.smartsdk.eu/install-docker/17.12-smartsdk.sh`
+-   Storage Driver: `overlay2`
 -   Docker Engine Options: key: `mtu`, value `1400`
+
+To set some of those you will need to expand the "ADVANCED OPTIONS". Your
+config should end up looking like the example below.
 
 ![img](./images/05-user-setup-swarm-11-add-host-mtu.png
 "Save hosts configuration")
 
-Now you can go to the end of the page and click the “Save” button.
+**Note:** If your OpenStack installation uses a lower MTU than the
+de-facto standard of 1500 bytes, you need to configure the Docker
+Engine Option properly. The example uses `1400` because it's the one required
+for `spain2` region.
 
-For a few minutes you will see a waiting page.  In the background the
-driver is starting and provisioning the newly created hosts.
+At the end of the page then click the “Save” button.
+
+For a few minutes you will see a waiting page. In the background the driver is
+starting and provisioning the newly created hosts.
 
 ![img](./images/05-user-setup-swarm-13-wait-for-host.png
 "Wait for hosts")
 
+## Preparing Portainer
 
-## Deploy a stack using the web interface
-
-After waiting for a while (usually a couple of minutes) your host
+After waiting for a while (usually a couple of minutes) your host(s)
 should be in the “active” state.
 
 ![img](./images/07-host-added-01-display.png
 "Host added")
 
-Follow the menu “Swarm - Portainer” menu you can start our customized
-portainer web interface.
+Follow the “Swarm -> Portainer” menu to start our customized portainer web
+interface.
 
 First be sure that in the settings the correct templates are loaded
 from the url:
@@ -170,61 +217,32 @@ from the url:
 ![img](./images/09-portainer-01-settings.png
 "Portainer Template Settings")
 
-Usually for SmartSDK recipes the required networks “frontend” and
-“backend” are to be create as in the following screenshot.
+For SmartSDK recipes, two docker overlay networks named `frontend` and
+`backend` need to be create as in the following screenshot. Pay close attention
+to include the `com.docker.network.driver.mtu` option with the value of `1400`
+if your network requires to reduce the MTU, as is the case of `Spain2` FIWARE
+Lab node.
 
-![img](./images/09-portainer-02-network.png
-"Network Creation")
+![img](./images/09-portainer-02-network.png "Network Creation")
 
-To deploy a stack from our templates, follow the “App Templates” link.
-
-![img](./images/09-portainer-03-apps.png
-"Application listing")
-
-For the “Onion Context Broker” there are optional values that can be
-changed.
-
-![img](./images/09-portainer-04-context-broker-config.png
-"Orion Contex Brober Application settings")
-
-A link to the documentation is provided in order to clarify the exact
-meaning of the variables.
-
-![img](./images/09-portainer-05-context-broker-help.png
-"Link to the Original Context Broker Documentation")
-
-Complete the form with at least the “Stack Name”:
-
-![img](./images/09-portainer-06-context-broker-name.png
-"Complete the Orion Context Broker Form")
-
-Click on “Deploy the stack” and wait a bit for the starting of the stack.
-
-![img](./images/09-portainer-07-context-broker-success.png
-"Successful start of a deploy")
-
-Note that a configuration can be edited ad any time in order to change
-suitable parameters.
-
-![img](./images/09-portainer-09-context-broker-edit.png
-"Edit the configuration of a running deploy")
-
-This end our web graphical user interface tour.  The next section
-explores the command line oriented tools.
-
+This ends our web graphical user interface tour. The next section explores the
+command-line-oriented tools in case you are interested in working from the CLI.
+Otherwise, you are ready to jump to the
+[Deploy your platform services](deployservices.md) section.
 
 ### Export configuration for Docker CLI
 
 Once the host is up you can export the settings.  The settings are
 useful if you want to manage the host using the `docker-machine` tool.
 You can also use the setting to connect to the host directly using
-`ssh`.
+`ssh`. Go to "Infrastructure -> Hosts" and click in "Machine Config" as shown
+below. Notice the IP address of the host whose config you are downloading.
 
 ![img](./images/07-host-added-02-machine-config-download.png
 "Add hosts configuration details")
 
-For the ssh connection see the following example.  Extract the
-settings.
+For the ssh connection see the following example. Extract the downloaded
+settings file.
 
     user@localhost tar xvzf h1.tar.gz
     f92db4d8-5b28-44d8-ae54-7fcb823e2e4a
@@ -245,7 +263,8 @@ settings.
     f92db4d8-5b28-44d8-ae54-7fcb823e2e4a/machines/h1/server-key.pem
     f92db4d8-5b28-44d8-ae54-7fcb823e2e4a/machines/h1/server.pem
 
-Use ssh to connect tho the host and show the running docker container.
+Use ssh to connect tho the host and show the running docker containers. Check
+the values of your folder name and IP of the host whose config you downloaded.
 
     user@localhost ssh -i f92db4d8-5b28-44d8-ae54-7fcb823e2e4a/machines/h1/id_rsa \
       -o IdentitiesOnly=yes ubuntu@130.206.126.99 sudo docker ps
@@ -290,8 +309,8 @@ Download them from the right bottom corner of the interface the
 ![img](./images/07-host-added-04-download-cli-rancher.png
 "Downloload rancher CLI")
 
-Download the account and environment API keys from the API tab.  Make
-sure you have selected the correct environment.
+Create and download the account and environment API keys from the API tab.  
+Make sure you have selected the correct environment.
 
 An overview of the API page.  Click on “Add Account API Key”.
 
@@ -308,12 +327,14 @@ Take note of the access and secrey keys in a secure place.
 ![img](./images/08-download-api-03-account-api-key.png
 "Account key tokens")
 
-Fill the name and description for the account API key
+Now the Environment API Key (may be hidden in "ADVANCED OPTIONS").
+Click "Add Environment API Key" and fill the name and description for the
+Environment API key.
 
 ![img](./images/08-download-api-04-env-api-key.png
 "New enviroment key creation")
 
-Take note of the access and secrey keys in a secure place.
+Take note of the access and secret keys in a secure place.
 
 ![img](./images/08-download-api-05-env-api-key.png
 "Environment key tokens")
@@ -364,7 +385,7 @@ If you are interested to explore miniswarm usage:
 $ miniswarm -h
 ```
 
-#### Create step-by-step your cluster on Windows / Mac / Linux
+#### Create your cluster step-by-step on Windows / Mac / Linux
 
 1. Create 3 docker virtual machines:
 
@@ -382,7 +403,7 @@ $ miniswarm -h
         ms-worker1    -        virtualbox   Running   tcp://192.168.99.102:2376            v18.02.0-ce
 
 
-1. Initialise the swarm cluster:
+1. Initialise the swarm cluster (adjust to your manager IP):
 
         $ docker-machine ssh ms-manager0 "docker swarm init --advertise-addr <ms-manager0-ip>"
         Swarm initialized: current node <node ID> is now a manager.
@@ -421,19 +442,22 @@ $ miniswarm -h
 
 1. Launch a docker service:
 
-        $ docker service create --name helloworld alpine ping docker.com
+        $ docker service create --name helloworld --restart-condition=none alpine ping -c 4 docker.com
 
         sm3hi368lbsxye3n2rgdwv5xo
         overall progress: 1 out of 1 tasks
         1/1: running   [==================================================>]
         verify: Service converged
 
-1. Check the service logs
+1. Check the service logs (Quit with ctrl+C)
 
         $ docker service logs -f helloworld
-        helloworld.1.ogo00hqdmtm0@ms-worker1    | PING docker.com (54.209.25.207): 56 data bytes
+        helloworld.1.k5jtv8w7zyu2@ms-manager0    | PING docker.com (54.209.102.157): 56 data bytes
+        helloworld.1.k5jtv8w7zyu2@ms-manager0    |
+        helloworld.1.k5jtv8w7zyu2@ms-manager0    | --- docker.com ping statistics ---
+        helloworld.1.k5jtv8w7zyu2@ms-manager0    | 4 packets transmitted, 0 packets received, 100% packet loss
 
-1. Remove the services
+1. Remove the service (don't leave it pinging)
 
         $ docker service rm helloworld
         helloworld
