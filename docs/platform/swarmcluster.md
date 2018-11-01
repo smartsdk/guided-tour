@@ -179,6 +179,8 @@ The supported configuration requires the following settings:
 -   Docker Install Url: `https://platform-manager-legacy.smartsdk.eu/install-docker/17.12-smartsdk.sh`
 -   Storage Driver: `overlay2`
 -   Docker Engine Options: key: `mtu`, value `1400`
+-   Network: `node-int-net-01`
+-   FIP Pool: `federation-ext-net-01`
 
 To set some of those you will need to expand the "ADVANCED OPTIONS". Your
 config should end up looking like the example below.
