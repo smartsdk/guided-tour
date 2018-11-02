@@ -101,7 +101,8 @@ $ docker stack deploy -c docker-compose.yml ${STACK_NAME}
 ```
 
 NOTE: When executing docker with `sudo` it is necesary to pass the environment
-variables set previously by using the `-E` flag. ie. 
+variables set previously by using the `-E` flag. ie.
+
 ```
 $ sudo -E docker stack deploy -c docker-compose.yml ${STACK_NAME}
 ```
