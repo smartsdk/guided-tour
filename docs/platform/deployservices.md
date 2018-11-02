@@ -100,6 +100,11 @@ $ source settings.env
 $ docker stack deploy -c docker-compose.yml ${STACK_NAME}
 ```
 
+NOTE: When executing docker with `sudo` it is necesary to pass the environment variables set previously by using the `-E` flag. ie. 
+```
+$ sudo -E docker stack deploy -c docker-compose.yml ${STACK_NAME}
+```
+
 In Windows...
 
 ```
@@ -427,7 +432,7 @@ and Orion Context Broker deployed following this guide.
 
 ```
 $ cd iot-services/iotagent-ul
-$ docker stack deploy -c docker-compose iota-ul
+$ docker stack deploy -c docker-compose.yml iota-ul
 ```
 
 You can check the agent started properly by checking the replicas are up and
