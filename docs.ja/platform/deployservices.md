@@ -87,6 +87,13 @@ $ source settings.env
 $ docker stack deploy -c docker-compose.yml ${STACK_NAME}
 ```
 
+注意: `sudo` を使ってdocker を実行するときは、`-E` フラグを使って以前に設定した
+環境変数を渡す必要があります。つまり:
+
+```
+$ sudo -E docker stack deploy -c docker-compose.yml ${STACK_NAME}
+```
+
 Windows では...
 
 ```
@@ -282,7 +289,7 @@ Orion Context Broker を使用するのに十分です。
 
 ```
 $ cd iot-services/iotagent-ul
-$ docker stack deploy -c docker-compose iota-ul
+$ docker stack deploy -c docker-compose.yml iota-ul
 ```
 
 Agent のログを確認することで、Agent が正常に起動しているかどうかを確認できます。
