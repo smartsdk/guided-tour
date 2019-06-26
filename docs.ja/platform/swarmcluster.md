@@ -371,9 +371,7 @@ Environment API キーは、"ADVANCED OPTIONS" に隠れているかもしれま
 
 miniSwarm の使用法を調べる場合 :
 
-```bash
         $ miniswarm -h
-```
 
 #### Windows / Mac / Linux で段階的にクラスタをに作成
 
