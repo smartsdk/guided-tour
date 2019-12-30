@@ -383,9 +383,7 @@ can create your cluster using
 
 If you are interested to explore miniswarm usage:
 
-```bash
-$ miniswarm -h
-```
+        $ miniswarm -h
 
 #### Create your cluster step-by-step on Windows / Mac / Linux
 
