@@ -166,12 +166,14 @@ OAuth2 手続きで使用されているものとは異なることに注意し�
 
 サポートされている構成では、次の設定が必要です :
 
-- イメージ : `Ubuntu 16.04 LTS`
-- フレーバー : `m1.medium`
-- セキュリティ・グループ : 前の手順で作成したものを選択します。
-- Docker のインストールURL : `https://platform-manager-legacy.smartsdk.eu/install-docker/17.12-smartsdk.sh`
-- ストレージ・エンジン :  `overlay2`
-- Docker Engine のオプション : key: `mtu`, value `1400`
+-   イメージ : `Ubuntu 16.04 LTS`
+-   フレーバー : `m1.medium`
+-   セキュリティ・グループ : 前の手順で作成したものを選択します。
+-   Docker のインストールURL : `https://platform-manager-legacy.smartsdk.eu/install-docker/17.12-smartsdk.sh`
+-   ストレージ・エンジン :  `overlay2`
+-   Docker Engine のオプション : key: `mtu`, value `1400`
+-   ネットワーク : `node-int-net-01`
+-   FIP Pool : `federation-ext-net-01
 
 それらのいくつかを設定するには、"ADVANCED OPTIONS" を展開する必要があります。
 あなたの設定は、以下の例のようになります。
@@ -369,9 +371,7 @@ Environment API キーは、"ADVANCED OPTIONS" に隠れているかもしれま
 
 miniSwarm の使用法を調べる場合 :
 
-```bash
-$ miniswarm -h
-```
+        $ miniswarm -h
 
 #### Windows / Mac / Linux で段階的にクラスタをに作成
 
