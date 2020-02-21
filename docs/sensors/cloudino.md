@@ -391,12 +391,11 @@ In this way, Fig. 23. shows how the data defined in the entity and associated
 with the Cloudino is displayed and updated in real time on the FIWARE OCB server.
 
   ![Data of air quality monitoring unit in the FIWARe OCB](./images//cdn_23.png)
-  *Fig. 23. Data of air quality monitoring unit in the FIWARe OCB*
+  *Fig. 23. Data of air quality monitoring unit in the FIWARE OCB*
 
 As can be seen on Fig. 23, the data of the air quality monitoring unit can
 be accessed with the following REST call:
 <http://207.249.127.132:1026/v2/entities/AirQualityMonitorUnit:Entity>,
-
 where we can see the real time information of the air quality monitoring
 sensors controlled through the Cloudino platform. The information can now be
 used by any kind of IoT application.
